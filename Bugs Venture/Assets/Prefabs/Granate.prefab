@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5e3791e5b72e14aadd8c139bb394f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
+  bulletSpeed: 15
   GranateParticle: {fileID: 1369479916715538, guid: 9972ce1326ff4e84c96fba1c52ddfa1c,
     type: 2}
 --- !u!135 &135442630802247286
