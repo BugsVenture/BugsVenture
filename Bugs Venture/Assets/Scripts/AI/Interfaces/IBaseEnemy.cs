@@ -10,7 +10,7 @@ public interface IBaseEnemy
     float MaxHearing { get; set; }
     float MaxSight { get; set; }
 
-    void Attack();
+    IEnumerator Attack();
 
     void MoveToPlayer();
 
