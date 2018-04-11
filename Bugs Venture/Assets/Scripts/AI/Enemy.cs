@@ -9,6 +9,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IBaseEnemy
 
 {
+
+
+    private static bool isAttacking = false;
     private NavMeshAgent agent; 
     //Public
     public int health;
@@ -17,6 +20,8 @@ public class Enemy : MonoBehaviour, IBaseEnemy
     public float SigthAngle = 45;
     public float ActivationDistance = 20;
     public float AttackRange = 5;
+    public float fireRate = 5f;
+    public Rigidbody bullet; 
 
 
     int IBaseEnemy.Health
@@ -68,27 +73,35 @@ public class Enemy : MonoBehaviour, IBaseEnemy
     {
         if (this.health <= 0)
             DestroyEnemy();
-        if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < ActivationDistance)
+        if (Player.GetInstance())
         {
-            Vector3 targetDir = Player.GetInstance().transform.position - this.transform.position;
-            if (Vector3.Angle(targetDir, transform.forward) < SigthAngle)
+            if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < ActivationDistance)
             {
-                if(Vector3.Distance(this.transform.position, Player.GetInstance().transform.position)< AttackRange)
+                Vector3 targetDir = Player.GetInstance().transform.position - this.transform.position;
+                if (Vector3.Angle(targetDir, transform.forward) < SigthAngle)
                 {
-                    Attack();
-                }
-                else
-                {
-                    MoveToPlayer();
+                    if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < AttackRange)
+                    {
+                        if(!isAttacking)
+                            StartCoroutine("Attack");
+                    }
+                    else
+                    {
+                        MoveToPlayer();
+                    }
                 }
             }
         }
-
     }
 
-    public void Attack()
+    public IEnumerator Attack()
     {
-
+        isAttacking = true; 
+        Rigidbody rocketInstance;
+        Transform offset = this.transform.GetChild(0);
+        rocketInstance = Instantiate(bullet, offset.position, offset.rotation) as Rigidbody;
+        yield return new WaitForSeconds(1);
+        isAttacking = false; 
     }
 
     public void MoveToPlayer()
