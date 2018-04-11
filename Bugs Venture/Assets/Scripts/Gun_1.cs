@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun_1 : MonoBehaviour {
     //Public
     public float fireRate = 2f;
-    public float damage;
+    public int damage;
     public Transform BulletSpawn;
     public Rigidbody Bullet;
 
@@ -35,5 +35,6 @@ public class Gun_1 : MonoBehaviour {
         if (this.lastFire + (1f / this.fireRate) > Time.time) return;
         Rigidbody rocketInstance;
         rocketInstance = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation) as Rigidbody;
+
     }
 }
