@@ -10,6 +10,9 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight = 20f;
     public LayerMask groundLayer;
     public Transform groundCheck;
+    public float rotationSpeed = 10f;
+    public float distance = 5.0f;
+    public float rotatespeed = 50f;
 
     //Private
     private Rigidbody RigidBody;
@@ -23,14 +26,31 @@ public class CharacterMovement : MonoBehaviour
     {
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
-    { 
+    {    
+         //Teleport Mouse
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Teleport();
+            Physics.IgnoreLayerCollision(10, 11, true);
+            StartCoroutine(Delay());
+        }
+
+        //Teleport JoyStick
+        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
+        {
+            Teleport();
+            Physics.IgnoreLayerCollision(10, 11, true);
+            StartCoroutine(Delay());
+        }
+
+
         //Jump
-        if ( grounded && Input.GetKey(KeyCode.Space))
-        {          
+        if (grounded && Input.GetButton("Jump"))
+        {
             grounded = false;
             RigidBody.AddForce(new Vector3(0, jumpHeight, 0));
         }
@@ -44,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             grounded = false;
-        }    
+        }
 
         Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
         Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -55,11 +75,39 @@ public class CharacterMovement : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y,pointToLook.z));
         }
+
     }
 
    void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
         RigidBody.velocity = new Vector3(move * moveSpeed, RigidBody.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
+    }
+
+    //Teleport forward function
+    public void Teleport()
+    {
+
+        RaycastHit hit;
+        Vector3 destination = transform.position + transform.forward * distance;
+
+        //obstacle found to be intersecting
+        if (Physics.Linecast(transform.position, destination, out hit))
+        {
+            destination = transform.position + transform.forward * (hit.distance - 1f);
+        }
+        //no obstacles found
+        if (Physics.Raycast(destination, -Vector3.up, out hit))
+        {
+            destination = hit.point;
+            destination.y = 0.5f;
+            transform.position = destination;
+        }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1);
+        Physics.IgnoreLayerCollision(10, 11, false);
     }
 }
