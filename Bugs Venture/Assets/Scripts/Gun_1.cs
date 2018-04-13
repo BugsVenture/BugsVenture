@@ -24,7 +24,7 @@ public class Gun_1 : MonoBehaviour {
     void Update()
     {
         //Fire
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetButton("Fire1"))
         {
             Fire();
         }

@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 114564784264006820}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -580,6 +580,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 4854561465509970}
+  rotationSpeed: 10
+  distance: 5
+  rotatespeed: 200
 --- !u!114 &114569798761763290
 MonoBehaviour:
   m_ObjectHideFlags: 1

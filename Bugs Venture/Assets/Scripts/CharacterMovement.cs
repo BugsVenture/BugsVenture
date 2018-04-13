@@ -12,7 +12,7 @@ public class CharacterMovement : MonoBehaviour
     public Transform groundCheck;
     public float rotationSpeed = 10f;
     public float distance = 5.0f;
-    public float rotatespeed = 50f;
+    public float rotatespeed;
 
     //Private
     private Rigidbody RigidBody;
@@ -20,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
     private bool grounded = false;
     private float groundCheckRadius = 0.05f;
     private Collider[] groundCollisions;
+    private Vector3 moveInput;
+    private Vector3 moveVelocity;
 
     // Use this for initialization
     void Start ()
@@ -30,8 +32,15 @@ public class CharacterMovement : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-    {    
-         //Teleport Mouse
+    {
+        //Rotate with right Joystick 
+        transform.Rotate(Input.GetAxis("HorizontalJ") * Vector3.up * Time.deltaTime * rotatespeed);
+
+        //Player Movement
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveVelocity = moveInput * moveSpeed;
+
+        //Teleport Mouse
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Teleport();
@@ -40,7 +49,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //Teleport JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3))
         {
             Teleport();
             Physics.IgnoreLayerCollision(10, 11, true);
@@ -80,8 +89,7 @@ public class CharacterMovement : MonoBehaviour
 
    void FixedUpdate()
     {
-        float move = Input.GetAxis("Horizontal");
-        RigidBody.velocity = new Vector3(move * moveSpeed, RigidBody.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
+        RigidBody.velocity = moveVelocity;
     }
 
     //Teleport forward function
