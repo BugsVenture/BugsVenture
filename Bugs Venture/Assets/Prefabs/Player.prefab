@@ -554,9 +554,6 @@ MonoBehaviour:
   rotationSpeed: 10
   distance: 5
   rotatespeed: 200
-  Point1: {fileID: 114438466957316424, guid: d5711fd53d39d7141947d70c0b3f9a91, type: 2}
-  Point2: {fileID: 114195930603098268, guid: d5711fd53d39d7141947d70c0b3f9a91, type: 2}
-  Point3: {fileID: 114544502717415506, guid: d5711fd53d39d7141947d70c0b3f9a91, type: 2}
 --- !u!114 &114655316174214380
 MonoBehaviour:
   m_ObjectHideFlags: 1

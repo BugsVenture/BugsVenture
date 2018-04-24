@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -13,12 +13,6 @@ public class CharacterMovement : MonoBehaviour
     public float rotationSpeed = 10f;
     public float distance = 5.0f;
     public float rotatespeed;
-    public Image Point1;
-    public Image Point2;
-    public Image Point3;
-
-
-
 
     //Private
     private Rigidbody RigidBody;
@@ -28,21 +22,28 @@ public class CharacterMovement : MonoBehaviour
     private Collider[] groundCollisions;
     private Vector3 moveInput;
     private Vector3 moveVelocity;
-    private int stamina = 3;
-    private bool isTeleporting;
+    private bool isTeleporting = true;
+    private float stamina = 50, maxStamina = 50;
+    Rect staminaRect;
+    Texture2D staminaTexture;
 
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
+        staminaRect = new Rect(Screen.width / 30, Screen.height * 9 /10, Screen.width / 3, Screen.height / 50);
+        staminaTexture = new Texture2D(1, 1);
+        staminaTexture.SetPixel(0, 0, Color.blue);
+        staminaTexture.Apply();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
+
 
         //Rotate with right Joystick 
         transform.Rotate(Input.GetAxis("HorizontalJ") * Vector3.up * Time.deltaTime * rotatespeed);
@@ -53,73 +54,51 @@ public class CharacterMovement : MonoBehaviour
 
 
         //Teleport Mouse
-        if (Input.GetKeyDown(KeyCode.Mouse1)&&isTeleporting)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && isTeleporting)
         {
             Teleport();
             Physics.IgnoreLayerCollision(10, 11, true);
             StartCoroutine(Delay());
-            stamina --;
+            stamina -= 10f;
         }
         //Teleport JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) &&isTeleporting)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isTeleporting)
         {
             Teleport();
             Physics.IgnoreLayerCollision(10, 11, true);
             StartCoroutine(Delay());
-            stamina--;
         }
 
-        // Regenerate Teleportpoints
-        if(stamina == 0)
-        {
-            StartCoroutine(Delay1());
-            StartCoroutine(Delay2());
-            StartCoroutine(Delay3());
-        }
-        //Change UI for Teleportoints
-        if(stamina == 1)
-        {
-            Point1.gameObject.SetActive(true);
-            Point2.gameObject.SetActive(false);
-            Point3.gameObject.SetActive(false);
-        }else if(stamina == 2)
-         {
-            Point1.gameObject.SetActive(true);
-            Point2.gameObject.SetActive(true);
-            Point3.gameObject.SetActive(false);
-        }else if(stamina == 3)
-        {
-            Point1.gameObject.SetActive(true);
-            Point2.gameObject.SetActive(true);
-            Point3.gameObject.SetActive(true);
-        }
-
-        //Teleportcheck
+        // Teleportcheck
         if(stamina == 0)
         {
             isTeleporting = false;
+            StartCoroutine(RegenerateDelay());
         }
-        else 
+
+        if (stamina == maxStamina)
         {
             isTeleporting = true;
         }
-       
+
+
         Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
         Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLenght;
 
-        if(GroundPlane.Raycast(cameraRay, out rayLenght))
+        if (GroundPlane.Raycast(cameraRay, out rayLenght))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y,pointToLook.z));
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
 
     }
 
-   void FixedUpdate()
+    void FixedUpdate()
     {
         RigidBody.velocity = moveVelocity;
     }
+
 
     //Teleport forward function
     public void Teleport()
@@ -140,6 +119,13 @@ public class CharacterMovement : MonoBehaviour
             transform.position = destination;
         }
     }
+    private void OnGUI()
+    {
+        float ratio = stamina / maxStamina;
+        float rectWidth = ratio*Screen.width / 3;
+        staminaRect.width = rectWidth;
+        GUI.DrawTexture(staminaRect, staminaTexture);
+    }
 
     // Delay for Ignor Wallcollider
     IEnumerator Delay()
@@ -147,21 +133,20 @@ public class CharacterMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         Physics.IgnoreLayerCollision(10, 11, false);
     }
-    // Delay for Teleportpoints regenaration 
-    IEnumerator Delay1()
-    {
-        yield return new WaitForSeconds(5);
-        stamina = 1;
-    }
-    IEnumerator Delay2()
-    {
-        yield return new WaitForSeconds(4);
-        stamina = 2;
-    }
-    IEnumerator Delay3()
+
+   // regenerate Delay for Teleportstamina
+   IEnumerator RegenerateDelay()
     {
         yield return new WaitForSeconds(3);
-        stamina = 3;
+        stamina = 25f;
+        isTeleporting = false;
+        yield return new WaitForSeconds(5);
+        stamina = 50f;
+        isTeleporting = false;
     }
+
+
+
+
 
 }
