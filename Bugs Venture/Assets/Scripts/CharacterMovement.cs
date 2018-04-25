@@ -13,13 +13,11 @@ public class CharacterMovement : MonoBehaviour
     public float rotationSpeed = 10f;
     public float distance = 5.0f;
     public float rotatespeed;
+    public bool useController;
 
     //Private
     private Rigidbody RigidBody;
     private Camera MainCamera;
-    private bool grounded = false;
-    private float groundCheckRadius = 0.05f;
-    private Collider[] groundCollisions;
     private Vector3 moveInput;
     private Vector3 moveVelocity;
     private bool isTeleporting = true;
@@ -32,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        staminaRect = new Rect(Screen.width / 30, Screen.height * 9 /10, Screen.width / 3, Screen.height / 50);
+        staminaRect = new Rect(Screen.width / 30, Screen.height * 9 / 10, Screen.width / 3, Screen.height / 50);
         staminaTexture = new Texture2D(1, 1);
         staminaTexture.SetPixel(0, 0, Color.blue);
         staminaTexture.Apply();
@@ -43,10 +41,6 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        //Rotate with right Joystick 
-        transform.Rotate(Input.GetAxis("HorizontalJ") * Vector3.up * Time.deltaTime * rotatespeed);
 
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
@@ -67,10 +61,11 @@ public class CharacterMovement : MonoBehaviour
             Teleport();
             Physics.IgnoreLayerCollision(10, 11, true);
             StartCoroutine(Delay());
+            stamina -= 10f;
         }
 
         // Teleportcheck
-        if(stamina == 0)
+        if (stamina == 0)
         {
             isTeleporting = false;
             StartCoroutine(RegenerateDelay());
@@ -81,8 +76,10 @@ public class CharacterMovement : MonoBehaviour
             isTeleporting = true;
         }
 
-
-        Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+        //Rotate with Mouse
+        if (!useController)
+        {
+            Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
         Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLenght;
 
@@ -92,6 +89,16 @@ public class CharacterMovement : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
 
+        }
+        //Rotate with Controller
+        if (useController)
+        {
+            Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("HorizontalJ") + Vector3.forward * Input.GetAxisRaw("VerticalJ");
+                if(playerDirection.sqrMagnitude > 0.0f)
+                {
+                    transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+                }
+        }
     }
 
     void FixedUpdate()

@@ -9,8 +9,9 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothing = 5f;
     public float moveSpeed = 5;
-
     public Vector3 offset;
+    public bool border;
+    public float minX, maxX,minZ, maxZ;
 
     private void Awake()
     {
@@ -27,6 +28,13 @@ public class CameraFollow : MonoBehaviour
         
     }
 
+   void Update()
+    {
+        if(border)
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y,transform.position.z);
+        }
+    }
     void FixedUpdate()
     {
         if (Player.GetInstance())
