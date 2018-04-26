@@ -30,13 +30,18 @@ public class CameraFollow : MonoBehaviour
 
    void Update()
     {
-        if(border)
-        {
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y,transform.position.z);
-        }
+        //if(border)
+        //{
+        //    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y,transform.position.z);
+        //}
     }
     void FixedUpdate()
     {
+        if (border)
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y, Mathf.Clamp(transform.position.z,minZ,maxZ));
+        }
+
         if (Player.GetInstance())
         {
             target = Player.GetInstance().transform;

@@ -11,9 +11,10 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float rotationSpeed = 10f;
-    public float distance = 5.0f;
     public float rotatespeed;
     public bool useController;
+    public Transform Teleportpoint;
+    public float health = 10;
 
     //Private
     private Rigidbody RigidBody;
@@ -24,6 +25,8 @@ public class CharacterMovement : MonoBehaviour
     private float stamina = 50, maxStamina = 50;
     Rect staminaRect;
     Texture2D staminaTexture;
+    Rect healthRect;
+    Texture2D healthTexture;
 
 
 
@@ -34,6 +37,12 @@ public class CharacterMovement : MonoBehaviour
         staminaTexture = new Texture2D(1, 1);
         staminaTexture.SetPixel(0, 0, Color.blue);
         staminaTexture.Apply();
+
+        healthRect = new Rect(Screen.width /30, Screen.height * 9 / 11, Screen.width / 3, Screen.height / 50);
+        healthTexture = new Texture2D(1, 1);
+        healthTexture.SetPixel(0, 0, Color.red);
+        healthTexture.Apply();
+
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
     }
@@ -41,6 +50,13 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
+
+        //Player Death
+        if(health == 0)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
 
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
@@ -51,16 +67,12 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1) && isTeleporting)
         {
             Teleport();
-            Physics.IgnoreLayerCollision(10, 11, true);
-            StartCoroutine(Delay());
             stamina -= 10f;
         }
         //Teleport JoyStick
         if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isTeleporting)
         {
             Teleport();
-            Physics.IgnoreLayerCollision(10, 11, true);
-            StartCoroutine(Delay());
             stamina -= 10f;
         }
 
@@ -110,21 +122,7 @@ public class CharacterMovement : MonoBehaviour
     //Teleport forward function
     public void Teleport()
     {
-        RaycastHit hit;
-        Vector3 destination = transform.position + transform.forward * distance;
-
-        //obstacle found to be intersecting
-        if (Physics.Linecast(transform.position, destination, out hit))
-        {
-            destination = transform.position + transform.forward * (hit.distance - 1f);
-        }
-        //no obstacles found
-        if (Physics.Raycast(destination, -Vector3.up, out hit))
-        {
-            destination = hit.point;
-            destination.y = 0.5f;
-            transform.position = destination;
-        }
+        this.transform.position = Teleportpoint.transform.position;
     }
     private void OnGUI()
     {
@@ -132,13 +130,17 @@ public class CharacterMovement : MonoBehaviour
         float rectWidth = ratio*Screen.width / 3;
         staminaRect.width = rectWidth;
         GUI.DrawTexture(staminaRect, staminaTexture);
+        float healthratio = health / 10f;
+        float healthrectWidth = healthratio * Screen.width / 3;
+        healthRect.width = healthrectWidth;
+        GUI.DrawTexture(healthRect, healthTexture);
     }
 
     // Delay for Ignor Wallcollider
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(1);
-        Physics.IgnoreLayerCollision(10, 11, false);
+        Physics.IgnoreLayerCollision(9, 10, false);
     }
 
    // regenerate Delay for Teleportstamina
@@ -152,7 +154,14 @@ public class CharacterMovement : MonoBehaviour
         isTeleporting = false;
     }
 
-
+    
+     void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "EnemyBullet")
+        {
+            health --;
+        }
+    }
 
 
 
