@@ -9,6 +9,9 @@ TagManager:
   - Door
   - Stamina
   - EnemyBullet
+  - Ground
+  - Wall
+  - Outside
   layers:
   - Default
   - TransparentFX

@@ -36,16 +36,8 @@ public class GunController : MonoBehaviour
                 selectedWeapon--;
         }
 
-        //Select Weapon with Bumper down
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5))
-        {
-            if (selectedWeapon >= transform.childCount - 1)
-                selectedWeapon = 0;
-            else
-                selectedWeapon++;
-        }
 
-        //Select Weapon with Bumper up
+        //Select Weapon with Bumper 
         if (Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             if (selectedWeapon <= 0)

@@ -28,10 +28,6 @@ public class Gun_1 : MonoBehaviour {
         {
             Fire();
         }
-        if (Input.GetAxisRaw("FireAxis") > 0f)
-        {
-            Fire();
-        }
     }
 
     public void Fire()

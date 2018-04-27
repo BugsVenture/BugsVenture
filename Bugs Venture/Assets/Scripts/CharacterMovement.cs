@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+
+
 public class CharacterMovement : MonoBehaviour
 {
     //Public
@@ -14,76 +16,69 @@ public class CharacterMovement : MonoBehaviour
     public float rotatespeed;
     public bool useController;
     public Transform Teleportpoint;
-    public float health = 10;
+
+    //public float maxHealth;
 
     //Private
+    private bool isTeleporting = true;
     private Rigidbody RigidBody;
     private Camera MainCamera;
     private Vector3 moveInput;
     private Vector3 moveVelocity;
-    private bool isTeleporting = true;
-    private float stamina = 50, maxStamina = 50;
-    Rect staminaRect;
-    Texture2D staminaTexture;
-    Rect healthRect;
-    Texture2D healthTexture;
-
-
+    private float stamina = 1, maxStamina = 1;
+    private BarScript bar;
+    private GameObject ResetPoint;
+    //private float damage = 0.1f;
 
     // Use this for initialization
     void Start()
     {
-        staminaRect = new Rect(Screen.width / 30, Screen.height * 9 / 10, Screen.width / 3, Screen.height / 50);
-        staminaTexture = new Texture2D(1, 1);
-        staminaTexture.SetPixel(0, 0, Color.blue);
-        staminaTexture.Apply();
-
-        healthRect = new Rect(Screen.width /30, Screen.height * 9 / 11, Screen.width / 3, Screen.height / 50);
-        healthTexture = new Texture2D(1, 1);
-        healthTexture.SetPixel(0, 0, Color.red);
-        healthTexture.Apply();
-
+        ResetPoint = GameObject.Find("Resetpoint");
+        bar = GameObject.FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
+        bar.fillAmount = maxStamina;
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+        //HealthBar
 
-        //Player Death
-        if(health == 0)
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
+        //bar.fillAmount = maxHealth;
 
+        ////Player Death
+        //if (maxHealth == 0)
+        //{
+        //    Application.LoadLevel(Application.loadedLevel);
+        //}
+   
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
 
 
         //Teleport Mouse
-        if (Input.GetKeyDown(KeyCode.Mouse1) && isTeleporting)
+        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isTeleporting)
         {
             Teleport();
-            stamina -= 10f;
+            bar.fillAmount -= 0.1f;
         }
         //Teleport JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isTeleporting)
+        if (Input.GetKeyDown(GameManager.GM.teleportKeyJoyStick) && isTeleporting)
         {
             Teleport();
-            stamina -= 10f;
+            bar.fillAmount -= 0.1f;
         }
 
         // Teleportcheck
-        if (stamina == 0)
+        if (bar.fillAmount <= 0f)
         {
             isTeleporting = false;
             StartCoroutine(RegenerateDelay());
         }
 
-        if (stamina == maxStamina)
+        if (bar.fillAmount == maxStamina)
         {
             isTeleporting = true;
         }
@@ -124,17 +119,6 @@ public class CharacterMovement : MonoBehaviour
     {
         this.transform.position = Teleportpoint.transform.position;
     }
-    private void OnGUI()
-    {
-        float ratio = stamina / maxStamina;
-        float rectWidth = ratio*Screen.width / 3;
-        staminaRect.width = rectWidth;
-        GUI.DrawTexture(staminaRect, staminaTexture);
-        float healthratio = health / 10f;
-        float healthrectWidth = healthratio * Screen.width / 3;
-        healthRect.width = healthrectWidth;
-        GUI.DrawTexture(healthRect, healthTexture);
-    }
 
     // Delay for Ignor Wallcollider
     IEnumerator Delay()
@@ -143,26 +127,32 @@ public class CharacterMovement : MonoBehaviour
         Physics.IgnoreLayerCollision(9, 10, false);
     }
 
-   // regenerate Delay for Teleportstamina
-   IEnumerator RegenerateDelay()
+    // regenerate Delay for Teleportstamina
+    IEnumerator RegenerateDelay()
     {
         yield return new WaitForSeconds(3);
-        stamina = 25f;
+        bar.fillAmount = 0.5f;
         isTeleporting = false;
         yield return new WaitForSeconds(5);
-        stamina = 50f;
+        bar.fillAmount = 1f;
         isTeleporting = false;
     }
 
-    
-     void OnCollisionEnter(Collision collision)
+
+    void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "EnemyBullet")
         {
-            health --;
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 
-
-
+    //Reset player 
+     void OnTriggerEnter(Collider other)
+    {
+    if(other.gameObject.tag == "Outside")
+        {
+            this.transform.position = ResetPoint.transform.position;
+        }
+    }
 }

@@ -24,7 +24,7 @@ public class Granate : MonoBehaviour {
     void Update()
     {
         //Fire
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }
