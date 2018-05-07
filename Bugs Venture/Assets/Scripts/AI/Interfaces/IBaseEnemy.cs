@@ -12,7 +12,7 @@ public interface IBaseEnemy
 
     IEnumerator Attack();
 
-    void MoveToPlayer();
+    bool MoveTo(Vector3 pos, float threshold);
 
     void GetDamage(int value);
 

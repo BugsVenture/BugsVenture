@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44480157, g: 0.5177198, b: 0.79292494, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -99,7 +99,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.68
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -107,7 +107,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.22666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -129,8 +129,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Outside
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &7606744
 MeshRenderer:
@@ -242,6 +242,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a9df1fdca55d7264e89ec30bea083960, type: 2}
   m_StaticBatchInfo:
@@ -572,6 +573,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b584993eae17cdf42ae45e7268f9d8d1, type: 2}
   m_StaticBatchInfo:
@@ -636,17 +638,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 85663472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbf8fb4a276d924aaa8b4aaea5c30cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ea2a893de62ac04e8c2864ad4f2d3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
   maxHearing: 15
   maxSight: 10
-  SigthAngle: 45
-  ActivationDistance: 20
-  AttackRange: 5
-  fireRate: 2
-  bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
+  bullet: {fileID: 54107526587644316, guid: e3ec63e2620a5ed4bbd73b083f112f7e, type: 2}
 --- !u!195 &85663479
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -694,8 +692,8 @@ GameObject:
   m_Name: Cube (9)
   m_TagString: Outside
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &137579952
 Transform:
@@ -723,6 +721,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a9df1fdca55d7264e89ec30bea083960, type: 2}
   m_StaticBatchInfo:
@@ -807,6 +806,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -947,8 +947,8 @@ GameObject:
   m_Name: Cube (7)
   m_TagString: Outside
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &185437813
 Transform:
@@ -976,6 +976,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a9df1fdca55d7264e89ec30bea083960, type: 2}
   m_StaticBatchInfo:
@@ -1095,8 +1096,8 @@ GameObject:
   m_Name: Wall (51)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &205341715
 Transform:
@@ -1124,6 +1125,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -1208,6 +1210,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1458,7 +1461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 886033107}
 --- !u!65 &305123011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1596,7 +1598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1817040351}
 --- !u!65 &363010695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1790,6 +1791,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 0d1b85ccb5127da44a16587272e3d384, type: 2}
   m_StaticBatchInfo:
@@ -1872,7 +1874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1392487741}
 --- !u!65 &413378993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1975,8 +1976,8 @@ GameObject:
   m_Name: Wall (49)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &477230603
 Transform:
@@ -2004,6 +2005,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -2086,7 +2088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1179313515}
 --- !u!65 &481940766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2121,8 +2122,8 @@ GameObject:
   m_Name: Wall (26)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &508719746
 Transform:
@@ -2150,6 +2151,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -2234,6 +2236,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2319,6 +2322,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
@@ -2498,8 +2502,8 @@ GameObject:
   m_Name: Wall (39)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &625824478
 Transform:
@@ -2527,6 +2531,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -2816,54 +2821,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -2924,6 +2944,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -2979,8 +3000,8 @@ GameObject:
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &700977624
 Transform:
@@ -3167,6 +3188,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -3252,6 +3274,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
@@ -3307,8 +3330,8 @@ GameObject:
   m_Name: Wall (37)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &787170778
 Transform:
@@ -3336,6 +3359,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -3473,8 +3497,8 @@ GameObject:
   m_Name: DoorZ1
   m_TagString: Door
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &834779515
 MeshRenderer:
@@ -3489,6 +3513,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
@@ -3783,6 +3808,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &907801146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1395654421}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1395654422}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &908056815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3962,6 +4002,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ecdbc87491ac87e4b81e3c2a6d45004e, type: 2}
   m_StaticBatchInfo:
@@ -4060,8 +4101,8 @@ GameObject:
   m_Name: Wall (53)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &966121433
 Transform:
@@ -4089,6 +4130,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -4471,8 +4513,8 @@ GameObject:
   m_Name: Wall (50)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1128795701
 Transform:
@@ -4500,6 +4542,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -4765,7 +4808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1169797084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5178,6 +5221,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -5248,8 +5292,8 @@ RectTransform:
   m_Father: {fileID: 1091799734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5299,8 +5343,8 @@ GameObject:
   m_Name: DoorParent1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!111 &1295659854
 Animation:
@@ -5375,6 +5419,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a9df1fdca55d7264e89ec30bea083960, type: 2}
   m_StaticBatchInfo:
@@ -5663,7 +5708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1367800530}
 --- !u!65 &1381187221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5696,8 +5740,8 @@ GameObject:
   m_Name: DoorParent2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!111 &1392487742
 Animation:
@@ -5825,6 +5869,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
@@ -5880,8 +5925,8 @@ GameObject:
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1478907734
 Transform:
@@ -5909,6 +5954,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -6078,6 +6124,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: a9df1fdca55d7264e89ec30bea083960, type: 2}
   m_StaticBatchInfo:
@@ -6133,8 +6180,8 @@ GameObject:
   m_Name: Wall (48)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1503461992
 Transform:
@@ -6162,6 +6209,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -6307,7 +6355,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6521,8 +6569,8 @@ GameObject:
   m_Name: Teleport Keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!224 &1558958503
 RectTransform:
@@ -6767,6 +6815,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -6822,8 +6871,8 @@ GameObject:
   m_Name: Wall (44)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1675632249
 Transform:
@@ -6851,6 +6900,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -6935,6 +6985,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -7003,8 +7054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1772efa270a3a5b43abb7a2c4880ba50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 73459853}
-  audioMenu: {fileID: 850772458}
 --- !u!114 &1706497215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7016,9 +7065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d10045fa5a70c409e7efc83dd7abdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: Project_Test
-  options: Options
-  menu: Menu
 --- !u!4 &1706497216
 Transform:
   m_ObjectHideFlags: 0
@@ -7074,7 +7120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1295659853}
 --- !u!65 &1713118189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7136,7 +7181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c817bf21de8571c4995aab9e0e1fd359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 1367800530}
 --- !u!65 &1715306027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7311,8 +7355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48d17da5e3eaa54482f99bab463d172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Volume: {fileID: 1144516984}
-  Music: {fileID: 690168154}
 --- !u!4 &1829871208
 Transform:
   m_ObjectHideFlags: 0
@@ -7341,8 +7383,8 @@ GameObject:
   m_Name: Wall (23)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1838416569
 Transform:
@@ -7370,6 +7412,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -7753,8 +7796,8 @@ GameObject:
   m_Name: Wall (41)
   m_TagString: Wall
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1936510377
 Transform:
@@ -7782,6 +7825,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -8014,6 +8058,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -8449,6 +8494,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
@@ -8594,6 +8640,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: dabc19f1f4e86a742a2f0922e3bf1dce, type: 2}
   m_StaticBatchInfo:
@@ -8680,6 +8727,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: b7914d8a99f24014380ca6eaa6be3005, type: 2}
   m_StaticBatchInfo:
