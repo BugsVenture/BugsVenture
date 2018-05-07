@@ -65,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
             bar.fillAmount -= 0.1f;
         }
         //Teleport JoyStick
-        if (Input.GetKeyDown(GameManager.GM.teleportKeyJoyStick) && isTeleporting)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isTeleporting)
         {
             Teleport();
             bar.fillAmount -= 0.1f;
