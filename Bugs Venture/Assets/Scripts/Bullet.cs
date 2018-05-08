@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
-        Destroy(this.gameObject, 2);
+         Destroy(this.gameObject, 2);
     }
 
     void OnCollisionEnter(Collision col)
@@ -27,8 +27,12 @@ public class Bullet : MonoBehaviour
         {
             IBaseEnemy enemy = (IBaseEnemy)col.gameObject.GetComponent<IBaseEnemy>();
             enemy.GetDamage(Damage);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        if(col.gameObject.tag == "Wall" || col.gameObject.tag == "Door")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     

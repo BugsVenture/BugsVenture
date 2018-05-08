@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     //Public
     public static GameManager GM;
     public KeyCode teleportKey { get; set;}
+    public int leverCount;
+    public int leverCountMax = 2;
+    public GameObject Door;
 
 
     void Awake()
@@ -30,7 +33,17 @@ public class GameManager : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (leverCount == leverCountMax)
+        {
+            Door.GetComponent<Animation>().Play();
+            StartCoroutine(delay());
+        }
+    }
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1);
+        Door.GetComponent<Animation>().Stop();
+    }
 }

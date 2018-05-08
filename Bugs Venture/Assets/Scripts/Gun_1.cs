@@ -24,7 +24,7 @@ public class Gun_1 : MonoBehaviour {
     void Update()
     {
         //Fire
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }

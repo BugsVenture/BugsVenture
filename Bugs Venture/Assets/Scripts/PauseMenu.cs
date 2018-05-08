@@ -5,13 +5,17 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public Transform pauseMenu;
-    public Transform audioMenu;
+    public Transform settingsMenu;
+    public Transform eventSystem1;
+    public Transform eventSystem2;
 
     // Use this for initialization
     void Start ()
     {
         pauseMenu.gameObject.SetActive(false);
-        audioMenu.gameObject.SetActive(false);
+        settingsMenu.gameObject.SetActive(false);
+        eventSystem1.gameObject.SetActive(true);
+        eventSystem2.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -22,11 +26,15 @@ public class PauseMenu : MonoBehaviour
             if (pauseMenu.gameObject.activeInHierarchy == false)
             {
                 pauseMenu.gameObject.SetActive(true);
+                eventSystem1.gameObject.SetActive(true);
+                eventSystem2.gameObject.SetActive(false);
                 Time.timeScale = 0;
             }
             else
             {
                 pauseMenu.gameObject.SetActive(false);
+                eventSystem1.gameObject.SetActive(false);
+                eventSystem2.gameObject.SetActive(true);
                 Time.timeScale = 1;
             }
         }
@@ -36,11 +44,15 @@ public class PauseMenu : MonoBehaviour
             if (pauseMenu.gameObject.activeInHierarchy == false)
             {
                 pauseMenu.gameObject.SetActive(true);
+                eventSystem1.gameObject.SetActive(true);
+                eventSystem2.gameObject.SetActive(false);
                 Time.timeScale = 0;
             }
             else
             {
                 pauseMenu.gameObject.SetActive(false);
+                eventSystem1.gameObject.SetActive(false);
+                eventSystem2.gameObject.SetActive(true);
                 Time.timeScale = 1;
             }
         }
@@ -48,23 +60,29 @@ public class PauseMenu : MonoBehaviour
 
     public void AudioSettings()
     {
-        if (audioMenu.gameObject.activeInHierarchy == false)
+        if (settingsMenu.gameObject.activeInHierarchy == false)
         {
-            audioMenu.gameObject.SetActive(true);
+            settingsMenu.gameObject.SetActive(true);
+            eventSystem1.gameObject.SetActive(false);
+            eventSystem2.gameObject.SetActive(true);
             pauseMenu.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
         else
         {
             pauseMenu.gameObject.SetActive(true);
-            audioMenu.gameObject.SetActive(false);
+            eventSystem1.gameObject.SetActive(true);
+            eventSystem2.gameObject.SetActive(false);
+            settingsMenu.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
     }
 
     public void Resume()
     {
-        audioMenu.gameObject.SetActive(false);
+        settingsMenu.gameObject.SetActive(false);
+        eventSystem1.gameObject.SetActive(true);
+        eventSystem2.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1;
     }

@@ -26,7 +26,7 @@ public class ShootGunBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if(col.gameObject.tag == "Wall")
+        if(col.gameObject.tag == "Wall" || col.gameObject.tag == "Door")
         {
             Destroy(this.gameObject);
         }
