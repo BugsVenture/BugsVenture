@@ -16,8 +16,6 @@ public class DefaultEnemy : MonoBehaviour, IBaseEnemy
     public int health;
     public float maxHearing = 15;
     public float maxSight = 10;
-    
-    public Rigidbody bullet; 
 
 
     int IBaseEnemy.Health
@@ -72,12 +70,11 @@ public class DefaultEnemy : MonoBehaviour, IBaseEnemy
        
     }
 
-    public IEnumerator Attack()
+    public void Attack()
     {
-        Rigidbody rocketInstance;
-        Transform offset = this.transform.GetChild(0);
-        rocketInstance = Instantiate(bullet, offset.position, offset.rotation) as Rigidbody;
-        yield return new WaitForSeconds(1);
+        IWeapon weapon = this.GetComponentInChildren<IWeapon>();
+        weapon.Fire = true;
+        StartCoroutine(weapon.Attack());
     }
 
     public void DestroyEnemy()
@@ -97,5 +94,12 @@ public class DefaultEnemy : MonoBehaviour, IBaseEnemy
         if (Vector3.Distance(this.transform.position, pos) < threshold)
             return true;
         return false;
+    }
+
+    public void StopAttack()
+    {
+        IWeapon weapon = this.GetComponentInChildren<IWeapon>();
+        weapon.Fire = false;
+        StopCoroutine(weapon.Attack());
     }
 }

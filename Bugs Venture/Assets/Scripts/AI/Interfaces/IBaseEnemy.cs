@@ -10,7 +10,8 @@ public interface IBaseEnemy
     float MaxHearing { get; set; }
     float MaxSight { get; set; }
 
-    IEnumerator Attack();
+    void Attack();
+    void StopAttack();
 
     bool MoveTo(Vector3 pos, float threshold);
 
