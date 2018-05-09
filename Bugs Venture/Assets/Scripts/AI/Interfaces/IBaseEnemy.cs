@@ -19,5 +19,6 @@ public interface IBaseEnemy
 
     void DestroyEnemy();
 
-
+    void StopMovement();
+    void StartMovement();
 }

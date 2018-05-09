@@ -8,6 +8,9 @@ public class Laser : MonoBehaviour, IWeapon {
     public int bulletSpeed;
     public int fireRate;
     bool fire;
+    public float loadTime = 2;
+    bool isLoaded = false;
+
 
     Transform Muzzleoffset;
 
@@ -54,22 +57,37 @@ public class Laser : MonoBehaviour, IWeapon {
     {
         while (fire)
         {
-            LoadLaser();
-        yield return new WaitForSeconds(fireRate);
+            if (!isLoaded)
+                LoadLaser();
+            else
+                Shoot();
+            yield return new WaitForSeconds(fireRate);
         }
     }
 
     void LoadLaser()
     {
-        RaycastHit hit;
-        Physics.Raycast(Muzzleoffset.position, transform.right, out hit, Mathf.Infinity);
-        {
-            Debug.DrawRay(Muzzleoffset.position, transform.right * hit.distance, Color.red);
-        }
+        StartCoroutine(LoadDelay());
+        
     }
 
     void Shoot()
     {
+        RaycastHit hit;
+        Physics.Raycast(Muzzleoffset.position, transform.right, out hit, Mathf.Infinity);
+        {
+            Debug.DrawRay(Muzzleoffset.position, transform.right * hit.distance, Color.red);
+            if (hit.collider.tag == Player.GetInstance().GetComponent<Collider>().tag)
+            {
+                Player.GetInstance().GetHit();
+            }
+        }
+    }
 
+    IEnumerator LoadDelay()
+    {
+        
+        yield return new WaitForSeconds(loadTime);
+        isLoaded = true;
     }
 }

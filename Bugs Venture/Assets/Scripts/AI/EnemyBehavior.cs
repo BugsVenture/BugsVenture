@@ -53,8 +53,6 @@ public class EnemyBehavior : MonoBehaviour,  IBehavior {
                         if (Vector3.Angle(targetDir, transform.forward) < sightAngle)
                         {
                             State = EnemyStates.OnWayToPlayer;
-                            Debug.Log("HELLO");
-                            Debug.Log(State);
 
                         }
                     }
@@ -66,8 +64,9 @@ public class EnemyBehavior : MonoBehaviour,  IBehavior {
 
                 break;
             case EnemyStates.OnWayToPlayer:
-                enemy.MoveTo(Player.GetInstance().transform.position, 1.0f);
 
+                enemy.MoveTo(Player.GetInstance().transform.position, 1.0f);
+                
                 if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < attackRange)
                 {
                     State = EnemyStates.StartAttack;

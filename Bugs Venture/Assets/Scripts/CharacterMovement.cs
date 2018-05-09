@@ -139,13 +139,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "EnemyBullet")
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-    }
+    
 
     //Reset player 
      void OnTriggerEnter(Collider other)

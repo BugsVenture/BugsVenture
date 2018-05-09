@@ -18,14 +18,29 @@ public class Player : MonoBehaviour {
             playerInstance = this;
     }
 
+
+
     // Use this for initialization
     void Start ()
     {
 		
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    public void GetHit()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            GetHit();
+        }
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}

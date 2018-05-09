@@ -11,7 +11,7 @@ public class DefaultEnemy : MonoBehaviour, IBaseEnemy
 {
 
 
-    private NavMeshAgent agent; 
+    protected NavMeshAgent agent; 
     //Public
     public int health;
     public float maxHearing = 15;
@@ -75,6 +75,15 @@ public class DefaultEnemy : MonoBehaviour, IBaseEnemy
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
         weapon.Fire = true;
         StartCoroutine(weapon.Attack());
+    }
+
+    public void StopMovement()
+    {
+        agent.isStopped = true;
+    }
+    public void StartMovement()
+    {
+        agent.isStopped = false;
     }
 
     public void DestroyEnemy()
