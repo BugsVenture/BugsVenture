@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4904834925748420}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MuzzleOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 65100697100589388}
   - component: {fileID: 23678078679999504}
   - component: {fileID: 114823003482881676}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 65106319646096894}
   - component: {fileID: 23993870789001510}
   - component: {fileID: 114799089185715340}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ GameObject:
   - component: {fileID: 54810045578927862}
   - component: {fileID: 195292582910951122}
   - component: {fileID: 114450703606448682}
-  - component: {fileID: 114521153192718946}
-  m_Layer: 0
+  - component: {fileID: 114921194778687162}
+  m_Layer: 11
   m_Name: LaserDroid
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 65248035234025458}
   - component: {fileID: 23451317361367474}
   - component: {fileID: 114567846836690024}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 65039336521856964}
   - component: {fileID: 23839999482896476}
   - component: {fileID: 114410427303614880}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4833044319174174}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MuzzleOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4482845651000322}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MuzzleOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4401817272285172}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MuzzleOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,8 +257,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437035697162970}
-  m_LocalRotation: {x: -0, y: 0.99984115, z: -0, w: -0.017827965}
-  m_LocalPosition: {x: 96.22, y: 1, z: 24.85}
+  m_LocalRotation: {x: -0, y: 0.99962837, z: -0, w: -0.027262077}
+  m_LocalPosition: {x: 138.38, y: 3.05, z: 23.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4499813697595398}
@@ -267,7 +267,7 @@ Transform:
   - {fileID: 4538735451720760}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 182.04298, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 183.124, z: 0}
 --- !u!4 &4833044319174174
 Transform:
   m_ObjectHideFlags: 1
@@ -580,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 0
   fireRate: 0
+  loadTime: 2
 --- !u!114 &114450703606448682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,21 +595,9 @@ MonoBehaviour:
   health: 20
   maxHearing: 15
   maxSight: 10
---- !u!114 &114521153192718946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437035697162970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce2d0a8a343b884183b3ecf19e8b856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sightAngle: 45
-  activationDistance: 20
-  attackRange: 5
-  fireRate: 5
+  RotateRight: 0
+  RotationSpeed: 20
+  maxRotation: 360
 --- !u!114 &114567846836690024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 0
   fireRate: 0
+  loadTime: 2
 --- !u!114 &114799089185715340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 0
   fireRate: 0
+  loadTime: 2
 --- !u!114 &114823003482881676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -648,6 +639,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 0
   fireRate: 0
+  loadTime: 2
+--- !u!114 &114921194778687162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437035697162970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c080724c4e0a624e925ed965df1e205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightAngle: 360
+  activationDistance: 20
+  maxAttackRange: 5
+  minAttackRange: 5
+  fireRate: 5
+  sightDistance: 10
+  patrolDelay: 15
+  timeToSearch: 10
 --- !u!136 &136817624594350696
 CapsuleCollider:
   m_ObjectHideFlags: 1

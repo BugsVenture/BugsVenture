@@ -11,4 +11,6 @@ public interface IBehavior {
     float AttackRange { get; set; }
 
     float FireRate { get; set; }
+
+    float SightDistance { get; set; }
 }

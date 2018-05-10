@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class LaserDroid : DefaultEnemy {
+public class LaserDroid : BaseEnemy {
 
 
 
@@ -23,12 +23,12 @@ public class LaserDroid : DefaultEnemy {
         foreach (IWeapon weapon in weapons)
         {
             weapon.Fire = true;
-            StartCoroutine(weapon.Attack());
+            weapon.Attack();
         }
 
     }
 
-
+    
     public bool RotateAround()
     {
         if(RotateRight)
@@ -36,23 +36,43 @@ public class LaserDroid : DefaultEnemy {
             if (currRotation < maxRotation)
             {
                 this.transform.Rotate(Vector3.up * Time.deltaTime * RotationSpeed);
-                if (transform.eulerAngles.y > currAngle)
-                    currRotation += transform.eulerAngles.y - currAngle;
-                else
-                {
+                if (transform.eulerAngles.y < currAngle)
                     currAngle -= 360;
-                    currRotation += transform.eulerAngles.y - currAngle;
-                }
+                    
+                currRotation += transform.eulerAngles.y - currAngle;                
                 currAngle = transform.eulerAngles.y;
 
             }
             else
             {
                 currRotation = 0;
+                StopAttack();
+                return true;
+            }
+        }
+        else
+        {
+            if (currRotation < maxRotation)
+            {
+                this.transform.Rotate(-Vector3.up * Time.deltaTime * RotationSpeed);
+                if (transform.eulerAngles.y > currAngle)
+                    currAngle += 360;
+                currRotation += currAngle - transform.eulerAngles.y;
+                currAngle = transform.eulerAngles.y;
+            }
+            else
+            {
+                currRotation = 0;
+                StopAttack();
                 return true;
             }
         }
         return false;
+    }
+    public override void StartMovement()
+    {
+        StopAttack();
+        agent.isStopped = false; 
     }
 
     public new void  StopAttack()
@@ -60,6 +80,7 @@ public class LaserDroid : DefaultEnemy {
         IWeapon[] weapons = GetComponentsInChildren<IWeapon>();
         foreach (IWeapon weapon in weapons)
             weapon.Fire = false;
+        
     }
 
 

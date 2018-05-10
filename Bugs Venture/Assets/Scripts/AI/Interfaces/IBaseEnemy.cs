@@ -13,7 +13,7 @@ public interface IBaseEnemy
     void Attack();
     void StopAttack();
 
-    bool MoveTo(Vector3 pos, float threshold);
+    bool MoveTo(Vector3 pos, float threshold = 1.0f);
 
     void GetDamage(int value);
 

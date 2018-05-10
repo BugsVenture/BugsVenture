@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65106319646096894}
   - component: {fileID: 23993870789001510}
   - component: {fileID: 114689188937626806}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 23501165019590800}
   - component: {fileID: 54810045578927862}
   - component: {fileID: 195292582910951122}
-  - component: {fileID: 114833846835692914}
-  - component: {fileID: 114976942384678938}
-  m_Layer: 0
+  - component: {fileID: 114744631222179938}
+  - component: {fileID: 114445464749778132}
+  m_Layer: 11
   m_Name: Base Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4482845651000322}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MuzzleOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +219,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114445464749778132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437035697162970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a8964afcaacab4296d9264d070826a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  maxHearing: 15
+  maxSight: 10
 --- !u!114 &114689188937626806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +247,7 @@ MonoBehaviour:
   bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
   fireRate: 1
   bulletSpeed: 20
---- !u!114 &114833846835692914
+--- !u!114 &114744631222179938
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -241,27 +255,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437035697162970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea2a893de62ac04e8c2864ad4f2d3e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  maxHearing: 15
-  maxSight: 10
---- !u!114 &114976942384678938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437035697162970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce2d0a8a343b884183b3ecf19e8b856, type: 3}
+  m_Script: {fileID: 11500000, guid: b8847bcd4a4bc3449a38da2d599b725b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sightAngle: 45
   activationDistance: 20
-  attackRange: 5
+  maxAttackRange: 15
+  minAttackRange: 10
   fireRate: 5
+  sightDistance: 10
+  patrolDelay: 15
 --- !u!136 &136817624594350696
 CapsuleCollider:
   m_ObjectHideFlags: 1

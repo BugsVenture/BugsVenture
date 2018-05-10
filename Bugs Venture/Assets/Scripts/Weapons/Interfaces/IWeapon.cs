@@ -10,6 +10,6 @@ public interface IWeapon
 
     bool Fire { get; set; }
 
-    IEnumerator Attack();
+    void Attack();
 
 }

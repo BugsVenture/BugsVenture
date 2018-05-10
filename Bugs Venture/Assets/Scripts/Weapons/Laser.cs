@@ -53,8 +53,14 @@ public class Laser : MonoBehaviour, IWeapon {
     {
         Muzzleoffset = GetComponentInChildren<Transform>();
     }
-    IEnumerator IWeapon.Attack()
+
+    public void Attack()
     {
+        StartCoroutine(AttackRoutine());
+    }
+    IEnumerator AttackRoutine()
+    {
+        isLoaded = false;
         while (fire)
         {
             if (!isLoaded)
@@ -67,8 +73,7 @@ public class Laser : MonoBehaviour, IWeapon {
 
     void LoadLaser()
     {
-        StartCoroutine(LoadDelay());
-        
+        StartCoroutine(LoadDelay());        
     }
 
     void Shoot()

@@ -51,9 +51,13 @@ public class DefaultWeapon : MonoBehaviour, IWeapon {
         Muzzleoffset = GetComponentInChildren<Transform>();
 	}
 
-    IEnumerator IWeapon.Attack()
+    public void Attack()
     {
+        StartCoroutine(AttackRoutine());
+    }
 
+    IEnumerator AttackRoutine()
+    {
         while (fire)
         {
             Shoot();

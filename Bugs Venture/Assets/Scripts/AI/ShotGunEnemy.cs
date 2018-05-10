@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EnemyStates
-{
-    Idle,
-    OnWayToPlayer,
-    StartAttack,
-    IsAttacking,
+public class ShotGunEnemy : BaseEnemy {
+
+  
 }
