@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IWeapon
 {
 
-    int FireRate { get; set; }
+    float FireRate { get; set; }
     int BulletSpeed { get; set; }
 
     bool Fire { get; set; }

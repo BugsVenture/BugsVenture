@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootGun : MonoBehaviour
+public class ShootGun : BaseWeapon
 {
     //Public
     public int bulletCount;
@@ -24,15 +24,9 @@ public class ShootGun : MonoBehaviour
         }
     }
 	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Fire();
-        }
-    }
+	
 
-    void Fire()
+    public override void Attack()
     {
         int i = 0;
         foreach(Quaternion quat in bullets)

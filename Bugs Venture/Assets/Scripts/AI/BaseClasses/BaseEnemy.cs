@@ -99,6 +99,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     public bool MoveTo(Vector3 pos, float threshold = 1.0f)
     {
+        
         StartMovement();
         agent.SetDestination(pos);
         if (Vector3.Distance(this.transform.position, pos) < threshold)
@@ -119,5 +120,10 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
         weapon.Fire = false;
         weapon.Attack();
+    }
+
+    public void LookAt(Vector3 pos)
+    {
+        transform.LookAt(pos);
     }
 }

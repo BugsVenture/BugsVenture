@@ -25,7 +25,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     protected LayerMask layerMask; // only add layermasks by |= 
 
     protected EnemyStates State;
-    private Vector3 randomPos;
+    protected Vector3 randomPos;
     private Patrol patroling;
     private int patrolSize;
     private int currPatrolPath =0;
@@ -68,7 +68,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
         InitClass();
         enemy = GetComponent<IBaseEnemy>();
         startPos = this.transform.position;
-        layerMask = ~(this.gameObject.layer);
+        layerMask = ~(1<<11);
         if (patrol)
         {
             patroling = GetComponentInChildren<Patrol>();
@@ -81,6 +81,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(State);
         StateSwitch();
     }
     virtual protected void StateSwitch()
@@ -120,6 +121,8 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
                 else if (patrol)
                     State = EnemyStates.Patrol;
             }
+            else
+                enemy.MoveTo(startPos, 0.0f);
         }
     }
     virtual protected void StartAttack()
@@ -195,8 +198,9 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
         }
         return false;
     }
-    private void CalculateRandomPos()
+    protected void CalculateRandomPos()
     {
         randomPos = new Vector3(Random.Range(transform.position.x - 5, transform.position.x + 5), transform.position.y, Random.Range(transform.position.z - 5, transform.position.z + 5));
+        
     }
 }

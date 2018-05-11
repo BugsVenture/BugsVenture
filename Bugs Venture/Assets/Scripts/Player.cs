@@ -42,6 +42,16 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-		
-	}
+        //Fire
+        if (Input.GetButton("Fire1"))
+        {
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        GunController controller = GetComponentInChildren<GunController>();
+        controller.GetWeapon().Attack();
+    }
 }

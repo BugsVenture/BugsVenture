@@ -7,12 +7,12 @@ public class DefaultWeapon : MonoBehaviour, IWeapon {
     private Transform Muzzleoffset;
     public Rigidbody bullet;
 
-    public int fireRate;
+    public float fireRate;
     public int bulletSpeed;
 
     private bool fire = false;
     
-    int IWeapon.FireRate
+    float IWeapon.FireRate
     {
         get
         {

@@ -6,13 +6,21 @@ public class GunController : MonoBehaviour
 {
     //Public
     public int selectedWeapon = 0;
+    
+    private BaseWeapon currWeapon;
 
     // Use this for initialization
     void Start ()
     {
-        SelectWeapon();	
+        SelectWeapon();
+
 	}
 	
+    public BaseWeapon GetWeapon()
+    {
+        return currWeapon;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -24,7 +32,7 @@ public class GunController : MonoBehaviour
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
             else
-            selectedWeapon++;
+                selectedWeapon++;
         }
 
         //Select Weapon with Mouse ScrollWheel down
@@ -56,13 +64,17 @@ public class GunController : MonoBehaviour
     void SelectWeapon()
     {
         int i = 0;
+
         foreach(Transform weapon in transform)
         {
             if (i == selectedWeapon)
+            {
                 weapon.gameObject.SetActive(true);
+            }
             else
                 weapon.gameObject.SetActive(false);
             i++; 
         }
+        currWeapon = GetComponentInChildren<BaseWeapon>();
     }
 }

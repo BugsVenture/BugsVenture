@@ -6,7 +6,7 @@ public class Laser : MonoBehaviour, IWeapon {
 
 
     public int bulletSpeed;
-    public int fireRate;
+    public float fireRate;
     bool fire;
     public float loadTime = 2;
     bool isLoaded = false;
@@ -14,7 +14,7 @@ public class Laser : MonoBehaviour, IWeapon {
 
     Transform Muzzleoffset;
 
-    int IWeapon.FireRate
+    float IWeapon.FireRate
     {
         get
         {
