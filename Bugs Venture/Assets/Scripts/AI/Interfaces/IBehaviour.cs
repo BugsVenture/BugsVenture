@@ -13,4 +13,6 @@ public interface IBehavior {
     float FireRate { get; set; }
 
     float SightDistance { get; set; }
+
+    void HearPlayer();
 }

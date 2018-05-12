@@ -17,7 +17,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxHearing = 15;
     public float maxSight = 10;
 
-
+    private bool isNearPlayer = false;
     int IBaseEnemy.Health
     {
         get
@@ -66,8 +66,15 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void Update()
     {
         if (this.health <= 0)
-            DestroyEnemy();
-       
+            DestroyEnemy();        
+        if (Vector3.Distance(transform.position, Player.GetInstance().transform.position) < maxHearing && !isNearPlayer)
+        {
+            NearPlayer();
+        }
+        else if(Vector3.Distance(transform.position, Player.GetInstance().transform.position) > maxHearing && isNearPlayer)
+        {
+            AwayFromPlayer();
+        }
     }
 
     public virtual void Attack()
@@ -88,6 +95,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     public void DestroyEnemy()
     {
+        if (isNearPlayer)
+            AwayFromPlayer();
         Destroy(this.gameObject);
     }
 
@@ -125,5 +134,23 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public void LookAt(Vector3 pos)
     {
         transform.LookAt(pos);
+    }
+
+    public void ReceiveSound()
+    {
+        BaseEnemyBehaviour behaviour = GetComponent<BaseEnemyBehaviour>();
+        behaviour.HearPlayer();
+    }
+
+    public void NearPlayer()
+    {
+        isNearPlayer = true;
+        Player.GetInstance().AddEnemy(this);
+    }
+
+    public void AwayFromPlayer()
+    {
+        isNearPlayer = false;
+        Player.GetInstance().RemoveEnemy(this);
     }
 }

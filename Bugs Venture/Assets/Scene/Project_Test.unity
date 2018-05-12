@@ -1157,7 +1157,29 @@ Prefab:
       propertyPath: minAttackRange
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114799731465150928, guid: deec2d93e89024a4aad63bb0bbf06c6f,
+        type: 2}
+      propertyPath: sightDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114293888598587508, guid: deec2d93e89024a4aad63bb0bbf06c6f,
+        type: 2}
+      propertyPath: maxSight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114689188937626806, guid: deec2d93e89024a4aad63bb0bbf06c6f,
+        type: 2}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834,
+        type: 2}
+    - target: {fileID: 114689188937626806, guid: deec2d93e89024a4aad63bb0bbf06c6f,
+        type: 2}
+      propertyPath: damagePerBullet
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114689188937626806, guid: deec2d93e89024a4aad63bb0bbf06c6f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: deec2d93e89024a4aad63bb0bbf06c6f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &254075868
@@ -1864,6 +1886,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413378990}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &423368996 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1252115090124088, guid: deec2d93e89024a4aad63bb0bbf06c6f,
+    type: 2}
+  m_PrefabInternal: {fileID: 248322501}
+--- !u!114 &423368998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 423368996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a0ee0a902dd744f8e2ec1542133051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 2
+  bulletSpeed: 20
+  damagePerBullet: 1
+  Bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
+  bulletCount: 5
 --- !u!1 &430741204
 GameObject:
   m_ObjectHideFlags: 0

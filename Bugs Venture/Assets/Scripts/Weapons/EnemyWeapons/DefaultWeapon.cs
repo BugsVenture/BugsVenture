@@ -2,57 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultWeapon : MonoBehaviour, IWeapon {
+public class DefaultWeapon : BaseWeapon {
 
-    private Transform Muzzleoffset;
-    public Rigidbody bullet;
-
-    public float fireRate;
-    public int bulletSpeed;
-
-    private bool fire = false;
     
-    float IWeapon.FireRate
+    public override void Attack()
     {
-        get
-        {
-            return this.fireRate;
-        }
-
-        set
-        {
-            fireRate = value;
-        }
-    }
-
-    int IWeapon.BulletSpeed
-    {
-        get { return this.bulletSpeed; }
-        set { this.bulletSpeed = value; }
-    }
-
-    bool IWeapon.Fire
-    {
-        get
-        {
-            return fire;
-        }
-
-        set
-        {
-            fire = value;
-        }
-    }
-
-
-    // Use this for initialization
-    void Awake ()
-    {
-        Muzzleoffset = GetComponentInChildren<Transform>();
-	}
-
-    public void Attack()
-    {
+        fire = true;
         StartCoroutine(AttackRoutine());
     }
 
@@ -64,14 +19,12 @@ public class DefaultWeapon : MonoBehaviour, IWeapon {
             yield return new WaitForSeconds(fireRate);
         }
     }
-
-   
-
+    
     void Shoot()
     {
         Rigidbody rocketInstance;
         Transform offset = this.transform.GetChild(0);
-        rocketInstance = Instantiate(bullet, offset.position, offset.rotation) as Rigidbody;
+        rocketInstance = Instantiate(Bullet, offset.position, offset.rotation) as Rigidbody;
 
     }
 }

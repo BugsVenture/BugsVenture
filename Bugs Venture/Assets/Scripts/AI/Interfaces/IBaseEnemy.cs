@@ -21,4 +21,9 @@ public interface IBaseEnemy
 
     void StopMovement();
     void StartMovement();
+
+    void ReceiveSound();
+
+    void NearPlayer();
+    void AwayFromPlayer();
 }

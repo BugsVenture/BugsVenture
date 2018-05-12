@@ -29,7 +29,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     private Patrol patroling;
     private int patrolSize;
     private int currPatrolPath =0;
-
+    protected Vector3 soundSource;
 
     float IBehavior.SightAngle
     {
@@ -106,6 +106,9 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
             case EnemyStates.Patrol:
                 Patrol();
                 break;
+            case EnemyStates.ExamineSound:
+                ExamineSound();
+                break;
         }
     }
     virtual protected void Idle()
@@ -174,8 +177,16 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
         {
             if (enemy.MoveTo(startPos))
                 StartCoroutine(PatrolDelay(patrolDelay));
+        }        
+    }
+    virtual protected void ExamineSound()
+    {
+        if (Sight())
+            State = EnemyStates.OnWayToPlayer;
+        if(enemy.MoveTo(soundSource))
+        {
+            State = EnemyStates.Idle;
         }
-        
     }
     IEnumerator PatrolDelay(int delay)
     {
@@ -202,5 +213,14 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     {
         randomPos = new Vector3(Random.Range(transform.position.x - 5, transform.position.x + 5), transform.position.y, Random.Range(transform.position.z - 5, transform.position.z + 5));
         
+    }
+
+    public void HearPlayer()
+    {
+        if (State == EnemyStates.Idle || State == EnemyStates.Patrol || State == EnemyStates.IsSearching)
+        {
+            soundSource = Player.GetInstance().transform.position;
+            State = EnemyStates.ExamineSound;
+        }
     }
 }

@@ -9,5 +9,6 @@ public enum EnemyStates
     StartAttack,
     IsAttacking,
     IsSearching, 
-    Patrol
+    Patrol,
+    ExamineSound
 }

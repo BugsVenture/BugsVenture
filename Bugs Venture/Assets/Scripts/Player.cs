@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
     private static Player playerInstance;
 
+    private List<BaseEnemy> enemies = new List<BaseEnemy>();
 
     public static Player GetInstance()
     {
@@ -53,5 +54,16 @@ public class Player : MonoBehaviour {
     {
         GunController controller = GetComponentInChildren<GunController>();
         controller.GetWeapon().Attack();
+
+        foreach (BaseEnemy enemy in enemies)
+            enemy.ReceiveSound();
+    }
+    public void AddEnemy(BaseEnemy enemy)
+    {
+        enemies.Add(enemy);
+    }
+    public void RemoveEnemy(BaseEnemy enemy)
+    {
+        enemies.Remove(enemy);
     }
 }

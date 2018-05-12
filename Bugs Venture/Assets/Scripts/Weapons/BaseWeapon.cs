@@ -6,12 +6,16 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
     public float fireRate = 2f;
     public int bulletSpeed = 20;
-    public int damage;
-    public Transform BulletSpawn;
+    public int damagePerBullet;
+    protected Transform BulletSpawn;
     public Rigidbody Bullet;
 
     protected bool fire;
 
+    void Awake()
+    {
+        BulletSpawn = GetComponentInChildren<Transform>();
+    }
 
     //Private
     protected float lastFire = float.MinValue;
