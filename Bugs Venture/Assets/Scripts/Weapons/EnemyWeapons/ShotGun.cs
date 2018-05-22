@@ -26,16 +26,14 @@ public class ShotGun : BaseWeapon {
 
     private void Shoot()
     {
-        Rigidbody rocketInstance;
+        Rigidbody bulletInstance;
         Transform offset = this.transform.GetChild(0);
         
         for (int i = 0; i < bulletCount; i++)
         {
             Vector3 currAngle = offset.rotation.eulerAngles;
             currAngle.y += Random.Range(-spreadAngle / 2, spreadAngle / 2);
-            offset.rotation.eulerAngles.Set(currAngle.x, currAngle.y, currAngle.z);
-            rocketInstance = Instantiate(Bullet, offset.position, offset.rotation) as Rigidbody;
+            bulletInstance = Instantiate(Bullet, offset.position, Quaternion.Euler(currAngle.x, currAngle.y, currAngle.z)) as Rigidbody;
         }
-
     }
 }

@@ -71,17 +71,17 @@ public class CharacterMovement : MonoBehaviour
             bar.fillAmount -= 0.1f;
         }
 
-        // Teleportcheck
-        if (bar.fillAmount <= 0f)
-        {
-            isTeleporting = false;
-            StartCoroutine(RegenerateDelay());
-        }
+        //// Teleportcheck
+        //if (bar.fillAmount <= 0f)
+        //{
+        //    isTeleporting = false;
+        //    StartCoroutine(RegenerateDelay());
+        //}
 
-        if (bar.fillAmount == maxStamina)
-        {
-            isTeleporting = true;
-        }
+        //if (bar.fillAmount == maxStamina)
+        //{
+        //    isTeleporting = true;
+        //}
 
         //Rotate with Mouse
         if (!useController)

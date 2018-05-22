@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33339202785202454}
   - component: {fileID: 65106319646096894}
   - component: {fileID: 23993870789001510}
-  - component: {fileID: 114689188937626806}
+  - component: {fileID: 114035549992738538}
   m_Layer: 11
   m_Name: Weapon
   m_TagString: Untagged
@@ -278,6 +278,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114035549992738538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252115090124088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a0ee0a902dd744f8e2ec1542133051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 2
+  bulletSpeed: 20
+  damagePerBullet: 1
+  Bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
+  bulletCount: 5
+  spreadAngle: 45
 --- !u!114 &114293888598587508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,21 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   maxHearing: 15
-  maxSight: 10
---- !u!114 &114689188937626806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252115090124088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e20cd070021e44baf30c1f27b86592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
-  fireRate: 1
-  bulletSpeed: 20
+  maxSight: 5
 --- !u!114 &114799731465150928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,12 +320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e745d05c2887dee418c10c2a59c20d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightAngle: 90
+  sightAngle: 180
   activationDistance: 100
-  maxAttackRange: 7
-  minAttackRange: 5
+  maxAttackRange: 12
+  minAttackRange: 8
   fireRate: 5
-  sightDistance: 10
+  sightDistance: 5
   patrolDelay: 15
 --- !u!114 &114981738588486554
 MonoBehaviour:
