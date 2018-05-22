@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
     void Update ()
     {
         //Fire
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Attack();
         }

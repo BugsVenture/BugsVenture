@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    //Public
     public Transform pauseMenu;
     public Transform audioMenu;
+    public GameObject EventSystem1;
+    public GameObject EventSystem2;
+
 
     // Use this for initialization
     void Start ()
     {
+        EventSystem1.gameObject.SetActive(true);
+        EventSystem2.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
         audioMenu.gameObject.SetActive(false);
     }
@@ -46,24 +52,32 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    //Audio Settings
     public void AudioSettings()
     {
         if (audioMenu.gameObject.activeInHierarchy == false)
         {
             audioMenu.gameObject.SetActive(true);
             pauseMenu.gameObject.SetActive(false);
+            EventSystem1.gameObject.SetActive(false);
+            EventSystem2.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
+            EventSystem1.gameObject.SetActive(true);
+            EventSystem2.gameObject.SetActive(false);
             pauseMenu.gameObject.SetActive(true);
             audioMenu.gameObject.SetActive(false);
             Time.timeScale = 0;
         }
     }
 
+    //Resume
     public void Resume()
     {
+        EventSystem1.gameObject.SetActive(true);
+        EventSystem2.gameObject.SetActive(false);
         audioMenu.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);
         Time.timeScale = 1;

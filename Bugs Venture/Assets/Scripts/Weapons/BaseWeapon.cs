@@ -12,6 +12,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
     protected bool fire;
 
+
     void Awake()
     {
         BulletSpawn = GetComponentInChildren<Transform>();

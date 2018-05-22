@@ -9,10 +9,12 @@ public class GranateBullet : MonoBehaviour {
     public GameObject GranateParticle;
 
     //Private
+    private CameraShake cameraShake;
     private Rigidbody RigidBody;
 
     void Start()
     {
+        cameraShake = GameObject.FindObjectOfType<CameraShake>();
         RigidBody = GetComponent<Rigidbody>();
     }
 
@@ -24,6 +26,7 @@ public class GranateBullet : MonoBehaviour {
     void OnCollisionEnter(Collision col)
     {
         Instantiate(GranateParticle, this.transform.position, Quaternion.Euler(new Vector3(-90, 90, 0)));
+        cameraShake.shouldShake = true;
         Destroy(this.gameObject);
     }
 }

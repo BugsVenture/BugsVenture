@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class SettingsScript : MonoBehaviour
 {
+    //Public
+    public Transform settings;
+   
     //Private
-    Transform settings;
     Event keyEvent;
     Text buttonText;
     KeyCode newKey;
