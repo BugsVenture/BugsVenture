@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour, IWeapon {
     public float loadTime = 2;
     bool isLoaded = false;
 
-
+    private LineRenderer lr;
     Transform Muzzleoffset;
 
     float IWeapon.FireRate
@@ -52,6 +52,7 @@ public class Laser : MonoBehaviour, IWeapon {
     void Awake()
     {
         Muzzleoffset = GetComponentInChildren<Transform>();
+        lr = GetComponentInChildren<LineRenderer>();
     }
 
     public void Attack()
@@ -82,9 +83,15 @@ public class Laser : MonoBehaviour, IWeapon {
         Physics.Raycast(Muzzleoffset.position, transform.right, out hit, Mathf.Infinity);
         {
             Debug.DrawRay(Muzzleoffset.position, transform.right * hit.distance, Color.red);
+            
             if (hit.collider.tag == Player.GetInstance().GetComponent<Collider>().tag)
             {
                 Player.GetInstance().GetHit();
+            }
+            if(hit.collider)
+            {
+                lr.SetPosition(1, hit.transform.TransformPoint(hit.point));
+                Debug.Log(hit.point);
             }
         }
     }
