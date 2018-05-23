@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   maxHearing: 15
-  maxSight: 10
+  maxSight: 15
 --- !u!114 &114689188937626806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,9 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e20cd070021e44baf30c1f27b86592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
   fireRate: 1
   bulletSpeed: 20
+  damagePerBullet: 1
+  Bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
 --- !u!114 &114744631222179938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,12 +259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8847bcd4a4bc3449a38da2d599b725b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightAngle: 45
+  sightAngle: 90
   activationDistance: 20
-  maxAttackRange: 15
-  minAttackRange: 10
+  maxAttackRange: 10
+  minAttackRange: 8
   fireRate: 5
-  sightDistance: 10
+  sightDistance: 15
   patrolDelay: 15
 --- !u!136 &136817624594350696
 CapsuleCollider:
@@ -287,7 +288,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
