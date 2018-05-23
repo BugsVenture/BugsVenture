@@ -10,7 +10,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
 {
 
-
+    public GameObject CurrRoom;
+    private Room currRoom;
     protected NavMeshAgent agent; 
     //Public
     public int health = 2;
@@ -18,6 +19,9 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxSight = 10;
 
     private bool isNearPlayer = false;
+
+    private Quadrants quadrant = Quadrants.LeftTop;
+
     int IBaseEnemy.Health
     {
         get
@@ -60,6 +64,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        currRoom = CurrRoom.GetComponent<Room>();
     }
 
     // Update is called once per frame
@@ -75,6 +80,11 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         {
             AwayFromPlayer();
         }
+        if (!currRoom.PosInside(this.transform.position))
+        {
+            currRoom = RoomContainer.GetInstance().GetInsideRoom(this.transform.position);
+        }
+
     }
 
     public virtual void Attack()
@@ -119,9 +129,10 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         return false;
     }
 
-    public bool SearchPlayer()
+    public void SearchPlayer()
     {
-        return false;
+        if (MoveTo(currRoom.GetRandomPosInsideQuadrant(quadrant)))
+            quadrant++;
     }
 
     public void StopAttack()

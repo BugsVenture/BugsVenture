@@ -68,7 +68,6 @@ public class LaserDroidBehaviour : BaseEnemyBehaviour
     {
         if (!Sight())
             lastPos = Player.GetInstance().transform.position;
-        //State = EnemyStates.IsSearching;
 
 
         enemy.StartMovement();
@@ -92,11 +91,12 @@ public class LaserDroidBehaviour : BaseEnemyBehaviour
     {
         StartCoroutine(SearchMode());
         enemy.StartMovement();
-        enemy.MoveTo(lastPos);
         if (Sight())
             State = EnemyStates.OnWayToPlayer;
-        else
-            enemy.SearchPlayer();
+        if (enemy.MoveTo(lastPos))
+        {
+             enemy.SearchPlayer();            
+        }
     }
     IEnumerator SearchMode()
     {

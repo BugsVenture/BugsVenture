@@ -12,3 +12,11 @@ public enum EnemyStates
     Patrol,
     ExamineSound
 }
+
+public enum Quadrants
+{
+    RightTop, 
+    LeftTop, 
+    RightBottom, 
+    LeftBottom
+}
