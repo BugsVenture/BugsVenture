@@ -36,7 +36,18 @@ public class GunController : MonoBehaviour
                 selectedWeapon--;
         }
 
-        if(previousSelectedWeapon != selectedWeapon)
+
+        //Select Weapon with Bumper 
+        if (Input.GetKeyDown(KeyCode.Joystick1Button4))
+        {
+            if (selectedWeapon <= 0)
+                selectedWeapon = transform.childCount - 1;
+            else
+                selectedWeapon--;
+        }
+
+
+        if (previousSelectedWeapon != selectedWeapon)
         {
             SelectWeapon();
         }

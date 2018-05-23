@@ -17,14 +17,14 @@ public class Gun_1 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
     void Update()
     {
         //Fire
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }

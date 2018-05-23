@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Bullet
+  - Door
+  - Stamina
+  - EnemyBullet
+  - Ground
+  - Wall
+  - Outside
   layers:
   - Default
   - TransparentFX
@@ -15,11 +22,11 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Player
+  - Bullet
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 
