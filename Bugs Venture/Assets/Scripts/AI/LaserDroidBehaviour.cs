@@ -17,11 +17,13 @@ public class LaserDroidBehaviour : BaseEnemyBehaviour
     {
         enemy = GetComponent<LaserDroid>();
         layerMask = ~(1<<11);
+        startPos = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(State);
         StateSwitch();
     }
     private new void StateSwitch()

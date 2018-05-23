@@ -1338,6 +1338,10 @@ Prefab:
       propertyPath: CurrRoom
       value: 
       objectReference: {fileID: 700053380}
+    - target: {fileID: 1437035697162970, guid: deec2d93e89024a4aad63bb0bbf06c6f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deec2d93e89024a4aad63bb0bbf06c6f, type: 2}
   m_IsPrefabParent: 0
@@ -4715,7 +4719,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1437035697162970, guid: e16ee34c09d32fe4d827a8d20893758f, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114450703606448682, guid: e16ee34c09d32fe4d827a8d20893758f,
         type: 2}
