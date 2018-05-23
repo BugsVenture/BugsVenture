@@ -6,6 +6,7 @@ public class ShootGunBullet : MonoBehaviour
 {
     //Public
     public int Damage;
+    public GameObject HitEffect;
 
     // Use this for initialization
     void Start () {
@@ -25,11 +26,8 @@ public class ShootGunBullet : MonoBehaviour
             enemy.GetDamage(Damage);
             Destroy(this.gameObject);
         }
-
-        if(col.gameObject.tag == "Wall")
-        {
             Destroy(this.gameObject);
-        }
+            Instantiate(HitEffect, this.transform.position, this.transform.rotation);
         
       
     }

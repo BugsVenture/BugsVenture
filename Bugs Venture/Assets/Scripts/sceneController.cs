@@ -10,32 +10,25 @@ public class sceneController : MonoBehaviour
     public string options;
     public string menu;
 
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-    }
-
+    // Start Game
   public void StartGame()
     {
         SceneManager.LoadScene(start);
     }
 
+    //Exit Game
     public void ExitGame()
     {
         Application.Quit();
     }
 
+    // Load Options
    public void LoadOptions()
     {
         SceneManager.LoadScene(options);
     }
 
+    //Back to Menu
     public void BackToMenu()
     {
         SceneManager.LoadScene(menu);
@@ -45,6 +38,7 @@ public class sceneController : MonoBehaviour
         }
     }
 
+    //Restart Level
     public void RestartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);

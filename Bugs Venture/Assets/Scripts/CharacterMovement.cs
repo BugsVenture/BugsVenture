@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class CharacterMovement : MonoBehaviour
 {
-    //Public
+    // Public
     public float moveSpeed;
     public float speed = 10f;
     public LayerMask groundLayer;
@@ -16,11 +16,14 @@ public class CharacterMovement : MonoBehaviour
     public float rotatespeed;
     public bool useController;
     public Transform Teleportpoint;
-
+    public GameObject PulsEffect;
+    public GameObject shield;
+    public int randomMin;
+    public int randomMax;
     //public float maxHealth;
 
-    //Private
-    private bool isTeleporting = true;
+    // Private
+    private bool isAttacking = true;
     private Rigidbody RigidBody;
     private Camera MainCamera;
     private Vector3 moveInput;
@@ -28,11 +31,14 @@ public class CharacterMovement : MonoBehaviour
     private float stamina = 1, maxStamina = 1;
     private BarScript bar;
     private GameObject ResetPoint;
+    private int number;
     //private float damage = 0.1f;
 
     // Use this for initialization
     void Start()
     {
+        number = Random.Range(randomMin, randomMax);
+        print(number);
         ResetPoint = GameObject.Find("Resetpoint");
         bar = GameObject.FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
@@ -52,38 +58,60 @@ public class CharacterMovement : MonoBehaviour
         //{
         //    Application.LoadLevel(Application.loadedLevel);
         //}
-   
+
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
 
 
-        //Teleport Mouse
-        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isTeleporting)
+
+        //Random Attack Keyboard
+        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 40)
         {
             Teleport();
-            bar.fillAmount -= 0.1f;
+            bar.fillAmount -= 1f;
         }
-        //Teleport JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isTeleporting)
+        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number == Random.Range(40, 50))
+        {
+            PulsAttack();
+            bar.fillAmount -= 1f;
+        }
+        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50)
+        {
+            Shield();
+            bar.fillAmount -= 1f;
+        }
+
+        //Random Attack JoyStick
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40)
         {
             Teleport();
-            bar.fillAmount -= 0.1f;
+            bar.fillAmount -= 1f;
+        }
+        else if(Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number == Random.Range(40, 50))
+        {
+            PulsAttack();
+            bar.fillAmount -= 1f;
+        }
+        else if(Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number >= 50)
+        {
+            Shield();
+            bar.fillAmount -= 1f;
         }
 
-        //// Teleportcheck
-        //if (bar.fillAmount <= 0f)
-        //{
-        //    isTeleporting = false;
-        //    StartCoroutine(RegenerateDelay());
-        //}
+        // Attackcheck
+        if (bar.fillAmount <= 0f)
+        {
+            isAttacking = false;
+            StartCoroutine(RegenerateDelay());
+        }
 
-        //if (bar.fillAmount == maxStamina)
-        //{
-        //    isTeleporting = true;
-        //}
+        if (bar.fillAmount == maxStamina)
+        {
+            isAttacking = true;
+        }
 
-        //Rotate with Mouse
+        //Rotate Player with Mouse
         if (!useController)
         {
             Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
@@ -97,7 +125,8 @@ public class CharacterMovement : MonoBehaviour
         }
 
         }
-        //Rotate with Controller
+
+        //Rotate Player with Controller
         if (useController)
         {
             Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("HorizontalJ") + Vector3.forward * Input.GetAxisRaw("VerticalJ");
@@ -118,6 +147,21 @@ public class CharacterMovement : MonoBehaviour
     public void Teleport()
     {
         this.transform.position = Teleportpoint.transform.position;
+        number = Random.Range(randomMin, randomMax);
+    }
+
+    // Puls Attacke function
+    public void PulsAttack()
+    {
+        Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+        number = Random.Range(randomMin, randomMax);
+    }
+
+    //Shield function
+    public void Shield()
+    {
+        Instantiate(shield, this.transform.position, Quaternion.identity);
+        Destroy(GameObject.Find("Shield(Clone)"),5);
     }
 
     // Delay for Ignor Wallcollider
@@ -132,15 +176,12 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         bar.fillAmount = 0.5f;
-        isTeleporting = false;
+        isAttacking = false;
         yield return new WaitForSeconds(5);
         bar.fillAmount = 1f;
-        isTeleporting = false;
+        isAttacking = false;
     }
-
-
-    
-
+  
     //Reset player 
      void OnTriggerEnter(Collider other)
     {

@@ -49,8 +49,8 @@ public class CameraFollow : MonoBehaviour
 
             transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
 
-            transform.Translate(Input.GetAxis("Right Analog Vertical") * Vector3.up * Time.deltaTime * moveSpeed);
-            transform.Translate(Input.GetAxis("Right Analog Horizontal") * Vector3.right * Time.deltaTime * moveSpeed);
+            //transform.Translate(Input.GetAxis("Right Analog Vertical") * Vector3.up * Time.deltaTime * moveSpeed);
+            //transform.Translate(Input.GetAxis("Right Analog Horizontal") * Vector3.right * Time.deltaTime * moveSpeed);
         }
     }
 }

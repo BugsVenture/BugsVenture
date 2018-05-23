@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.33865592, g: 0.28363353, b: 0.23153943, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 589202305}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &90252810
@@ -352,9 +352,24 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1069251960}
+    - target: {fileID: 224323361790480562, guid: d5711fd53d39d7141947d70c0b3f9a91,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.0999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 224323361790480562, guid: d5711fd53d39d7141947d70c0b3f9a91,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.39999962
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5711fd53d39d7141947d70c0b3f9a91, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &589202305 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1603132837910212, guid: d5711fd53d39d7141947d70c0b3f9a91,
+    type: 2}
+  m_PrefabInternal: {fileID: 589202304}
 --- !u!1 &1069251958
 GameObject:
   m_ObjectHideFlags: 0

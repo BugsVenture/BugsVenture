@@ -6,7 +6,9 @@ public class Bullet : MonoBehaviour
 {
     //Public
     public float bulletSpeed = 10f;
-    public int Damage; 
+    public int Damage;
+    public GameObject HitEffect;
+
     //Private
     private Rigidbody RigidBody;
 
@@ -29,6 +31,7 @@ public class Bullet : MonoBehaviour
             enemy.GetDamage(Damage);
         }
         Destroy(this.gameObject);
+        Instantiate(HitEffect, this.transform.position,this.transform.rotation); 
     }
 
     
