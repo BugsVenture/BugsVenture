@@ -6,12 +6,22 @@ public class Room : MonoBehaviour
 {
 
     private MeshRenderer mr;
+    private Room[] roomParts;
+    private bool hasParts = false; 
+    private Vector3[] partSizes;
 
     // Use this for initialization
     void Start()
     {
         mr = GetComponent<MeshRenderer>();
+        Room[] tempParts = GetComponentsInChildren<Room>();
+        if (tempParts.Length > 1)
+        {
+            roomParts = tempParts;
+            hasParts = true;
+        }
     }
+
 
     public Vector3 GetRandomPosInsideRoom()
     {

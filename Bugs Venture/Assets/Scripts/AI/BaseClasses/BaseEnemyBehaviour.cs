@@ -113,6 +113,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     virtual protected void Idle()
     {
+        enemy.StopMovement();
         if (Player.GetInstance())
         {
             if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < activationDistance)
@@ -144,6 +145,12 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     virtual protected void IsAttacking()
     {
+        if (!Sight())
+        {
+            enemy.StopAttack();
+            State = EnemyStates.Idle;
+            return;
+        }
         DefaultEnemy defaultEnemy = (DefaultEnemy)enemy;
         defaultEnemy.LookAt(Player.GetInstance().transform.position);
         if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) > minAttackRange)
@@ -211,8 +218,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     protected void CalculateRandomPos()
     {
-        randomPos = new Vector3(Random.Range(transform.position.x - 5, transform.position.x + 5), transform.position.y, Random.Range(transform.position.z - 5, transform.position.z + 5));
-        
+        randomPos = new Vector3(Random.Range(transform.position.x - 5, transform.position.x + 5), transform.position.y, Random.Range(transform.position.z - 5, transform.position.z + 5));        
     }
 
     public void HearPlayer()

@@ -10,7 +10,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
 {
 
-    public GameObject CurrRoom;
+    private Room startRoom;
     private Room currRoom;
     protected NavMeshAgent agent; 
     //Public
@@ -63,8 +63,11 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     // Use this for initialization
     void Start()
     {
+        RaycastHit hit;
+        Physics.Raycast(this.transform.position, -transform.up, out hit, 10);
+        startRoom = hit.collider.GetComponent<Room>();
         agent = GetComponent<NavMeshAgent>();
-        currRoom = CurrRoom.GetComponent<Room>();
+        currRoom = startRoom;
     }
 
     // Update is called once per frame
@@ -139,7 +142,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
         weapon.Fire = false;
-        weapon.Attack();
     }
 
     public void LookAt(Vector3 pos)
