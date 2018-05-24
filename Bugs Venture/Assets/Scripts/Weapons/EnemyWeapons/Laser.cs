@@ -90,7 +90,8 @@ public class Laser : MonoBehaviour, IWeapon {
             }
             if(hit.collider)
             {
-                lr.SetPosition(1, hit.transform.TransformPoint(hit.point));
+                lr.SetPosition(0, GetComponentInParent<Transform>().transform.position);
+                lr.SetPosition(1,hit.point);
                 Debug.Log(hit.point);
             }
         }
