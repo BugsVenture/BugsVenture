@@ -70,6 +70,7 @@ public class Laser : MonoBehaviour, IWeapon {
                 Shoot();
             yield return new WaitForSeconds(fireRate);
         }
+        SetLineRenderer(GetComponent<Transform>().transform.position, GetComponent<Transform>().transform.position);
     }
 
     void LoadLaser()
@@ -90,11 +91,16 @@ public class Laser : MonoBehaviour, IWeapon {
             }
             if(hit.collider)
             {
-                lr.SetPosition(0, GetComponentInParent<Transform>().transform.position);
-                lr.SetPosition(1,hit.point);
-                Debug.Log(hit.point);
+                SetLineRenderer(GetComponent<Transform>().transform.position, hit.point);
             }
         }
+    }
+
+    void SetLineRenderer(Vector3 origin, Vector3 hitpoint)
+    {
+        
+        lr.SetPosition(0, origin);
+        lr.SetPosition(1, hitpoint);
     }
 
     IEnumerator LoadDelay()
