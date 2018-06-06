@@ -27,7 +27,7 @@ public class ShootGunBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
             Destroy(this.gameObject);
-            Instantiate(HitEffect, this.transform.position, this.transform.rotation);
+            Instantiate(HitEffect, this.transform.position, this.transform.rotation); //TODO: if u want to use this often, seperate it in extra function
         
       
     }

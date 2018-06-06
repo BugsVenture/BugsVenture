@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour //TODO: use Interface or Base classes to inherit from, when you have more than 2 script with the same effect.
 {
     //Public
     public float bulletSpeed = 10f;

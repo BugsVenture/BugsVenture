@@ -66,7 +66,7 @@ public class CharacterMovement : MonoBehaviour
 
 
         //Random Attack Keyboard
-        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 40)
+        if (Input.GetKeyDown(GameManager.GM.teleportKey) || Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40) //not very beautiful code 
         {
             Teleport();
             bar.fillAmount -= 1f;
@@ -83,7 +83,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //Random Attack JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40) // TODO: Try to use a function here. Avoid write the same code
         {
             Teleport();
             bar.fillAmount -= 1f;
@@ -115,25 +115,25 @@ public class CharacterMovement : MonoBehaviour
         if (!useController)
         {
             Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLenght;
+            Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLenght;
 
-        if (GroundPlane.Raycast(cameraRay, out rayLenght))
-        {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-        }
-
+            if (GroundPlane.Raycast(cameraRay, out rayLenght))
+            {
+                Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
+                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            }
+            return;
         }
 
         //Rotate Player with Controller
-        if (useController)
+        //useController // TODO: unnecessary
         {
             Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("HorizontalJ") + Vector3.forward * Input.GetAxisRaw("VerticalJ");
-                if(playerDirection.sqrMagnitude > 0.0f)
-                {
-                    transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-                }
+            if (playerDirection.sqrMagnitude > 0.0f)
+            {
+                transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+            }
         }
     }
 
@@ -160,8 +160,8 @@ public class CharacterMovement : MonoBehaviour
     //Shield function
     public void Shield()
     {
-        Instantiate(shield, this.transform.position, Quaternion.identity);
-        Destroy(GameObject.Find("Shield(Clone)"),5);
+        GameObject inst = Instantiate(shield, this.transform.position, Quaternion.identity); //TODO: returns the instantiated gameobject, which u can use below
+        Destroy(inst, 5); //TODO: try to avoid hardcoded variables
     }
 
     // Delay for Ignor Wallcollider

@@ -14,7 +14,7 @@ public class GranateBullet : MonoBehaviour {
 
     void Start()
     {
-        cameraShake = GameObject.FindObjectOfType<CameraShake>();
+        cameraShake = GameObject.FindObjectOfType<CameraShake>(); //TODO: Avoid "Find"
         RigidBody = GetComponent<Rigidbody>();
     }
 
@@ -26,7 +26,7 @@ public class GranateBullet : MonoBehaviour {
     void OnCollisionEnter(Collision col)
     {
         Instantiate(GranateParticle, this.transform.position, Quaternion.Euler(new Vector3(-90, 90, 0)));
-        cameraShake.shouldShake = true;
+        cameraShake.shouldShake = true; // TODO: Use function which activates the bool instead of manually set the bool.
         Destroy(this.gameObject);
     }
 }

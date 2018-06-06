@@ -24,7 +24,7 @@ public class CameraShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shouldShake)
+        if (shouldShake) // TODO: Better coroutine? Use C# here 
         {
             if (duration > 0)
             {
