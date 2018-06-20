@@ -10,17 +10,16 @@ public class CharacterMovement : MonoBehaviour
     // Public
     public float moveSpeed;
     public float speed = 10f;
-    public LayerMask groundLayer;
-    public Transform groundCheck;
     public float rotationSpeed = 10f;
     public float rotatespeed;
     public bool useController;
-    public Transform Teleportpoint;
     public GameObject PulsEffect;
     public GameObject shield;
     public int randomMin;
     public int randomMax;
-    //public float maxHealth;
+    public float shieldDuration = 5f;
+    public Vector3 ResetPoint;
+    public float maxDistance = 5f;
 
     // Private
     private bool isAttacking = true;
@@ -30,16 +29,14 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 moveVelocity;
     private float stamina = 1, maxStamina = 1;
     private BarScript bar;
-    private GameObject ResetPoint;
     private int number;
-    //private float damage = 0.1f;
 
     // Use this for initialization
     void Start()
     {
+        ResetPoint = new Vector3(1, 1, 1);
         number = Random.Range(randomMin, randomMax);
         print(number);
-        ResetPoint = GameObject.Find("Resetpoint");
         bar = GameObject.FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
@@ -49,15 +46,6 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HealthBar
-
-        //bar.fillAmount = maxHealth;
-
-        ////Player Death
-        //if (maxHealth == 0)
-        //{
-        //    Application.LoadLevel(Application.loadedLevel);
-        //}
 
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
@@ -65,94 +53,84 @@ public class CharacterMovement : MonoBehaviour
 
 
 
-        //Random Attack Keyboard
-        if (Input.GetKeyDown(GameManager.GM.teleportKey) || Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40) //not very beautiful code 
+        //Random Attack Keyboard or Controller
+        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 49|| 
+            Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number <= 49)
         {
             Teleport();
-            bar.fillAmount -= 1f;
         }
-        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number == Random.Range(40, 50))
-        {
-            PulsAttack();
-            bar.fillAmount -= 1f;
-        }
-        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50)
+        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
+            Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
         {
             Shield();
-            bar.fillAmount -= 1f;
-        }
-
-        //Random Attack JoyStick
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number <= 40) // TODO: Try to use a function here. Avoid write the same code
-        {
-            Teleport();
-            bar.fillAmount -= 1f;
-        }
-        else if(Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number == Random.Range(40, 50))
-        {
-            PulsAttack();
-            bar.fillAmount -= 1f;
-        }
-        else if(Input.GetKeyDown(KeyCode.Joystick1Button3) && isAttacking && number >= 50)
-        {
-            Shield();
-            bar.fillAmount -= 1f;
         }
 
         // Attackcheck
-        if (bar.fillAmount <= 0f)
+        if (bar.fillAmount == 0 && isAttacking)
         {
-            isAttacking = false;
             StartCoroutine(RegenerateDelay());
-        }
-
-        if (bar.fillAmount == maxStamina)
-        {
-            isAttacking = true;
         }
 
         //Rotate Player with Mouse
         if (!useController)
         {
-            Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
-            Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLenght;
+        Ray cameraRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane GroundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLenght;
 
-            if (GroundPlane.Raycast(cameraRay, out rayLenght))
-            {
-                Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
-                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-            }
+        if (GroundPlane.Raycast(cameraRay, out rayLenght))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
             return;
         }
 
         //Rotate Player with Controller
-        //useController // TODO: unnecessary
         {
             Vector3 playerDirection = Vector3.right * Input.GetAxisRaw("HorizontalJ") + Vector3.forward * Input.GetAxisRaw("VerticalJ");
-            if (playerDirection.sqrMagnitude > 0.0f)
-            {
-                transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
-            }
+                if(playerDirection.sqrMagnitude > 0.4f)
+                {
+                    transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
+                }
         }
     }
 
     void FixedUpdate()
     {
         RigidBody.velocity = moveVelocity;
+        GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
+
+        if(bar.fillAmount == 0)
+        {
+            bar.fillAmount = Mathf.Lerp(bar.fillAmount, 1, Time.deltaTime);
+        }
     }
 
 
     //Teleport forward function
     public void Teleport()
     {
-        this.transform.position = Teleportpoint.transform.position;
+        bar.fillAmount = 0f;
+        Vector3 ray = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
+        
+        if(Physics.Raycast(this.transform.position, ray, out hit, maxDistance))
+        {
+            this.transform.position = hit.point -= this.transform.forward * 1;
+        }
+        else
+        {
+            this.transform.position += this.transform.forward * 10;
+        }
+
         number = Random.Range(randomMin, randomMax);
     }
 
     // Puls Attacke function
     public void PulsAttack()
     {
+        bar.fillAmount -= 1f;
         Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
         number = Random.Range(randomMin, randomMax);
     }
@@ -160,34 +138,29 @@ public class CharacterMovement : MonoBehaviour
     //Shield function
     public void Shield()
     {
-        GameObject inst = Instantiate(shield, this.transform.position, Quaternion.identity); //TODO: returns the instantiated gameobject, which u can use below
-        Destroy(inst, 5); //TODO: try to avoid hardcoded variables
-    }
-
-    // Delay for Ignor Wallcollider
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(1);
-        Physics.IgnoreLayerCollision(9, 10, false);
+        bar.fillAmount = 0f;
+        GameObject inst = Instantiate(shield, this.transform.position, Quaternion.identity);
+        Destroy(inst,shieldDuration);
+        number = Random.Range(randomMin, randomMax);
     }
 
     // regenerate Delay for Teleportstamina
     IEnumerator RegenerateDelay()
     {
-        yield return new WaitForSeconds(3);
-        bar.fillAmount = 0.5f;
         isAttacking = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6);
         bar.fillAmount = 1f;
-        isAttacking = false;
+        isAttacking = true;
     }
-  
+
+
     //Reset player 
-     void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
     if(other.gameObject.tag == "Outside")
         {
-            this.transform.position = ResetPoint.transform.position;
+            this.transform.position = ResetPoint;
         }
     }
+
 }

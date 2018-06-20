@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
-    public float fireRate = 2f;
+    public float fireRate = 100f;
     public int bulletSpeed = 20;
     public int damagePerBullet;
     protected Transform BulletSpawn;

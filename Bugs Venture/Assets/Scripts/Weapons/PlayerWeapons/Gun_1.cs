@@ -9,21 +9,26 @@ public class Gun_1 : BaseWeapon
     private ParticleSystem MuzzleEffect;
     private CameraShake cameraShake;
 
+
     void Start()
     {
         MuzzleEffect = GetComponent<ParticleSystem>();
         MuzzleEffect.Stop();
-        cameraShake = GameObject.FindObjectOfType<CameraShake>();
+        cameraShake = GetComponent<CameraShake>(); 
     }
 
     public override void Attack()
     {
-        if (this.lastFire + (1f / this.fireRate) > Time.time) return;
-        Rigidbody rocketInstance;
-        rocketInstance = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation) as Rigidbody;
-        MuzzleEffect.Stop();
-        MuzzleEffect.Play();
-        cameraShake.shouldShake = true;
+        if (this.lastFire + (1f - this.fireRate) < Time.time)
+        {
+            Rigidbody rocketInstance;
+            rocketInstance = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation) as Rigidbody;
+            MuzzleEffect.Stop();
+            MuzzleEffect.Play();
+            cameraShake.ShakeCam();
+            
+        }
     }
+
 }
 

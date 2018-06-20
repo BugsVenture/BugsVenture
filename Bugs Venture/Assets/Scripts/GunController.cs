@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
         int previousSelectedWeapon = selectedWeapon;
 
         //Select Weapon with Mouse ScrollWheel up
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f|| Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
@@ -35,7 +35,7 @@ public class GunController : MonoBehaviour
                 selectedWeapon++;
         }
 
-        //Select Weapon with Mouse ScrollWheel down
+        //Select Weapon with Mouse ScrollWheel down or Bumper
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             if (selectedWeapon <= 0)
@@ -44,21 +44,6 @@ public class GunController : MonoBehaviour
                 selectedWeapon--;
         }
 
-
-        //Select Weapon with Bumper 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button4))
-        {
-            if (selectedWeapon <= 0)
-                selectedWeapon = transform.childCount - 1;
-            else
-                selectedWeapon--;
-        }
-
-
-        if (previousSelectedWeapon != selectedWeapon)
-        {
-            SelectWeapon();
-        }
     }
 
     void SelectWeapon()

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23612606792588678}
   - component: {fileID: 54107526587644316}
   - component: {fileID: 114969927553768118}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -112,8 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b84921fdbcb1d4aaafb61322a76c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 10
   Damage: 1
+  HitEffect: {fileID: 1963006806323666, guid: a945668bacbfc9f42ac2f6e79bba92b6, type: 2}
 --- !u!135 &135425143161440364
 SphereCollider:
   m_ObjectHideFlags: 1
