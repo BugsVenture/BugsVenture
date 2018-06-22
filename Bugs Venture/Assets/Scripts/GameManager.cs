@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     //Public
     public static GameManager GM;
     public KeyCode teleportKey { get; set;}
-
+    
 
     void Awake()
     {
@@ -22,6 +26,7 @@ public class GameManager : MonoBehaviour
         }
 
         teleportKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("TeleportKey"));
+
     }
 
 	// Use this for initialization
@@ -34,3 +39,5 @@ public class GameManager : MonoBehaviour
 		
 	}
 }
+
+

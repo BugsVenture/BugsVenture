@@ -61,15 +61,31 @@ C:\Program Files\Unity\Unity_2018\Editor\Data\Managed/UnityEngine/UnityEngine.XR
 C:\Program Files\Unity\Unity_2018\Editor\Data\Managed/UnityEditor.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\Managed/Unity.Locator.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
 C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/Managed/UnityEditor.Graphs.dll
+C:/Program Files/Unity/Unity_2018/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll
 C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll
+C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
 C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll
+C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/Editor/UnityEditor.Purchasing.dll
+C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.render-pipelines.core@1.1.10-preview/CoreRP/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll
 C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\mscorlib.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Core.dll
@@ -79,21 +95,6 @@ C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\Sy
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.Lang.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\unity\Boo.Lang.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/Managed/UnityEditor.Graphs.dll
-C:/Program Files/Unity/Unity_2018/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
-C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll
-C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
-C:/Users/Bibic.Almin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/Editor/UnityEditor.Purchasing.dll
-C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\mscorlib.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.dll
 C:\Program Files\Unity\Unity_2018\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Core.dll

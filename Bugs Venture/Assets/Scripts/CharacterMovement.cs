@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
         ResetPoint = new Vector3(1, 1, 1);
         number = Random.Range(randomMin, randomMax);
         print(number);
-        bar = GameObject.FindObjectOfType<BarScript>();
+        bar = FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
         bar.fillAmount = maxStamina;
@@ -101,10 +101,10 @@ public class CharacterMovement : MonoBehaviour
         RigidBody.velocity = moveVelocity;
         GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
 
-        if(bar.fillAmount == 0)
-        {
-            bar.fillAmount = Mathf.Lerp(bar.fillAmount, 1, Time.deltaTime);
-        }
+        //if(bar.fillAmount == 0)
+        //{
+        //    bar.fillAmount = Mathf.Lerp(bar.fillAmount, 1, Time.deltaTime);
+        //}
     }
 
 
@@ -149,7 +149,7 @@ public class CharacterMovement : MonoBehaviour
     {
         isAttacking = false;
         yield return new WaitForSeconds(6);
-        bar.fillAmount = 1f;
+        bar.fillAmount += Time.deltaTime;
         isAttacking = true;
     }
 
