@@ -17,6 +17,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxHearing = 15;
     public float maxSight = 10;
 
+    public bool gotEffect = false; 
+
     private bool isNearPlayer = false;
 
     private Quadrants quadrant = Quadrants.LeftTop;
@@ -59,6 +61,19 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         }
     }
 
+    public bool GotEffect
+    {
+        get
+        {
+            return gotEffect;
+        }
+
+        set
+        {
+            gotEffect = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -73,7 +88,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void Update()
     {
         if (this.health <= 0)
-            DestroyEnemy();        
+            DestroyEnemy();
         if (Vector3.Distance(transform.position, Player.GetInstance().transform.position) < maxHearing && !isNearPlayer)
         {
             NearPlayer();
@@ -86,7 +101,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         {
             currRoom = RoomContainer.GetInstance().GetInsideRoom(this.transform.position);
         }
-
     }
 
     public virtual void Attack()
@@ -164,5 +178,20 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         isNearPlayer = false;
         Player.GetInstance().RemoveEnemy(this);
+    }
+
+    public void GetEffect(IEffect effect)
+    {
+        effect.ActivateEffect(this);
+    }
+
+    public void Rotate(float angle)
+    {
+        transform.Rotate(Vector3.up * Time.deltaTime, angle);
+    }
+
+    public bool EffectActive()
+    {
+        return gotEffect;
     }
 }

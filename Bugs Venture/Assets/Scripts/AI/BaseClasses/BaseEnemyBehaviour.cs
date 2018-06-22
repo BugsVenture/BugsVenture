@@ -86,6 +86,8 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     virtual protected void StateSwitch()
     {
+        if (enemy.EffectActive())
+            State = EnemyStates.GotEffect;
         switch (State)
         {
             case EnemyStates.Idle:
@@ -108,6 +110,10 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
                 break;
             case EnemyStates.ExamineSound:
                 ExamineSound();
+                break;
+            case EnemyStates.GotEffect:
+                if (!enemy.EffectActive())
+                    State = EnemyStates.Idle;
                 break;
         }
     }

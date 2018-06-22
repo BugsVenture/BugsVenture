@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Bullet : MonoBehaviour, IBullet
 {
     //Public
     public float bulletSpeed = 10f;
     public int Damage;
     public GameObject HitEffect;
-
+    public Effects effectType;
+    private IEffect effect;
 
     //Private
     private Rigidbody RigidBody;
@@ -16,7 +18,11 @@ public class Bullet : MonoBehaviour, IBullet
 
     void Start()
     {
-        RigidBody = GetComponent<Rigidbody>();       
+        RigidBody = GetComponent<Rigidbody>();
+        if(effectType != Effects.None)
+        {
+            effect = GetComponent<IEffect>();
+        }
     }
 
     void Update()
@@ -29,7 +35,10 @@ public class Bullet : MonoBehaviour, IBullet
         if(col.gameObject.tag == "Enemy")
         {
             IBaseEnemy enemy = (IBaseEnemy)col.gameObject.GetComponent<IBaseEnemy>();
+            if (effectType != Effects.None)
+                enemy.GetEffect(effect);
             enemy.GetDamage(Damage);
+            Debug.Log("hit");
         }
         DestroyBullet();
         InstantiateHitEffect();

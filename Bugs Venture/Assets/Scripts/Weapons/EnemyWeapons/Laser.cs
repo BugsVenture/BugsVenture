@@ -11,6 +11,9 @@ public class Laser : MonoBehaviour, IWeapon {
     public float loadTime = 2;
     bool isLoaded = false;
 
+    private ParticleSystem loadParticles;
+    public ParticleSystem hitParticles;
+
     private LineRenderer lr;
     Transform Muzzleoffset;
 
@@ -53,6 +56,8 @@ public class Laser : MonoBehaviour, IWeapon {
     {
         Muzzleoffset = GetComponentInChildren<Transform>();
         lr = GetComponentInChildren<LineRenderer>();
+        loadParticles = GetComponentInChildren<ParticleSystem>();
+        loadParticles.Stop();
     }
 
     public void Attack()
@@ -75,6 +80,7 @@ public class Laser : MonoBehaviour, IWeapon {
 
     void LoadLaser()
     {
+        loadParticles.Play();
         StartCoroutine(LoadDelay());        
     }
 
@@ -92,6 +98,7 @@ public class Laser : MonoBehaviour, IWeapon {
             if(hit.collider)
             {
                 SetLineRenderer(GetComponent<Transform>().transform.position, hit.point);
+
             }
         }
     }
@@ -108,5 +115,6 @@ public class Laser : MonoBehaviour, IWeapon {
         
         yield return new WaitForSeconds(loadTime);
         isLoaded = true;
+        loadParticles.Stop();
     }
 }

@@ -10,6 +10,8 @@ public interface IBaseEnemy
     float MaxHearing { get; set; }
     float MaxSight { get; set; }
 
+    bool GotEffect { get; set; }
+
     void Attack();
     void StopAttack();
 
@@ -26,4 +28,9 @@ public interface IBaseEnemy
 
     void NearPlayer();
     void AwayFromPlayer();
+
+    void Rotate(float angle);
+    void GetEffect(IEffect effect);
+
+    bool EffectActive();
 }
