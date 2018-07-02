@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour, IBullet
     public float bulletSpeed = 10f;
     public int Damage;
     public GameObject HitEffect;
+    public GameObject MuzzleEffect;
 
 
     //Private
@@ -16,6 +17,7 @@ public class Bullet : MonoBehaviour, IBullet
 
     void Start()
     {
+        Instantiate(MuzzleEffect, this.transform.position, this.transform.rotation);
         RigidBody = GetComponent<Rigidbody>();       
     }
 
@@ -44,6 +46,7 @@ public class Bullet : MonoBehaviour, IBullet
     {
         GameObject hitEffect = Instantiate(HitEffect, this.transform.position,this.transform.rotation);
         Destroy(hitEffect, hitEffectDuration);
+
     }
 
 

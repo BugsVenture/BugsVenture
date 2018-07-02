@@ -61,8 +61,10 @@ public class CharacterMovement : MonoBehaviour
         else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
         {
-            Shield();
+            PulsAttack();
         }
+
+
 
         // Attackcheck
         if (bar.fillAmount == 0 && isAttacking)
@@ -157,6 +159,6 @@ public class CharacterMovement : MonoBehaviour
     // increase Stamina function
     void increaseStamina()
     {
-        bar.fillAmount += 0.02f;
+        bar.fillAmount += 0.2f;
     }
 }

@@ -12,7 +12,7 @@ public class Gun_1 : BaseWeapon
 
     void Start()
     {
-        //MuzzleEffect = GetComponent<ParticleSystem>();
+        MuzzleEffect = GetComponent<ParticleSystem>();
         MuzzleEffect.Stop();
         cameraShake = GetComponent<CameraShake>(); 
     }
