@@ -16,8 +16,8 @@ public enum EnemyStates
 
 public enum Quadrants
 {
-    RightTop, 
     LeftTop, 
+    RightTop, 
     RightBottom, 
     LeftBottom
 }

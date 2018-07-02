@@ -12,7 +12,7 @@ public class Laser : MonoBehaviour, IWeapon {
     bool isLoaded = false;
 
     private ParticleSystem loadParticles;
-    public ParticleSystem hitParticles;
+    public GameObject hitParticles;
 
     private LineRenderer lr;
     Transform Muzzleoffset;
@@ -98,7 +98,6 @@ public class Laser : MonoBehaviour, IWeapon {
             if(hit.collider)
             {
                 SetLineRenderer(GetComponent<Transform>().transform.position, hit.point);
-
             }
         }
     }

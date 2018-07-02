@@ -82,6 +82,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         startRoom = hit.collider.GetComponent<Room>();
         agent = GetComponent<NavMeshAgent>();
         currRoom = startRoom;
+        quadrant = (Quadrants)Random.Range(0, 3);
     }
 
     // Update is called once per frame
