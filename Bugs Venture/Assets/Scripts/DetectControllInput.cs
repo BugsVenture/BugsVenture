@@ -6,6 +6,11 @@ public class DetectControllInput : MonoBehaviour
 {
     public CharacterMovement player;
 
+    void Start()
+    {
+        player = GetComponent<CharacterMovement>();
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -37,12 +37,11 @@ public class CharacterMovement : MonoBehaviour
         ResetPoint = new Vector3(1, 1, 1);
         number = Random.Range(randomMin, randomMax);
         print(number);
-        bar = GameObject.FindObjectOfType<BarScript>();
+        bar = FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
         bar.fillAmount = maxStamina;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -68,9 +67,15 @@ public class CharacterMovement : MonoBehaviour
         // Attackcheck
         if (bar.fillAmount == 0 && isAttacking)
         {
-            StartCoroutine(RegenerateDelay());
+            isAttacking = false;
+            InvokeRepeating("increaseStamina", 1, 1);
         }
 
+        if(bar.fillAmount == 1)
+        {
+            CancelInvoke();
+            isAttacking = true;
+        }
         //Rotate Player with Mouse
         if (!useController)
         {
@@ -101,10 +106,6 @@ public class CharacterMovement : MonoBehaviour
         RigidBody.velocity = moveVelocity;
         GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
 
-        if(bar.fillAmount == 0)
-        {
-            bar.fillAmount = Mathf.Lerp(bar.fillAmount, 1, Time.deltaTime);
-        }
     }
 
 
@@ -144,16 +145,6 @@ public class CharacterMovement : MonoBehaviour
         number = Random.Range(randomMin, randomMax);
     }
 
-    // regenerate Delay for Teleportstamina
-    IEnumerator RegenerateDelay()
-    {
-        isAttacking = false;
-        yield return new WaitForSeconds(6);
-        bar.fillAmount = 1f;
-        isAttacking = true;
-    }
-
-
     //Reset player 
     void OnTriggerEnter(Collider other)
     {
@@ -163,4 +154,9 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    // increase Stamina function
+    void increaseStamina()
+    {
+        bar.fillAmount += 0.02f;
+    }
 }
