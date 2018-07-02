@@ -1,0 +1,363 @@
+fileFormatVersion: 2
+guid: f6dece2b5ca047b469f27974fc2cd65c
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box133
+    100002: Box134
+    100004: Box135
+    100006: Box137
+    100008: Box138
+    100010: Box142
+    100012: Box143
+    100014: Box146
+    100016: Box147
+    100018: Box148
+    100020: Box149
+    100022: Box151
+    100024: Box152
+    100026: Box153
+    100028: Box154
+    100030: Box155
+    100032: Box156
+    100034: Box157
+    100036: Box158
+    100038: Box159
+    100040: Box160
+    100042: Cylinder001
+    100044: Cylinder003
+    100046: Flur_Boden_004
+    100048: Flur_Boden_005
+    100050: Flur_Wand_V003
+    100052: Flur_Wand_V011
+    100054: Flur_Wand_V012
+    100056: Flur_Wand_V013
+    100058: Flur_Wand_V014
+    100060: Flur_Wand_V015
+    100062: Flur_Wand_V016
+    100064: Flur_Wand_V017
+    100066: Flur_Wand_V018
+    100068: Flur_Wand_V019
+    100070: Flur_Wand_V020
+    100072: Flur_Wand_V021
+    100074: Flur_Wand_V023
+    100076: Labor_004
+    100078: Labor_005
+    100080: Labor_006
+    100082: Labor_007
+    100084: Labor_008
+    100086: Labor_Boden_004
+    100088: Labor_Boden_005
+    100090: Labor_Boden_006
+    100092: Labor_Boden_007
+    100094: Labor_Boden_009
+    100096: Labor_Boden_011
+    100098: Labor_Boden_012
+    100100: Labor_Wand_004
+    100102: Labor_Wand_005
+    100104: //RootNode
+    400000: Box133
+    400002: Box134
+    400004: Box135
+    400006: Box137
+    400008: Box138
+    400010: Box142
+    400012: Box143
+    400014: Box146
+    400016: Box147
+    400018: Box148
+    400020: Box149
+    400022: Box151
+    400024: Box152
+    400026: Box153
+    400028: Box154
+    400030: Box155
+    400032: Box156
+    400034: Box157
+    400036: Box158
+    400038: Box159
+    400040: Box160
+    400042: Cylinder001
+    400044: Cylinder003
+    400046: Flur_Boden_004
+    400048: Flur_Boden_005
+    400050: Flur_Wand_V003
+    400052: Flur_Wand_V011
+    400054: Flur_Wand_V012
+    400056: Flur_Wand_V013
+    400058: Flur_Wand_V014
+    400060: Flur_Wand_V015
+    400062: Flur_Wand_V016
+    400064: Flur_Wand_V017
+    400066: Flur_Wand_V018
+    400068: Flur_Wand_V019
+    400070: Flur_Wand_V020
+    400072: Flur_Wand_V021
+    400074: Flur_Wand_V023
+    400076: Labor_004
+    400078: Labor_005
+    400080: Labor_006
+    400082: Labor_007
+    400084: Labor_008
+    400086: Labor_Boden_004
+    400088: Labor_Boden_005
+    400090: Labor_Boden_006
+    400092: Labor_Boden_007
+    400094: Labor_Boden_009
+    400096: Labor_Boden_011
+    400098: Labor_Boden_012
+    400100: Labor_Wand_004
+    400102: Labor_Wand_005
+    400104: //RootNode
+    2100000: 05 - Default
+    2100002: 23 - Default
+    2100004: 16 - Default
+    2100006: 17 - Default
+    2100008: 15 - Default
+    2100010: 18 - Default
+    2100012: No Name
+    2100014: 19 - Default
+    2100016: 21 - Default
+    2100018: 12 - Default
+    2100020: 20 - Default
+    2100022: 04 - Default
+    2100024: 22 - Default
+    2300000: Box133
+    2300002: Box134
+    2300004: Box135
+    2300006: Box137
+    2300008: Box138
+    2300010: Box142
+    2300012: Box143
+    2300014: Box146
+    2300016: Box147
+    2300018: Box148
+    2300020: Box149
+    2300022: Box151
+    2300024: Box152
+    2300026: Box153
+    2300028: Box154
+    2300030: Box155
+    2300032: Box156
+    2300034: Box157
+    2300036: Box158
+    2300038: Box159
+    2300040: Box160
+    2300042: Cylinder001
+    2300044: Cylinder003
+    2300046: Flur_Boden_004
+    2300048: Flur_Boden_005
+    2300050: Flur_Wand_V003
+    2300052: Flur_Wand_V011
+    2300054: Flur_Wand_V012
+    2300056: Flur_Wand_V013
+    2300058: Flur_Wand_V014
+    2300060: Flur_Wand_V015
+    2300062: Flur_Wand_V016
+    2300064: Flur_Wand_V017
+    2300066: Flur_Wand_V018
+    2300068: Flur_Wand_V019
+    2300070: Flur_Wand_V020
+    2300072: Flur_Wand_V021
+    2300074: Flur_Wand_V023
+    2300076: Labor_004
+    2300078: Labor_005
+    2300080: Labor_006
+    2300082: Labor_007
+    2300084: Labor_008
+    2300086: Labor_Boden_004
+    2300088: Labor_Boden_005
+    2300090: Labor_Boden_006
+    2300092: Labor_Boden_007
+    2300094: Labor_Boden_009
+    2300096: Labor_Boden_011
+    2300098: Labor_Boden_012
+    2300100: Labor_Wand_004
+    2300102: Labor_Wand_005
+    3300000: Box133
+    3300002: Box134
+    3300004: Box135
+    3300006: Box137
+    3300008: Box138
+    3300010: Box142
+    3300012: Box143
+    3300014: Box146
+    3300016: Box147
+    3300018: Box148
+    3300020: Box149
+    3300022: Box151
+    3300024: Box152
+    3300026: Box153
+    3300028: Box154
+    3300030: Box155
+    3300032: Box156
+    3300034: Box157
+    3300036: Box158
+    3300038: Box159
+    3300040: Box160
+    3300042: Cylinder001
+    3300044: Cylinder003
+    3300046: Flur_Boden_004
+    3300048: Flur_Boden_005
+    3300050: Flur_Wand_V003
+    3300052: Flur_Wand_V011
+    3300054: Flur_Wand_V012
+    3300056: Flur_Wand_V013
+    3300058: Flur_Wand_V014
+    3300060: Flur_Wand_V015
+    3300062: Flur_Wand_V016
+    3300064: Flur_Wand_V017
+    3300066: Flur_Wand_V018
+    3300068: Flur_Wand_V019
+    3300070: Flur_Wand_V020
+    3300072: Flur_Wand_V021
+    3300074: Flur_Wand_V023
+    3300076: Labor_004
+    3300078: Labor_005
+    3300080: Labor_006
+    3300082: Labor_007
+    3300084: Labor_008
+    3300086: Labor_Boden_004
+    3300088: Labor_Boden_005
+    3300090: Labor_Boden_006
+    3300092: Labor_Boden_007
+    3300094: Labor_Boden_009
+    3300096: Labor_Boden_011
+    3300098: Labor_Boden_012
+    3300100: Labor_Wand_004
+    3300102: Labor_Wand_005
+    4300000: Cylinder001
+    4300002: Cylinder003
+    4300004: Flur_Wand_V003
+    4300006: Labor_Boden_004
+    4300008: Labor_Wand_004
+    4300010: Labor_004
+    4300012: Labor_Boden_005
+    4300014: Labor_Boden_006
+    4300016: Labor_Wand_005
+    4300018: Labor_005
+    4300020: Labor_Boden_007
+    4300022: Labor_006
+    4300024: Labor_Boden_009
+    4300026: Labor_007
+    4300028: Labor_Boden_011
+    4300030: Labor_008
+    4300032: Labor_Boden_012
+    4300034: Box133
+    4300036: Box134
+    4300038: Box135
+    4300040: Box137
+    4300042: Box138
+    4300044: Flur_Wand_V011
+    4300046: Flur_Wand_V012
+    4300048: Flur_Boden_004
+    4300050: Flur_Wand_V013
+    4300052: Box142
+    4300054: Box143
+    4300056: Box146
+    4300058: Box147
+    4300060: Box148
+    4300062: Box149
+    4300064: Box151
+    4300066: Box152
+    4300068: Box153
+    4300070: Flur_Boden_005
+    4300072: Box154
+    4300074: Box155
+    4300076: Box156
+    4300078: Box157
+    4300080: Box158
+    4300082: Flur_Wand_V014
+    4300084: Flur_Wand_V015
+    4300086: Flur_Wand_V016
+    4300088: Box159
+    4300090: Box160
+    4300092: Flur_Wand_V017
+    4300094: Flur_Wand_V018
+    4300096: Flur_Wand_V019
+    4300098: Flur_Wand_V020
+    4300100: Flur_Wand_V021
+    4300102: Flur_Wand_V023
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

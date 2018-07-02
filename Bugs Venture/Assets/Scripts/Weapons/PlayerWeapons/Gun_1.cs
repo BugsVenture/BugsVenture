@@ -6,13 +6,13 @@ public class Gun_1 : BaseWeapon
 {
     
     //Private
-    private ParticleSystem MuzzleEffect;
+    public ParticleSystem MuzzleEffect;
     private CameraShake cameraShake;
 
 
     void Start()
     {
-        MuzzleEffect = GetComponent<ParticleSystem>();
+        //MuzzleEffect = GetComponent<ParticleSystem>();
         MuzzleEffect.Stop();
         cameraShake = GetComponent<CameraShake>(); 
     }

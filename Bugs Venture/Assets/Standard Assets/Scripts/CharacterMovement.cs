@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
         bar = GameObject.FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
-        bar.fillAmount = maxStamina;
+       // bar.fillAmount = maxStamina;
     }
 
     // Update is called once per frame
@@ -54,24 +54,24 @@ public class CharacterMovement : MonoBehaviour
 
 
         //Random Attack Keyboard or Controller
-        if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 49|| 
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number <= 49|| 
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number <= 49)
         {
             Teleport();
         }
-        else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
+        else if(Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number >= 50||
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
         {
             Shield();
         }
 
         // Attackcheck
-        if (bar.fillAmount == 0 && isAttacking)
-        {
-            bar.fillAmount += Time.deltaTime;
-            StartCoroutine(RegenerateDelay());
+        //if (bar.fillAmount == 0 && isAttacking)
+        //{
+        //    bar.fillAmount += Time.deltaTime;
+        //    StartCoroutine(RegenerateDelay());
 
-        }
+        //}
 
         //Rotate Player with Mouse
         if (!useController)
