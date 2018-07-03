@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     public float shieldDuration = 5f;
     public Vector3 ResetPoint;
     public float maxDistance = 5f;
+    public float knockBackForce = 2f;
 
     // Private
     private bool isAttacking = true;
@@ -45,6 +46,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            KnockBack();
+        }
 
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
@@ -101,6 +107,7 @@ public class CharacterMovement : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
                 }
         }
+
     }
 
     void FixedUpdate()
@@ -160,5 +167,10 @@ public class CharacterMovement : MonoBehaviour
     void increaseStamina()
     {
         bar.fillAmount += 0.2f;
+    }
+
+    void KnockBack()
+    {
+        this.transform.position += this.transform.forward * -1;
     }
 }

@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour, IBullet
     public int Damage;
     public GameObject HitEffect;
     public GameObject MuzzleEffect;
-
+    public CameraShake cameraShake;
 
     //Private
     private Rigidbody RigidBody;
@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour, IBullet
 
     void Start()
     {
+        cameraShake = FindObjectOfType<CameraShake>();
         Instantiate(MuzzleEffect, this.transform.position, this.transform.rotation);
         RigidBody = GetComponent<Rigidbody>();       
     }
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour, IBullet
         }
         DestroyBullet();
         InstantiateHitEffect();
+        cameraShake.ShakeCam();
     }
 
     public void DestroyBullet()

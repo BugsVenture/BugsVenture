@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Gun_1 : BaseWeapon
 {
+    //Public
+    public ParticleSystem MuzzleEffect;
     
     //Private
-    public ParticleSystem MuzzleEffect;
-    private CameraShake cameraShake;
+    public CameraShake cameraShake;
 
 
     void Start()
     {
-        MuzzleEffect = GetComponent<ParticleSystem>();
+        cameraShake = FindObjectOfType<CameraShake>();
         MuzzleEffect.Stop();
-        cameraShake = GetComponent<CameraShake>(); 
     }
 
     public override void Attack()
@@ -25,7 +25,7 @@ public class Gun_1 : BaseWeapon
             rocketInstance = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation) as Rigidbody;
             MuzzleEffect.Stop();
             MuzzleEffect.Play();
-            cameraShake.ShakeCam();
+            cameraShake.CamKnockBack();
             
         }
     }

@@ -236,6 +236,9 @@ MonoBehaviour:
   bulletSpeed: 10
   Damage: 1
   HitEffect: {fileID: 1919832288057830, guid: e546dc375aaedb5438a782ba6f22c444, type: 2}
+  MuzzleEffect: {fileID: 1192122332749552, guid: b9a3fd7df82fa0c49acea1b70d59d183,
+    type: 2}
+  cameraShake: {fileID: 0}
 --- !u!135 &135425143161440364
 SphereCollider:
   m_ObjectHideFlags: 1
