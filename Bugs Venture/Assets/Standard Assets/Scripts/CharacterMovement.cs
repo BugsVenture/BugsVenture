@@ -54,16 +54,19 @@ public class CharacterMovement : MonoBehaviour
 
 
         //Random Attack Keyboard or Controller
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number <= 49|| 
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number <= 49 || 
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number <= 49)
         {
             Teleport();
         }
-        else if(Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number >= 50||
-            Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
+        else if(Input.GetKeyDown(KeyCode.LeftControl) && isAttacking && number >= 50 ||
+            Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50 )
         {
-            Shield();
+            PulsAttack();
         }
+
+
+
 
         // Attackcheck
         //if (bar.fillAmount == 0 && isAttacking)

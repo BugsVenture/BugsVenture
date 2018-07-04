@@ -26,11 +26,18 @@ public class CameraShake : MonoBehaviour
         }
     }
 
+    //Shake Camera when hit a Wall or Enmemy
     public void ShakeCam()
     {
         camera.localPosition = camera.localPosition + Random.insideUnitSphere * power;
         StartCoroutine(CamShake());
+    }
 
+    //Knocks the Camera back when shoots
+    public void CamKnockBack()
+    {
+        camera.localPosition = camera.localPosition + new Vector3(0, 0, -2) * power;
+        StartCoroutine(CamShake());
     }
 
     IEnumerator CamShake()
@@ -38,5 +45,4 @@ public class CameraShake : MonoBehaviour
         yield return new WaitForSeconds(duration);
         camera.localPosition = camera.localPosition;
     }
-
 }

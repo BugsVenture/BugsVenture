@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
     value: 0.077
   size:
     overrideState: 1
-    value: 3
+    value: 1
   lumContrib:
     overrideState: 1
     value: 0.8
@@ -143,25 +143,25 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 11.54
+    value: 35
   threshold:
     overrideState: 1
-    value: 1.43
+    value: 50.9
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 0.593
   clamp:
     overrideState: 1
-    value: 65472
+    value: 94.8
   diffusion:
     overrideState: 1
-    value: 7
+    value: 6.81
   anamorphicRatio:
     overrideState: 1
-    value: 0
+    value: 0.27
   color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 4, g: 4, b: 4, a: 1}
   fastMode:
     overrideState: 1
     value: 0

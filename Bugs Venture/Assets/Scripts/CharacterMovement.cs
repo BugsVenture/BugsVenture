@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     public float shieldDuration = 5f;
     public Vector3 ResetPoint;
     public float maxDistance = 5f;
+    public float knockBackForce = 2f;
 
     // Private
     private bool isAttacking = true;
@@ -46,6 +47,11 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
 
+        if(Input.GetButtonDown("Fire1"))
+        {
+            KnockBack();
+        }
+
         //Player Movement
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
@@ -61,8 +67,10 @@ public class CharacterMovement : MonoBehaviour
         else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
         {
-            Shield();
+            PulsAttack();
         }
+
+
 
         // Attackcheck
         if (bar.fillAmount == 0 && isAttacking)
@@ -99,6 +107,7 @@ public class CharacterMovement : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
                 }
         }
+
     }
 
     void FixedUpdate()
@@ -132,8 +141,9 @@ public class CharacterMovement : MonoBehaviour
     public void PulsAttack()
     {
         bar.fillAmount -= 1f;
-        Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+        GameObject puls = Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
         number = Random.Range(randomMin, randomMax);
+        Destroy(puls, 3);
     }
 
     //Shield function
@@ -157,6 +167,11 @@ public class CharacterMovement : MonoBehaviour
     // increase Stamina function
     void increaseStamina()
     {
-        bar.fillAmount += 0.02f;
+        bar.fillAmount += 0.2f;
+    }
+
+    void KnockBack()
+    {
+        this.transform.position += this.transform.forward * -0.2f;
     }
 }

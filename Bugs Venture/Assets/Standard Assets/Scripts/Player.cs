@@ -25,7 +25,6 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		
 	}
 
     public void GetHit()
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour {
     {
         GunController controller = GetComponentInChildren<GunController>();
         controller.GetWeapon().Attack();
-
+        
         foreach (BaseEnemy enemy in enemies)
             enemy.ReceiveSound();
     }

@@ -11,7 +11,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     private Room startRoom;
     private Room currRoom;
-    protected NavMeshAgent agent; 
+    protected NavMeshAgent agent;
+
     //Public
     public int health = 2;
     public float maxHearing = 15;
