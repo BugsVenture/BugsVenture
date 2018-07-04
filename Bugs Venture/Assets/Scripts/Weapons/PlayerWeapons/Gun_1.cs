@@ -25,7 +25,7 @@ public class Gun_1 : BaseWeapon
             rocketInstance = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation) as Rigidbody;
             MuzzleEffect.Stop();
             MuzzleEffect.Play();
-            cameraShake.CamKnockBack();
+            //cameraShake.CamKnockBack();
             
         }
     }

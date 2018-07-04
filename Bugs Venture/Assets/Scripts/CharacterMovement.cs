@@ -141,8 +141,9 @@ public class CharacterMovement : MonoBehaviour
     public void PulsAttack()
     {
         bar.fillAmount -= 1f;
-        Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
+        GameObject puls = Instantiate(PulsEffect, this.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
         number = Random.Range(randomMin, randomMax);
+        Destroy(puls, 3);
     }
 
     //Shield function
@@ -171,6 +172,6 @@ public class CharacterMovement : MonoBehaviour
 
     void KnockBack()
     {
-        this.transform.position += this.transform.forward * -1;
+        this.transform.position += this.transform.forward * -0.2f;
     }
 }

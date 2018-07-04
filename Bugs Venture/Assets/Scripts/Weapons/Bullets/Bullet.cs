@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour, IBullet
     void Start()
     {
         cameraShake = FindObjectOfType<CameraShake>();
-        Instantiate(MuzzleEffect, this.transform.position, this.transform.rotation);
+        Instantiate(MuzzleEffect, this.transform.position + new Vector3(0,0,0.3f), this.transform.rotation);
         RigidBody = GetComponent<Rigidbody>();       
     }
 
