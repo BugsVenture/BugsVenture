@@ -17,9 +17,13 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxHearing = 15;
     public float maxSight = 10;
 
+    public float knockbackForce = 10;
+
     public bool gotEffect = false; 
 
     private bool isNearPlayer = false;
+
+    private bool slowed = false;
 
     private Quadrants quadrant = Quadrants.LeftTop;
 
@@ -130,7 +134,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void IBaseEnemy.GetDamage(int value)
     {
         this.health -= value;
-        Debug.Log(this.health);
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * -1 *knockbackForce, ForceMode.Impulse);
     }
 
     public bool MoveTo(Vector3 pos, float threshold = 1.0f)
@@ -183,7 +187,13 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     public void GetEffect(IEffect effect)
     {
-        effect.ActivateEffect(this);
+        switch(effect.effectType)
+        {
+            case Effects.SlowDown:
+                slowed = true;
+                effect.ActivateEffect(this);
+                break;
+        }
     }
 
     public void Rotate(float angle)
@@ -194,5 +204,15 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public bool EffectActive()
     {
         return gotEffect;
+    }
+
+    public void ChangeSpeed(float multiplicator)
+    {
+        if ((agent.speed *= multiplicator) > 4)
+        {
+            agent.speed = 4;
+        }
+        IWeapon weapon = GetComponentInChildren<IWeapon>();
+        weapon.FireRate /= multiplicator;
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
-    public float fireRate = 100f;
+    //Delay between shots.
+    public float fireRate = 5;
     public int bulletSpeed = 20;
     public int damagePerBullet;
     protected Transform BulletSpawn;
@@ -12,10 +13,26 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
     protected bool fire;
 
+    private float maxFireRate; 
 
     void Awake()
     {
         BulletSpawn = GetComponentInChildren<Transform>();
+    }
+
+    private void Start()
+    {
+        maxFireRate = fireRate;
+    }
+    public void SetFireRate(float fRate)
+    {
+        if (fRate < maxFireRate)
+        {
+            fireRate = maxFireRate;
+            return;
+        }
+        fireRate = fRate;
+        Debug.Log(fireRate);
     }
 
     //Private
@@ -30,7 +47,13 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
         set
         {
+            if(value < maxFireRate)
+            {
+                fireRate = maxFireRate;
+                return;
+            }
             fireRate = value;
+            Debug.Log(fireRate);
         }
     }
 

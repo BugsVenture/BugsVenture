@@ -32,8 +32,15 @@ public abstract class BaseEffect : MonoBehaviour, IEffect {
         }
     }
 
+    public abstract Effects effectType { get; }
+
     public abstract void ActivateEffect(IBaseEnemy enemy);
 
+    public abstract void DeactivateEffect(IBaseEnemy enemy);
+
+    public abstract void HitPlayer(Player player);
+
+    public abstract void DontHitPlayer(Player player);
 
     // Use this for initialization
     void Start () {

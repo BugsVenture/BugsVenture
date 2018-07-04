@@ -14,7 +14,6 @@ public class Bullet : MonoBehaviour, IBullet
 
     //Private
     private Rigidbody RigidBody;
-    private float hitEffectDuration = 5f;
 
     void Start()
     {
@@ -38,10 +37,9 @@ public class Bullet : MonoBehaviour, IBullet
             if (effectType != Effects.None)
                 enemy.GetEffect(effect);
             enemy.GetDamage(Damage);
-            Debug.Log("hit");
         }
-        DestroyBullet();
         InstantiateHitEffect();
+        DestroyBullet();
     }
 
     public void DestroyBullet()
@@ -52,8 +50,11 @@ public class Bullet : MonoBehaviour, IBullet
     public void InstantiateHitEffect()
     {
         GameObject hitEffect = Instantiate(HitEffect, this.transform.position,this.transform.rotation);
-        Destroy(hitEffect, hitEffectDuration);
+        Destroy(hitEffect, effect.Duration);
     }
 
-
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 }

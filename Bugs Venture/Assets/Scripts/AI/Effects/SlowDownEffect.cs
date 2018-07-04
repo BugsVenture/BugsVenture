@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class SlowDownEffect : BaseEffect {
 
+    private float duration = 3;
+
+    public float slowdownValue = .1f;
+
     private bool isActive = false;
+
+    private IBaseEnemy enemy;
 
     public float Duration
     {
         get
         {
-            throw new System.NotImplementedException();
+            return duration;
         }
 
         set
         {
-            throw new System.NotImplementedException();
+            duration = value;
         }
     }
 
@@ -30,18 +36,48 @@ public class SlowDownEffect : BaseEffect {
         }
     }
 
-    public override void ActivateEffect(IBaseEnemy enemy)
+    public override Effects effectType
     {
-        throw new System.NotImplementedException();
+        get
+        {
+            return Effects.SlowDown;
+        }
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void ActivateEffect(IBaseEnemy enemy)
+    {
+        this.enemy = enemy;
+        enemy.ChangeSpeed(slowdownValue);
+        StartCoroutine(Deactivation());
+    }
+
+    IEnumerator Deactivation()
+    {
+        yield return new WaitForSeconds(duration);
+        enemy.ChangeSpeed(1 / slowdownValue);
+    }
+
+    public override void HitPlayer(Player player)
+    {
+        player.ChangeSpeed(slowdownValue);
+        StartCoroutine(PlayerDeactivation());
+    }
+
+    IEnumerator PlayerDeactivation()
+    {
+        yield return new WaitForSeconds(duration);
+        Player.GetInstance().ChangeSpeed(1 / slowdownValue);
+    }
+
+    public override void DeactivateEffect(IBaseEnemy enemy)
+    {
+        StopCoroutine(Deactivation());
+        enemy.ChangeSpeed(1 / slowdownValue);
+    }
+
+    public override void DontHitPlayer(Player player)
+    {
+        StopCoroutine(PlayerDeactivation());
+        player.ChangeSpeed(1 / slowdownValue);
+    }
 }

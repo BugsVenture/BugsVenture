@@ -33,4 +33,6 @@ public interface IBaseEnemy
     void GetEffect(IEffect effect);
 
     bool EffectActive();
+
+    void ChangeSpeed(float multiplicator);
 }

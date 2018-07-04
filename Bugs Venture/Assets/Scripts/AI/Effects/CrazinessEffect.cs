@@ -64,7 +64,30 @@ public class CrazinessEffect : BaseEffect {
         this.randomPos = RandomPosInRadius();
         this.enemy = enemy;
         this.enemy.GotEffect = true;
-        StartCoroutine(Activation());
+        StartCoroutine(Deactivation());
+    }
+
+    public override Effects effectType
+    {
+        get
+        {
+            return Effects.Craziness;
+        }
+    }
+
+    public override void DeactivateEffect(IBaseEnemy enemy)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void HitPlayer(Player player)
+    {
+
+    }
+
+    public override void DontHitPlayer(Player player)
+    {
+        throw new System.NotImplementedException();
     }
 
     private Vector3 RandomPosInRadius()
@@ -72,7 +95,7 @@ public class CrazinessEffect : BaseEffect {
         return new Vector3(Random.Range(this.transform.position.x - radius, this.transform.position.x + radius), this.transform.position.y, Random.Range(this.transform.position.z - radius, this.transform.position.z + radius));
     }
 
-    private IEnumerator Activation()
+    private IEnumerator Deactivation()
     {
         yield return new WaitForSeconds(duration);
         isActive = false;

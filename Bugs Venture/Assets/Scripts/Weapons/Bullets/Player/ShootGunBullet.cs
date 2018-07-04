@@ -44,5 +44,9 @@ public class ShootGunBullet : MonoBehaviour, IBullet
         Destroy(hitEffetc,hitEffectDuration);
 
     }
-    
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 }
