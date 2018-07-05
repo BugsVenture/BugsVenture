@@ -35,4 +35,9 @@ public interface IBaseEnemy
     bool EffectActive();
 
     void ChangeSpeed(float multiplicator);
+
+    bool SearchPlayer();
+
+    Quadrants Quadrant { get; set; }
+
 }

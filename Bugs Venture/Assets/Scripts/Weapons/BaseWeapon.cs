@@ -11,6 +11,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
     protected Transform BulletSpawn;
     public Rigidbody Bullet;
 
+    public float knockbackForce = 5;
+
     protected bool fire;
 
     private float maxFireRate; 
@@ -32,7 +34,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
             return;
         }
         fireRate = fRate;
-        Debug.Log(fireRate);
     }
 
     //Private
@@ -82,4 +83,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
     }
 
     public abstract void Attack();
+
+    public void Knockback()
+    {
+        this.gameObject.GetComponentInParent<Rigidbody>().AddForce(GetComponentInParent<Transform>().right * -1 * knockbackForce, ForceMode.Impulse);
+    }
 }

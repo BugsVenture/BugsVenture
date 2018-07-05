@@ -12,8 +12,6 @@ public class RoomContainer : MonoBehaviour {
     {
         if (containerInstance == null)
             containerInstance = this;
-        else
-            Destroy(gameObject);
     }
 
     void Start () {

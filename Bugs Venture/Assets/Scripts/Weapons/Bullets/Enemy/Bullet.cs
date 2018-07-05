@@ -39,7 +39,6 @@ public class Bullet : MonoBehaviour, IBullet
             enemy.GetDamage(Damage);
         }
         InstantiateHitEffect();
-        DestroyBullet();
     }
 
     public void DestroyBullet()
@@ -50,6 +49,7 @@ public class Bullet : MonoBehaviour, IBullet
     public void InstantiateHitEffect()
     {
         GameObject hitEffect = Instantiate(HitEffect, this.transform.position,this.transform.rotation);
+        DestroyBullet();
         Destroy(hitEffect, effect.Duration);
     }
 

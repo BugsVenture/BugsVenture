@@ -18,8 +18,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxHearing = 15;
     public float maxSight = 10;
 
-    public float knockbackForce = 10;
-
     public bool gotEffect = false; 
 
     private bool isNearPlayer = false;
@@ -79,6 +77,18 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         }
     }
 
+    public Quadrants Quadrant
+    {
+        get
+        {
+            return quadrant;
+        }
+        set
+        {
+            quadrant = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -116,6 +126,11 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         weapon.Attack();
     }
 
+    public void Knockback(float force)
+    {
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * -1 * force, ForceMode.Impulse);
+    }
+
     public void StopMovement()
     {
         agent.isStopped = true;
@@ -135,7 +150,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void IBaseEnemy.GetDamage(int value)
     {
         this.health -= value;
-        GetComponent<Rigidbody>().AddForce(this.transform.forward * -1 *knockbackForce, ForceMode.Impulse);
     }
 
     public bool MoveTo(Vector3 pos, float threshold = 1.0f)
@@ -151,10 +165,19 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         return false;
     }
 
-    public void SearchPlayer()
+    public bool SearchPlayer()
     {
         if (MoveTo(currRoom.GetRandomPosInsideQuadrant(quadrant)))
+        {
+            if (quadrant == Quadrants.LeftBottom)
+            {
+                quadrant = 0;
+                return true;
+            }
             quadrant++;
+            return false;
+        }
+        return false;
     }
 
     public void StopAttack()

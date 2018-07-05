@@ -36,7 +36,7 @@ public class GrenadeLauncher : BaseWeapon {
     {
         Rigidbody grenadeInstance;
         Transform offset = this.transform.GetChild(0);
-
+        Knockback();
         CalculateShot();
 
         grenadeInstance = Instantiate(Bullet, offset.position, offset.rotation) as Rigidbody;

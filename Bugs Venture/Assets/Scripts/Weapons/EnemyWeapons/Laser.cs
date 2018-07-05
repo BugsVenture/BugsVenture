@@ -126,4 +126,9 @@ public class Laser : MonoBehaviour, IWeapon {
         isLoaded = true;
         loadParticles.Stop();
     }
+
+    public void Knockback()
+    {
+
+    }
 }
