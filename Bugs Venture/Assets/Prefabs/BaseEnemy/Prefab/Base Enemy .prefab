@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 54309264970154688}
   - component: {fileID: 195937098712250548}
   - component: {fileID: 114678645281833284}
-  - component: {fileID: 114805273558606486}
+  - component: {fileID: 114118482970046798}
   m_Layer: 11
   m_Name: 'Base Enemy '
   m_TagString: Enemy
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828628123709640}
   m_LocalRotation: {x: -0, y: 0.99984115, z: -0, w: -0.017827965}
-  m_LocalPosition: {x: -1.0909548, y: 1.78, z: 1.047637}
+  m_LocalPosition: {x: -39.14348, y: 2.29, z: 98.616165}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4484543406035078}
@@ -192,7 +192,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122146386373754}
-  m_Mesh: {fileID: 4300000, guid: bbd141a0500342d4688614761b789392, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c832cdc6d9a53794e8b4d24bcb10c997, type: 3}
 --- !u!54 &54309264970154688
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -220,6 +220,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114118482970046798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828628123709640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7400960af07da7b49ad9dd54ec557bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  maxHearing: 15
+  maxSight: 10
+  gotEffect: 0
 --- !u!114 &114590168187632522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +249,7 @@ MonoBehaviour:
   fireRate: 1
   bulletSpeed: 20
   damagePerBullet: 1
-  Bullet: {fileID: 54107526587644316, guid: c9a28603a81495b46abe6b5cff4e5834, type: 2}
+  Bullet: {fileID: 54107526587644316, guid: de09dfe141d259543a7bff5511cd16ee, type: 2}
   knockbackForce: 5
 --- !u!114 &114678645281833284
 MonoBehaviour:
@@ -254,21 +269,6 @@ MonoBehaviour:
   fireRate: 50
   sightDistance: 17
   patrolDelay: 15
---- !u!114 &114805273558606486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828628123709640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a8964afcaacab4296d9264d070826a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  maxHearing: 15
-  maxSight: 20
-  gotEffect: 0
 --- !u!136 &136045156606221522
 CapsuleCollider:
   m_ObjectHideFlags: 1

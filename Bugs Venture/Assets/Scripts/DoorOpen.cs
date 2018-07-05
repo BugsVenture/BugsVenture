@@ -53,14 +53,18 @@ public class DoorOpen : MonoBehaviour
         yield return new WaitForSeconds(1f);
         CameraFollow.GetInstance().HasOtherTarget(false);
         playCameraRide = false;
-
+        isClosed = false; 
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (!isClosed && (other.gameObject.tag == "Player"||other.gameObject.tag == "Enemy" ))
+            Debug.Log("InTrigger");
+        if (!isClosed)
         {
-            this.Door.GetComponent<Animation>().Play();
+            if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"))
+            {
+                this.Door.GetComponent<Animation>().Play();
+            }
         }
     }
 
