@@ -9,8 +9,7 @@ public interface IBaseEnemy
     int Health { get; set; }
     float MaxHearing { get; set; }
     float MaxSight { get; set; }
-
-    bool GotEffect { get; set; }
+    
 
     void Attack();
     void StopAttack();
@@ -31,12 +30,15 @@ public interface IBaseEnemy
 
     void Rotate(float angle);
     void GetEffect(IEffect effect);
+    void RemoveEffect(IEffect effect);
 
     bool EffectActive();
 
     void ChangeSpeed(float multiplicator);
 
     bool SearchPlayer();
+
+    Room CurrRoom { get; set; }
 
     Quadrants Quadrant { get; set; }
 

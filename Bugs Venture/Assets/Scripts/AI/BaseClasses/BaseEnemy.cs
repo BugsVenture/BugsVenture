@@ -13,6 +13,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     private Room currRoom;
     protected NavMeshAgent agent;
 
+    private List<IEffect> currEffects = new List<IEffect>();
+
     //Public
     public int health = 2;
     public float maxHearing = 15;
@@ -23,6 +25,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     private bool isNearPlayer = false;
 
     private bool slowed = false;
+
+    private bool crazy = false; 
 
     private Quadrants quadrant = Quadrants.LeftTop;
 
@@ -86,6 +90,19 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         set
         {
             quadrant = value;
+        }
+    }
+
+    public Room CurrRoom
+    {
+        get
+        {
+            return currRoom;
+        }
+
+        set
+        {
+            currRoom = value;
         }
     }
 
@@ -217,6 +234,10 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
                 slowed = true;
                 effect.ActivateEffect(this);
                 break;
+            case Effects.Craziness:
+                crazy = true;
+                effect.ActivateEffect(this);
+                break;
         }
     }
 
@@ -238,5 +259,18 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         }
         IWeapon weapon = GetComponentInChildren<IWeapon>();
         weapon.FireRate /= multiplicator;
+    }
+
+    public void RemoveEffect(IEffect effect)
+    {
+        switch(effect.effectType)
+        {
+            case Effects.Craziness:
+                crazy = false;
+                break;
+            case Effects.SlowDown:
+                slowed = false;
+                break;
+        }
     }
 }
