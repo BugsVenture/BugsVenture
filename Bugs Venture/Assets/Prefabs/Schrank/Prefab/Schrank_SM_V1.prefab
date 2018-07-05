@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4700445922791824}
   - component: {fileID: 33119071029697966}
   - component: {fileID: 23560531694665610}
+  - component: {fileID: 95275063441162824}
   - component: {fileID: 65418633563149110}
   m_Layer: 0
   m_Name: Schrank_SM_V1
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553181238418184}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -12.9, y: 0.34113288, z: -7}
+  m_LocalPosition: {x: -34.37971, y: 0.5042389, z: 59.65586}
   m_LocalScale: {x: 6.189495, y: 3.7179, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,9 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 1b64fb2051b28cc42a8ddd95eaada908, type: 2}
-  - {fileID: 2100000, guid: dd653e564a0cee248b186500f51fe73f, type: 2}
-  - {fileID: 2100000, guid: dd653e564a0cee248b186500f51fe73f, type: 2}
+  - {fileID: 2100000, guid: 601cb3d5d9047ee48aafe15277a478fe, type: 3}
+  - {fileID: 2100002, guid: 601cb3d5d9047ee48aafe15277a478fe, type: 3}
+  - {fileID: 2100002, guid: 601cb3d5d9047ee48aafe15277a478fe, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +86,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553181238418184}
-  m_Mesh: {fileID: 4300000, guid: a568118c2948d1746b58ae289ad86720, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 601cb3d5d9047ee48aafe15277a478fe, type: 3}
 --- !u!65 &65418633563149110
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -98,3 +99,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10646058, y: 0.6952992, z: 2.7000008}
   m_Center: {x: 0.0017357953, y: 0.00069430494, z: 1.3500004}
+--- !u!95 &95275063441162824
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1553181238418184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 601cb3d5d9047ee48aafe15277a478fe, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
