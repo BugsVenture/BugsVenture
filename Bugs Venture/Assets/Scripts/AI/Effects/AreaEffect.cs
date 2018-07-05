@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(IEffect))]
 public class AreaEffect : MonoBehaviour
 {
-
+    //FICK DIE HENNE
     IEffect effect;
     Player player;
     List<IBaseEnemy> enemies = new List<IBaseEnemy>();
