@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 135425143161440364}
   - component: {fileID: 23612606792588678}
   - component: {fileID: 54107526587644316}
-  - component: {fileID: 114969927553768118}
+  - component: {fileID: 114636613311987690}
   m_Layer: 14
   m_Name: EnemyBullet 1
   m_TagString: EnemyBullet
@@ -222,7 +222,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114969927553768118
+--- !u!114 &114636613311987690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -230,14 +230,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589550091622656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b84921fdbcb1d4aaafb61322a76c4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 33f85b8ca1943c14889ee418b7cc9f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
   Damage: 1
   HitEffect: {fileID: 1919832288057830, guid: e546dc375aaedb5438a782ba6f22c444, type: 2}
-  MuzzleEffect: {fileID: 1085430398283108, guid: a8b5e88c9100e6f4f8a74ad16dcdfab9,
-    type: 2}
 --- !u!135 &135425143161440364
 SphereCollider:
   m_ObjectHideFlags: 1
