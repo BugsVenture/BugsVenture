@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-
+[RequireComponent(typeof(NavMeshAgent))]
 
 public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 {

@@ -9,31 +9,25 @@ public class CameraFollow : MonoBehaviour
     public Transform targetPlayer;
     public float smoothing = 5f;
     public float moveSpeed = 5;
+    public float camSwingSpeed = 15f;
+    public float camRotSpeed = 90f;
     public Vector3 offset;
     public bool border;
+    private bool hasOtherTarget = false; 
     public float minX, maxX,minZ, maxZ;
+    private Quaternion startRot; 
 
     private void Awake()
     {
         if (cameraInstance == null)
             cameraInstance = this;
+        startRot = transform.rotation;
     }
     public static CameraFollow GetInstance()
     {
         return cameraInstance;
     }
 
-    void Start()
-    {
-    }
-
-   void Update()
-    {
-        //if(border)
-        //{
-        //    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y,transform.position.z);
-        //}
-    }
     void FixedUpdate()
     {
         if (border)
@@ -41,16 +35,28 @@ public class CameraFollow : MonoBehaviour
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y, Mathf.Clamp(transform.position.z,minZ,maxZ));
         }
 
-        if (Player.GetInstance())
+        if (Player.GetInstance() && !hasOtherTarget)
         {
             
             targetPlayer = Player.GetInstance().transform;
             Vector3 targetCamPos = targetPlayer.position + offset;
-
+            transform.rotation = startRot;
             transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
 
-            //transform.Translate(Input.GetAxis("Right Analog Vertical") * Vector3.up * Time.deltaTime * moveSpeed);
-            //transform.Translate(Input.GetAxis("Right Analog Horizontal") * Vector3.right * Time.deltaTime * moveSpeed);
         }
+    }
+    
+    public void HasOtherTarget(bool otherTarget)
+    {
+        hasOtherTarget = otherTarget;
+    }
+
+    public bool Move(Vector3 position, Quaternion rotation)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, position, camSwingSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, camRotSpeed * Time.deltaTime);
+        if (transform.position == position)
+            return true;
+        return false; 
     }
 }
