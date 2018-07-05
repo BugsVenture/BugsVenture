@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4925961244587108}
   - component: {fileID: 198863130547879420}
   - component: {fileID: 199079750139504880}
+  - component: {fileID: 114887526210454070}
   m_Layer: 0
   m_Name: ShockWave
   m_TagString: Untagged
@@ -72,6 +73,17 @@ Transform:
   m_Father: {fileID: 4925961244587108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114887526210454070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143473817209986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d618ef67abe79444393abc272f4f801c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198523264998920184
 ParticleSystem:
   m_ObjectHideFlags: 1
