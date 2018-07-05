@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: tank
-  m_Shader: {fileID: 4800000, guid: 0f96220bbe610cc4991e2156630ead20, type: 3}
+  m_Shader: {fileID: 4800000, guid: b674fda82b7dcf642a381a24976138ea, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -83,8 +83,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Smoothness: 0.634
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -92,9 +94,10 @@ Material:
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
     - Color_35D6648C: {r: 1.6989956, g: 1.1951603, b: 2.6670945, a: 0}
     - Color_E5E2DFD2: {r: 0.41509426, g: 0.41509426, b: 0.41509426, a: 0}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4627451}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

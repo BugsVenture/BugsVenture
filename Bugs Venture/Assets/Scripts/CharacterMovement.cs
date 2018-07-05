@@ -113,7 +113,6 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         RigidBody.velocity = moveVelocity;
-        GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
 
     }
 
