@@ -12,4 +12,5 @@ public interface IWeapon
 
     void Attack();
 
+    void Knockback();
 }

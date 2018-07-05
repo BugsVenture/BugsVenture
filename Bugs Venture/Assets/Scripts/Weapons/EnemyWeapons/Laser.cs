@@ -11,7 +11,11 @@ public class Laser : MonoBehaviour, IWeapon {
     public float loadTime = 2;
     bool isLoaded = false;
 
+    private ParticleSystem loadParticles;
+    public GameObject hitParticles;
+
     private LineRenderer lr;
+    private ParticleSystem.MainModule main;
     Transform Muzzleoffset;
 
     float IWeapon.FireRate
@@ -53,6 +57,10 @@ public class Laser : MonoBehaviour, IWeapon {
     {
         Muzzleoffset = GetComponentInChildren<Transform>();
         lr = GetComponentInChildren<LineRenderer>();
+        loadParticles = GetComponentInChildren<ParticleSystem>();
+        main = loadParticles.main;
+        main.startLifetime = loadTime;
+        loadParticles.Stop();
     }
 
     public void Attack()
@@ -70,11 +78,12 @@ public class Laser : MonoBehaviour, IWeapon {
                 Shoot();
             yield return new WaitForSeconds(fireRate);
         }
-        SetLineRenderer(GetComponent<Transform>().transform.position, GetComponent<Transform>().transform.position);
+        SetLineRenderer(transform.GetChild(0).position, transform.GetChild(0).position);
     }
 
     void LoadLaser()
     {
+        loadParticles.Play();
         StartCoroutine(LoadDelay());        
     }
 
@@ -84,14 +93,16 @@ public class Laser : MonoBehaviour, IWeapon {
         Physics.Raycast(Muzzleoffset.position, transform.right, out hit, Mathf.Infinity);
         {
             Debug.DrawRay(Muzzleoffset.position, transform.right * hit.distance, Color.red);
-            
+
+            SetLineRenderer(GetComponent<Transform>().transform.position, hit.point);
             if (hit.collider.tag == Player.GetInstance().GetComponent<Collider>().tag)
             {
                 Player.GetInstance().GetHit();
             }
             if(hit.collider)
             {
-                SetLineRenderer(GetComponent<Transform>().transform.position, hit.point);
+                SpawnSparks(hit.point);
+                Debug.Log("hit");
             }
         }
     }
@@ -103,10 +114,21 @@ public class Laser : MonoBehaviour, IWeapon {
         lr.SetPosition(1, hitpoint);
     }
 
+    void SpawnSparks(Vector3 position)
+    {
+        GameObject sparks = Instantiate(hitParticles, position, transform.rotation);
+        Destroy(sparks, .5f);
+    }
+
     IEnumerator LoadDelay()
     {
-        
         yield return new WaitForSeconds(loadTime);
         isLoaded = true;
+        loadParticles.Stop();
+    }
+
+    public void Knockback()
+    {
+
     }
 }

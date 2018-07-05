@@ -86,6 +86,8 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     virtual protected void StateSwitch()
     {
+        if (enemy.EffectActive())
+            State = EnemyStates.GotEffect;
         switch (State)
         {
             case EnemyStates.Idle:
@@ -108,6 +110,10 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
                 break;
             case EnemyStates.ExamineSound:
                 ExamineSound();
+                break;
+            case EnemyStates.GotEffect:
+                if (!enemy.EffectActive())
+                    State = EnemyStates.Idle;
                 break;
         }
     }
@@ -148,7 +154,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
         if (!Sight())
         {
             enemy.StopAttack();
-            State = EnemyStates.Idle;
+            State = EnemyStates.IsSearching;
             return;
         }
         DefaultEnemy defaultEnemy = (DefaultEnemy)enemy;
@@ -163,11 +169,22 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
                 CalculateRandomPos();
         }
         if (Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) > activationDistance)
-            State = EnemyStates.Idle;
+        {
+            enemy.StopAttack();
+            State = EnemyStates.IsSearching;
+        }
     }
     virtual protected void IsSearching()
     {
-
+        if(Sight())
+        {
+            this.enemy.Quadrant = 0;
+            State = EnemyStates.OnWayToPlayer;
+        }
+        if (this.enemy.SearchPlayer())
+        {
+            State = EnemyStates.Idle;
+        }
     }
     virtual protected void Patrol()
     {

@@ -26,6 +26,7 @@ public class ShotGun : BaseWeapon {
 
     private void Shoot()
     {
+        Knockback();
         Rigidbody bulletInstance;
         Transform offset = this.transform.GetChild(0);
         

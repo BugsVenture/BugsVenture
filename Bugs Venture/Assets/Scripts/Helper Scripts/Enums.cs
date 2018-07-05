@@ -10,13 +10,21 @@ public enum EnemyStates
     IsAttacking,
     IsSearching, 
     Patrol,
-    ExamineSound
+    ExamineSound, 
+    GotEffect
 }
 
 public enum Quadrants
 {
-    RightTop, 
     LeftTop, 
+    RightTop, 
     RightBottom, 
     LeftBottom
+}
+
+public enum Effects
+{
+    None,
+    Craziness, 
+    SlowDown,
 }

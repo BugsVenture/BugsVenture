@@ -18,7 +18,11 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public float maxHearing = 15;
     public float maxSight = 10;
 
+    public bool gotEffect = false; 
+
     private bool isNearPlayer = false;
+
+    private bool slowed = false;
 
     private Quadrants quadrant = Quadrants.LeftTop;
 
@@ -60,6 +64,31 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         }
     }
 
+    public bool GotEffect
+    {
+        get
+        {
+            return gotEffect;
+        }
+
+        set
+        {
+            gotEffect = value;
+        }
+    }
+
+    public Quadrants Quadrant
+    {
+        get
+        {
+            return quadrant;
+        }
+        set
+        {
+            quadrant = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -68,13 +97,14 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         startRoom = hit.collider.GetComponent<Room>();
         agent = GetComponent<NavMeshAgent>();
         currRoom = startRoom;
+        quadrant = (Quadrants)Random.Range(0, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (this.health <= 0)
-            DestroyEnemy();        
+            DestroyEnemy();
         if (Vector3.Distance(transform.position, Player.GetInstance().transform.position) < maxHearing && !isNearPlayer)
         {
             NearPlayer();
@@ -87,7 +117,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         {
             currRoom = RoomContainer.GetInstance().GetInsideRoom(this.transform.position);
         }
-
     }
 
     public virtual void Attack()
@@ -95,6 +124,11 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
         weapon.Fire = true;
         weapon.Attack();
+    }
+
+    public void Knockback(float force)
+    {
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * -1 * force, ForceMode.Impulse);
     }
 
     public void StopMovement()
@@ -116,7 +150,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     void IBaseEnemy.GetDamage(int value)
     {
         this.health -= value;
-        Debug.Log(this.health);
     }
 
     public bool MoveTo(Vector3 pos, float threshold = 1.0f)
@@ -132,10 +165,19 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         return false;
     }
 
-    public void SearchPlayer()
+    public bool SearchPlayer()
     {
         if (MoveTo(currRoom.GetRandomPosInsideQuadrant(quadrant)))
+        {
+            if (quadrant == Quadrants.LeftBottom)
+            {
+                quadrant = 0;
+                return true;
+            }
             quadrant++;
+            return false;
+        }
+        return false;
     }
 
     public void StopAttack()
@@ -165,5 +207,36 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         isNearPlayer = false;
         Player.GetInstance().RemoveEnemy(this);
+    }
+
+    public void GetEffect(IEffect effect)
+    {
+        switch(effect.effectType)
+        {
+            case Effects.SlowDown:
+                slowed = true;
+                effect.ActivateEffect(this);
+                break;
+        }
+    }
+
+    public void Rotate(float angle)
+    {
+        transform.Rotate(Vector3.up * Time.deltaTime, angle);
+    }
+
+    public bool EffectActive()
+    {
+        return gotEffect;
+    }
+
+    public void ChangeSpeed(float multiplicator)
+    {
+        if ((agent.speed *= multiplicator) > 4)
+        {
+            agent.speed = 4;
+        }
+        IWeapon weapon = GetComponentInChildren<IWeapon>();
+        weapon.FireRate /= multiplicator;
     }
 }
