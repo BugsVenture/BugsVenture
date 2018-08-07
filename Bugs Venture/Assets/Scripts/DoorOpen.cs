@@ -9,17 +9,25 @@ public class DoorOpen : MonoBehaviour
 
     public bool isClosed = false;
 
+    private bool isOpen = false;
+
+    public Vector3 openOffset = Vector3.zero;
+
+    public float openSpeed = 1; 
+
     public int terminalsNeeded = 2;
 
-    public Transform destTrans;
-    public GameObject doorSmoke;
-    public Transform smokePos;
-
-    //Private
     private int terminalCount = 0;
-    private bool isCreated = false;
+
+    public Transform destTrans;
 
     private bool playCameraRide = false;
+
+    private AudioSource aSource;
+
+    private Vector3 offset;
+
+    private Vector3 startPos; 
 
     public void IncrementCount()
     {
@@ -33,11 +41,22 @@ public class DoorOpen : MonoBehaviour
 
     public void Start()
     {
+        startPos = Door.transform.position;
+        aSource = GetComponent<AudioSource>();
+        offset = Door.transform.position + openOffset; 
     }
 
     private void FixedUpdate()
     {
-        if(playCameraRide)
+        if(isOpen)
+        {
+            Door.transform.position = Vector3.Lerp(Door.transform.position, offset, openSpeed);
+        }
+        else
+        {
+            Door.transform.position = Vector3.Lerp(Door.transform.position, startPos, openSpeed);
+        }
+        if (playCameraRide)
         {
             MoveCamera();
         }
@@ -60,22 +79,23 @@ public class DoorOpen : MonoBehaviour
         isClosed = false; 
     }
 
-
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-            Debug.Log("InTrigger");
         if (!isClosed)
         {
             if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"))
             {
-                this.Door.GetComponent<Animation>().Play();
-                if(!isCreated)
-                {
-                GameObject smoke = Instantiate(doorSmoke, smokePos.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
-                isCreated = true;
-                Destroy(smoke, 0.5f);
-                }
+                isOpen = true;
+                aSource.Play();
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(!isClosed)
+        {
+            isOpen = false; 
+            aSource.Play();
         }
     }
 }

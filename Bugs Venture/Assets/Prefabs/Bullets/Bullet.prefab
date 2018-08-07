@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54107526587644316}
   - component: {fileID: 108614710224625564}
   - component: {fileID: 114092137628804862}
+  - component: {fileID: 114150898201085204}
   m_Layer: 12
   m_Name: Bullet
   m_TagString: Bullet
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1589550091622656}
   m_LocalRotation: {x: 0.7071079, y: -0, z: 0.70710576, w: 0}
-  m_LocalPosition: {x: -10.044, y: 1.193, z: -15.974}
+  m_LocalPosition: {x: -17.92, y: 0.28016275, z: -181.22}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4742121083892316}
@@ -148,7 +149,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: fef5f3ee1c8462641b645b56d983c38d, type: 2}
+  - {fileID: 2100000, guid: 2168808c9f65b024a814b43ccf2f9f3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,10 +273,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   Damage: 1
-  HitEffect: {fileID: 1963006806323666, guid: a945668bacbfc9f42ac2f6e79bba92b6, type: 2}
-  MuzzleEffect: {fileID: 1449929460999624, guid: a446d66498f3bdb41a0dc17b7861870d,
-    type: 2}
-  effectType: 0
+  HitEffect: {fileID: 1919832288057830, guid: e546dc375aaedb5438a782ba6f22c444, type: 2}
+  effectType: 1
+--- !u!114 &114150898201085204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589550091622656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1faa827e5da2d48a30e7b0a532a5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
+  radius: 5
+  minDegrees: -45
+  maxDegrees: 45
 --- !u!135 &135425143161440364
 SphereCollider:
   m_ObjectHideFlags: 1

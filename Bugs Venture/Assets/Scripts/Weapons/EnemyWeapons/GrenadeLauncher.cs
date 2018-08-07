@@ -10,29 +10,14 @@ public class GrenadeLauncher : BaseWeapon {
 
     private float mass; 
 
-    public override void Attack()
-    {
-        fire = true;
-        StartCoroutine(AttackRoutine());
-    }
+
 
     private void Awake()
     {
         mass = Bullet.mass;
     }
 
-    IEnumerator AttackRoutine()
-    {
-        while (fire)
-        {
-            Shoot();
-
-            yield return new WaitForSeconds(fireRate);
-        }
-    }
-
-
-    void Shoot()
+    public override void Shoot()
     {
         Rigidbody grenadeInstance;
         Transform offset = this.transform.GetChild(0);

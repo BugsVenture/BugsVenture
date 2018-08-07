@@ -7,24 +7,8 @@ public class ShotGun : BaseWeapon {
     public int bulletCount = 5;
     public int spreadAngle = 45;
 
-    public override void Attack()
-    {
-        fire = true;
-        StartCoroutine(AttackRoutine());
-    }
-    
-    
 
-    IEnumerator AttackRoutine()
-    {
-        while(fire)
-        {
-            Shoot();
-            yield return new WaitForSeconds(fireRate);
-        }
-    }
-
-    private void Shoot()
+    public override void Shoot()
     {
         Knockback();
         Rigidbody bulletInstance;

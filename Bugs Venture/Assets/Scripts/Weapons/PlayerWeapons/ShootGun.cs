@@ -33,7 +33,7 @@ public class ShootGun : BaseWeapon
 	
 	
 
-    public override void Attack()
+    public new void Attack()
     {
         int i = 0;
         foreach(Quaternion quat in bullets)
@@ -59,4 +59,7 @@ public class ShootGun : BaseWeapon
         }
     }
 
+    public override void Shoot()
+    {
+    }
 }

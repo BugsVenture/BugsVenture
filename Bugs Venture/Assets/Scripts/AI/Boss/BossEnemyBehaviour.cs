@@ -10,20 +10,27 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
 
     public float maxDistWhileCharing = 5;
 
+    public AudioClip chargeSound;
+
     private bool isCharging = true;
 
     private Vector3 currOptPos;
 
     private Vector3 rePos = Vector3.zero;
 
-    private bool repositioned = false; 
+    private bool repositioned = false;
 
     private BossEnemy bEnemy;
 
     private Brain brain;
-    
+
+    private AudioSource aSource;
+
+    private bool isPlayingSound = false;
+
     protected override void InitClass()
     {
+        aSource = GetComponent<AudioSource>();
         StartCoroutine(Charge());
         bEnemy = GetComponent<BossEnemy>();
         brain = GetComponent<Brain>();
@@ -33,7 +40,7 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
     {
         isCharging = true;
         yield return new WaitForSeconds(chargeTime);
-        isCharging = false; 
+        isCharging = false;
     }
 
     protected override void Idle()
@@ -41,12 +48,12 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
         if (!bEnemy.IsActive())
             return;
 
-        if(Sight())
+        if (Sight())
         {
             State = EnemyStates.StartAttack;
             return;
         }
-         State = EnemyStates.IsSearching; 
+        State = EnemyStates.IsSearching;
     }
 
     protected override void StartAttack()
@@ -65,7 +72,6 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
         if (bEnemy.isAttacking)
         {
             StartCoroutine(AttackDelay());
-            StopCoroutine(AttackDelay());
             return;
         }
         bEnemy.StartMovement();
@@ -74,7 +80,14 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
 
     IEnumerator AttackDelay()
     {
-        yield return new WaitForSeconds(.5f);
+        if (!isPlayingSound)
+        {
+            aSource.clip = chargeSound;
+            aSource.Play();
+            isPlayingSound = true;
+        }
+        yield return new WaitForSeconds(.9f);
+        isPlayingSound = false;
         State = EnemyStates.IsAttacking;
     }
 
@@ -113,7 +126,7 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
     protected override void IsSearching()
     {
         bEnemy.StartMovement();
-        if(Sight())
+        if (Sight())
         {
             brain.DeactivateBrain();
             State = EnemyStates.StartAttack;
@@ -127,13 +140,13 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
 
     void Update()
     {
-        if(Sight())
+        if (Sight())
         {
             bEnemy.LookAt(Player.GetInstance().transform.position);
         }
-        if(!BossRoom.GetInstance().IsInDarkness() && isCharging)
+        if (!BossRoom.GetInstance().IsInDarkness() && isCharging)
         {
-            State = EnemyStates.Patrol; 
+            State = EnemyStates.Patrol;
         }
         Debug.Log(State);
         StateSwitch();
@@ -142,7 +155,7 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
     protected override void Patrol()
     {
         bEnemy.StartMovement();
-        if (bEnemy.MoveTo(bEnemy.bossRoom.CalculateClosestEntryPoint(this.transform.position),2))
+        if (bEnemy.MoveTo(bEnemy.bossRoom.CalculateClosestEntryPoint(this.transform.position), 2))
         {
             State = EnemyStates.Idle;
         }

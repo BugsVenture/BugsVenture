@@ -13,10 +13,13 @@ public class BossEnemy : BaseEnemy
 
     public BossRoom bossRoom;
 
+    public AudioClip dashSound;
 
     private bool isActive = false;
 
     private int health = 3;
+
+    private bool soundPlaying = false; 
 
     [HideInInspector]
     public bool isAttacking = false; 
@@ -77,6 +80,7 @@ public class BossEnemy : BaseEnemy
 
     private void Start()
     {
+        aSource = GetComponent<AudioSource>();
         bossRoom = BossRoom.GetInstance();
         RaycastHit hit;
         Physics.Raycast(this.transform.position, -transform.up, out hit, 10);
@@ -114,10 +118,17 @@ public class BossEnemy : BaseEnemy
     }
     private bool Dash()
     {
+        if(!soundPlaying)
+        {
+            aSource.clip = dashSound;
+            aSource.Play();
+        }
+        soundPlaying = true;
         this.transform.position = Vector3.Lerp(this.transform.position, dashPoint, dashSpeed* Time.deltaTime);
 
         if(Vector3.Distance(this.transform.position, dashPoint) < .5f)
         {
+            soundPlaying = false; 
             return true;
         }
         return false;

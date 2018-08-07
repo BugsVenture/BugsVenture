@@ -5,7 +5,6 @@ using UnityEngine;
 public class CrazinessEffect : BaseEffect {
 
 
-    public float duration = 5;
 
     public float radius = 5;
 
@@ -13,37 +12,9 @@ public class CrazinessEffect : BaseEffect {
 
     public float maxDegrees = 45;
 
-    private bool isActive = false;
-
     private Vector3 randomPos;
 
     private IBaseEnemy enemy;
-
-    public float Duration
-    {
-        get
-        {
-            return duration;
-        }
-
-        set
-        {
-            duration = value;
-        }
-    }
-
-    public bool IsActive
-    {
-        get
-        {
-            return isActive;
-        }
-
-        set
-        {
-            isActive = value;
-        }
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -76,7 +47,7 @@ public class CrazinessEffect : BaseEffect {
 
     public override void DeactivateEffect(IBaseEnemy enemy)
     {
-        throw new System.NotImplementedException();
+        StopCoroutine(Deactivation());
     }
 
     public override void HitPlayer(Player player)

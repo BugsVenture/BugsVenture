@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 23612606792588678}
   - component: {fileID: 54107526587644316}
   - component: {fileID: 114292351979180148}
+  - component: {fileID: 82796355421334518}
   m_Layer: 14
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -131,6 +132,101 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!82 &82796355421334518
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589550091622656}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4e835adba88fa104b81baf6c4e075ef4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!96 &96144979279298966
 TrailRenderer:
   serializedVersion: 2
@@ -233,12 +329,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21a93114c1121b4389c21755055570b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 10
   Damage: 1
   HitEffect: {fileID: 1919832288057830, guid: e546dc375aaedb5438a782ba6f22c444, type: 2}
-  MuzzleEffect: {fileID: 1085430398283108, guid: a8b5e88c9100e6f4f8a74ad16dcdfab9,
-    type: 2}
   effectType: 0
+  audios:
+  - {fileID: 8300000, guid: 4e835adba88fa104b81baf6c4e075ef4, type: 3}
+  - {fileID: 8300000, guid: 04070ca9fce84c24e8b747fad3df330c, type: 3}
+  - {fileID: 8300000, guid: 494a76c77cfe20342bc3445607a66aa8, type: 3}
+  - {fileID: 8300000, guid: 0cd5bc318c8010444ac8b19d69a578c3, type: 3}
+  - {fileID: 8300000, guid: 497ac95028e3ef94bb822c4d2397a303, type: 3}
+  - {fileID: 8300000, guid: c6517a2a29dd86445aab6c2b69f308da, type: 3}
+  - {fileID: 8300000, guid: 11203d6b7629cd140bdf73313584c4bd, type: 3}
+  - {fileID: 8300000, guid: 946884478c2c1de4ab422115019b742c, type: 3}
+  - {fileID: 8300000, guid: f5aba9636692d6a4ead1fd41e8e98c40, type: 3}
+  - {fileID: 8300000, guid: 1a9cdf9e58c41174e81f7c18d27cad38, type: 3}
 --- !u!135 &135425143161440364
 SphereCollider:
   m_ObjectHideFlags: 1

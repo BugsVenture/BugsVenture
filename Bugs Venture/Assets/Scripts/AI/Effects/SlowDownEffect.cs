@@ -12,6 +12,8 @@ public class SlowDownEffect : BaseEffect {
 
     private IBaseEnemy enemy;
 
+    private AudioSource aSource; 
+
     public float Duration
     {
         get
@@ -44,8 +46,14 @@ public class SlowDownEffect : BaseEffect {
         }
     }
 
+    private void Start()
+    {
+        aSource = GetComponent<AudioSource>(); 
+    }
+
     public override void ActivateEffect(IBaseEnemy enemy)
     {
+        aSource.Play();
         this.enemy = enemy;
         enemy.ChangeSpeed(slowdownValue);
         StartCoroutine(Deactivation());
@@ -71,6 +79,7 @@ public class SlowDownEffect : BaseEffect {
 
     public override void DeactivateEffect(IBaseEnemy enemy)
     {
+        aSource.Stop();
         StopCoroutine(Deactivation());
         enemy.ChangeSpeed(1 / slowdownValue);
     }

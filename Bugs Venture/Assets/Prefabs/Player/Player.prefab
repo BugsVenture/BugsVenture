@@ -68,6 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4251383208791774}
+  - component: {fileID: 95690940402604476}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -138,7 +139,8 @@ GameObject:
   - component: {fileID: 54590015884895982}
   - component: {fileID: 114224718440064534}
   - component: {fileID: 114860048598345594}
-  - component: {fileID: 82668575285569632}
+  - component: {fileID: 114448478164045940}
+  - component: {fileID: 82431935041979900}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -347,8 +349,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329470902482134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3672142, y: 0.0768069, z: 0.5225105}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3672156, y: 0.07680691, z: 0.5225114}
   m_LocalScale: {x: 0.56063455, y: 0.56063455, z: 0.56063455}
   m_Children:
   - {fileID: 4762925099637622}
@@ -415,7 +417,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655843554920228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5732651, y: -0.080491245, z: 1.1190271}
   m_LocalScale: {x: 0.037040617, y: 0.045379974, z: 0.28031728}
   m_Children:
@@ -499,7 +501,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1589824216875706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -34.760033, y: 1.43, z: 61.624073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4049081486449228}
@@ -986,7 +988,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!82 &82668575285569632
+--- !u!82 &82431935041979900
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -995,8 +997,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 4e835adba88fa104b81baf6c4e075ef4, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1081,6 +1083,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95690940402604476
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301586016142684}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b2634c43d20da1f469d4462167f75812, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!108 &108060421232188614
 Light:
   m_ObjectHideFlags: 1
@@ -1159,6 +1179,28 @@ MonoBehaviour:
   knockbackForce: 5
   MuzzleEffect: {fileID: 198427191885933494}
   cameraShake: {fileID: 0}
+--- !u!114 &114448478164045940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589824216875706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 482e9f54d11e1104d84adeb122ae89ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomLaserSounds:
+  - {fileID: 8300000, guid: 4e835adba88fa104b81baf6c4e075ef4, type: 3}
+  - {fileID: 8300000, guid: 04070ca9fce84c24e8b747fad3df330c, type: 3}
+  - {fileID: 8300000, guid: 494a76c77cfe20342bc3445607a66aa8, type: 3}
+  - {fileID: 8300000, guid: 0cd5bc318c8010444ac8b19d69a578c3, type: 3}
+  - {fileID: 8300000, guid: 497ac95028e3ef94bb822c4d2397a303, type: 3}
+  - {fileID: 8300000, guid: c6517a2a29dd86445aab6c2b69f308da, type: 3}
+  - {fileID: 8300000, guid: 11203d6b7629cd140bdf73313584c4bd, type: 3}
+  - {fileID: 8300000, guid: 946884478c2c1de4ab422115019b742c, type: 3}
+  - {fileID: 8300000, guid: f5aba9636692d6a4ead1fd41e8e98c40, type: 3}
+  - {fileID: 8300000, guid: 1a9cdf9e58c41174e81f7c18d27cad38, type: 3}
 --- !u!114 &114860048598345594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1182,8 +1224,7 @@ MonoBehaviour:
   shieldDuration: 5
   ResetPoint: {x: 0, y: 0, z: 0}
   maxDistance: 5
-  knockBackForce: 0.5
-  changeUiColor: {fileID: 0}
+  knockBackForce: 2
 --- !u!135 &135503368240367530
 SphereCollider:
   m_ObjectHideFlags: 1
