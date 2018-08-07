@@ -9,8 +9,8 @@ using UnityEngine;
 public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 {
 
-    private Room startRoom;
-    private Room currRoom;
+    protected Room startRoom;
+    protected Room currRoom;
     protected NavMeshAgent agent;
 
     private List<IEffect> currEffects = new List<IEffect>();
@@ -22,7 +22,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     public bool gotEffect = false; 
 
-    private bool isNearPlayer = false;
+    protected bool isNearPlayer = false;
 
     private bool slowed = false;
 

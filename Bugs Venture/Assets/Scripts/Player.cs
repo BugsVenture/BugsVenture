@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 
     private float maxSpeed;
 
+    public AudioClip InitLaserSound;
+    public List<AudioClip> randomLaserSounds = new List<AudioClip>();
+
     public static Player GetInstance()
     {
         return playerInstance;
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour {
 
     private void Awake()
     {
+        
         if(playerInstance == null)
             playerInstance = this;
 
@@ -84,7 +88,7 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Boss")
         {
             GetHit();
         }
@@ -93,7 +97,6 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Debug.Log(GetComponent<CharacterMovement>().moveSpeed);
         //Fire
         if(Input.GetButtonDown("Fire1"))
         {
@@ -103,6 +106,9 @@ public class Player : MonoBehaviour {
 
     private void Attack()
     {
+        AudioSource aSource = GetComponent<AudioSource>();
+        aSource.clip = randomLaserSounds[Random.Range(0, randomLaserSounds.Count)];
+        aSource.Play();
         GunController controller = GetComponentInChildren<GunController>();
         controller.GetWeapon().Attack();
 

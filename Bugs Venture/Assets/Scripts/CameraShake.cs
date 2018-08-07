@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         camera = Camera.main.transform;
-        startPosition = camera.localPosition;
+        //startPosition = camera.localPosition;
     }
 
     // Update is called once per frame
@@ -29,20 +29,34 @@ public class CameraShake : MonoBehaviour
     //Shake Camera when hit a Wall or Enmemy
     public void ShakeCam()
     {
-        camera.localPosition = camera.localPosition + Random.insideUnitSphere * power;
-        StartCoroutine(CamShake());
+        //camera.localPosition = camera.localPosition + Random.insideUnitSphere * power;
+        StartCoroutine(CamShake(2.0f,0.5f));
     }
 
     //Knocks the Camera back when shoots
     public void CamKnockBack()
     {
         camera.localPosition = camera.localPosition + new Vector3(0, 0, -2) * power;
-        StartCoroutine(CamShake());
+        StartCoroutine(CamShake(0.1f,0.1f));
     }
 
-    IEnumerator CamShake()
+    public IEnumerator CamShake(float duration, float magnitude)
     {
-        yield return new WaitForSeconds(duration);
-        camera.localPosition = camera.localPosition;
+        Vector3 startposition = transform.localPosition;
+
+        float elapsed = 0.0f;
+
+        while(elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector3(x, y, startPosition.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = startPosition;
     }
 }

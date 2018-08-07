@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 moveVelocity;
     private float stamina = 1, maxStamina = 1;
     private BarScript bar;
+    private ChangeUiColor changeUiColor;
     private int number;
 
     // Use this for initialization
@@ -41,10 +42,11 @@ public class CharacterMovement : MonoBehaviour
         bar = FindObjectOfType<BarScript>();
         RigidBody = GetComponent<Rigidbody>();
         MainCamera = FindObjectOfType<Camera>();
+        changeUiColor = FindObjectOfType<ChangeUiColor>();
         bar.fillAmount = maxStamina;
     }
     // Update is called once per frame
-    void Update()
+   public void Update()
     {
 
         if(Input.GetButtonDown("Fire1"))
@@ -62,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 49|| 
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number <= 49)
         {
-            Teleport();
+            Shield();
         }
         else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
@@ -70,6 +72,12 @@ public class CharacterMovement : MonoBehaviour
             PulsAttack();
         }
 
+        if(bar.fillAmount != 1 && Input.GetKeyDown(KeyCode.LeftControl) ||
+           bar.fillAmount != 1 && Input.GetKeyDown(KeyCode.Joystick1Button4))
+        {
+            //changeUiColor.BlinkMaterial();
+            changeUiColor.BlinkUI();
+        }
 
 
         // Attackcheck
@@ -114,6 +122,7 @@ public class CharacterMovement : MonoBehaviour
     {
         RigidBody.velocity = moveVelocity;
 
+        GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
     }
 
 
@@ -153,7 +162,7 @@ public class CharacterMovement : MonoBehaviour
         Destroy(inst,shieldDuration);
         number = Random.Range(randomMin, randomMax);
     }
-
+    
     //Reset player 
     void OnTriggerEnter(Collider other)
     {
@@ -171,6 +180,6 @@ public class CharacterMovement : MonoBehaviour
 
     void KnockBack()
     {
-        this.transform.position += this.transform.forward * -0.2f;
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * -0.2f); 
     }
 }

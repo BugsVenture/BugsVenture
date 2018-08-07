@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: tank
-  m_Shader: {fileID: 4800000, guid: b674fda82b7dcf642a381a24976138ea, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7df4efeaf31c20a4f8b500325267ee5b, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -70,6 +70,22 @@ Material:
         m_Texture: {fileID: 2800000, guid: 61e8e71e101c6ac4a9bec5adf1dcc58e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 928f7f001f525eb49a78a49363abe638, type: 3}
+        m_Scale: {x: -10, y: -10}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: be2714524fdb772499714408610ce798, type: 3}
+        m_Scale: {x: -10, y: -10}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample2:
+        m_Texture: {fileID: 2800000, guid: 53606611be8871f4f8099801efffddb2, type: 3}
+        m_Scale: {x: -10, y: -10}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_23DD0EF: 1.26
     - _AlphaClip: 0
@@ -79,25 +95,39 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 4.7
+    - _Float1: -1.3
+    - _Float2: 2.77
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineStrenght: 1.11
     - _Parallax: 0.02
     - _Smoothness: 0.634
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TransAmbient: 0.2
+    - _TransDirect: 1
+    - _TransNormalDistortion: 0.1
+    - _TransScattering: 2
+    - _TransShadow: 0.9
+    - _Translucency: 0
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
+    - _smoothness: 1.79
     m_Colors:
     - Color_35D6648C: {r: 1.6989956, g: 1.1951603, b: 2.6670945, a: 0}
     - Color_E5E2DFD2: {r: 0.41509426, g: 0.41509426, b: 0.41509426, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4627451}
+    - _Color0: {r: 0, g: 0.45309585, b: 1, a: 0}
+    - _Color1: {r: 0.8400435, g: 0.7056337, b: 0.95283014, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.6339622, g: 0.54245275, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Bullet : MonoBehaviour, IBullet
+public class Bullet : MonoBehaviour,IBullet
 {
     //Public
     public float bulletSpeed = 10f;
     public int Damage;
     public GameObject HitEffect;
+    public GameObject MuzzleEffect;
     public Effects effectType;
     private IEffect effect;
 
@@ -22,6 +23,8 @@ public class Bullet : MonoBehaviour, IBullet
         {
             effect = GetComponent<IEffect>();
         }
+        GameObject muzzleeffect = Instantiate(MuzzleEffect, this.transform.position, this.transform.rotation);
+        Destroy(muzzleeffect, 1.5f);
     }
 
     void Update()

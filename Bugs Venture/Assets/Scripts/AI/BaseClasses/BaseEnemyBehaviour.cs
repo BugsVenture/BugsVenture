@@ -24,7 +24,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     protected Vector3 startPos;
     protected LayerMask layerMask; // only add layermasks by |= 
 
-    protected EnemyStates State;
+    protected EnemyStates State = EnemyStates.Idle;
     protected Vector3 randomPos;
     private Patrol patroling;
     private int patrolSize;
@@ -222,14 +222,26 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
         RaycastHit rayHit;
         Vector3 targetDir = Player.GetInstance().transform.position - transform.position;
         Physics.Raycast(transform.position, targetDir, out rayHit, sightDistance, layerMask);
-        Debug.DrawRay(transform.position, targetDir, Color.cyan);
         if (rayHit.collider)
         {
-            if (rayHit.collider.tag == Player.GetInstance().tag)
+            if (IsInAngle(targetDir))
             {
-                return true;
-
+                if (rayHit.collider.tag == Player.GetInstance().tag)
+                {
+                    return true;
+                }
             }
+        }
+        return false;
+    }
+
+    private bool IsInAngle(Vector3 dir)
+    {
+        float product = Vector3.Dot(this.transform.forward, dir);
+        float currAngle = Mathf.Acos(product / (this.transform.forward.magnitude * dir.magnitude)) * Mathf.Rad2Deg;
+        if (currAngle < sightAngle && currAngle > -sightAngle)
+        {
+            return true;
         }
         return false;
     }

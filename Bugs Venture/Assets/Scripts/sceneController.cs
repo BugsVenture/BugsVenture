@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class sceneController : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class sceneController : MonoBehaviour
     void Start()
     {
         sv = GetComponent<SaveGame>();
-
         if(Application.loadedLevelName == "Menu")
         {
             lastLevel = PlayerPrefs.GetString("lastLevel", lastLevel);
@@ -85,6 +85,7 @@ public class sceneController : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
 
     //Restart Level
     public void RestartLevel()

@@ -7,9 +7,9 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Deformation
-  m_Shader: {fileID: 4800000, guid: 41772d8ed4ae95f449811614bbead5b3, type: 3}
+  m_Shader: {fileID: 4800000, guid: c3ffa130a2b26ad479e8a013ff8572ae, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a40174c675fc1264dbbe1c9b83c7f29f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8ff40e01d0918b64ea096bc115023dfb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -59,6 +59,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FresenelPower: 1.43
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -71,6 +72,12 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - __dirty: 0
+    - _dividefactor: 4.78
+    - _noisepower: 0.045
+    - _speed: 8.48
     m_Colors:
+    - _BaseColor: {r: 0.7322726, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresenelColor: {r: 0, g: 0.9171715, b: 1, a: 1}

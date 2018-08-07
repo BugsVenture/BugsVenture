@@ -12,6 +12,8 @@ TagManager:
   - Ground
   - Wall
   - Outside
+  - Boss
+  - BossGenerator
   layers:
   - Default
   - TransparentFX
@@ -29,8 +31,8 @@ TagManager:
   - Shield
   - EnemyBullet
   - Camera
-  - 
-  - 
+  - Boss
+  - BossGenerator
   - 
   - 
   - 
@@ -48,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1
+    uniqueID: 1607905919
     locked: 0

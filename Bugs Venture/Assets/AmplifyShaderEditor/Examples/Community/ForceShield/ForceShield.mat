@@ -9,7 +9,7 @@ Material:
   m_Name: ForceShield
   m_Shader: {fileID: 4800000, guid: 62ea2efaa971044a595e252df8c5aa04, type: 3}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -27,7 +27,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShieldPattern:
-        m_Texture: {fileID: 2800000, guid: ac42a5a9ebd7a144d84bc59d3b7dc538, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5798ded558355430c8a9b13ee12a847c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShieldPatternWaves:
@@ -41,17 +41,23 @@ Material:
     m_Floats:
     - _HitSize: 0.2
     - _HitTime: 0
-    - _IntersectIntensity: 0.315
-    - _Opacity: 0.386
-    - _ShieldAnimSpeed: -2.9
+    - _IntersectIntensity: 0
+    - _Opacity: 0.695
+    - _ShieldAnimSpeed: -10
     - _ShieldDistortion: 0
-    - _ShieldPatternPower: 12
-    - _ShieldPatternSize: 1
-    - _ShieldRimPower: 2.06
+    - _ShieldPatternPower: 34.8
+    - _ShieldPatternSize: 5
+    - _ShieldRimPower: 0
+    - _TransAmbient: 1
+    - _TransDirect: 0.886
+    - _TransNormalDistortion: 0.718
+    - _TransScattering: 44.3
+    - _TransShadow: 0.9
+    - _Translucency: 19.8
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.13171947, g: 0.42087066, b: 0.754717, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _HitColor: {r: 1, g: 1, b: 1, a: 1}
     - _HitPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _IntersectColor: {r: 0.03137255, g: 0.25882348, b: 0.31764707, a: 1}
-    - _ShieldPatternColor: {r: 0.35764506, g: 0.4047241, b: 0.4433962, a: 1}
+    - _IntersectColor: {r: 0.95283014, g: 0.95283014, b: 0.95283014, a: 1}
+    - _ShieldPatternColor: {r: 0.39208776, g: 0.63619775, b: 0.8396226, a: 1}

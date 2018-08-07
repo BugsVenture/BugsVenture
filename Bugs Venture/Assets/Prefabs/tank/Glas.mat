@@ -7,9 +7,9 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Glas
-  m_Shader: {fileID: 4800000, guid: b674fda82b7dcf642a381a24976138ea, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7df4efeaf31c20a4f8b500325267ee5b, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -87,6 +87,30 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 928f7f001f525eb49a78a49363abe638, type: 3}
+        m_Scale: {x: 50.8, y: 16.21}
+        m_Offset: {x: -1.23, y: -4.47}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: be2714524fdb772499714408610ce798, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample2:
+        m_Texture: {fileID: 2800000, guid: 53606611be8871f4f8099801efffddb2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample3:
+        m_Texture: {fileID: 2800000, guid: 5a66d921244e9fb42b60c4fac13bf495, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample4:
+        m_Texture: {fileID: 2800000, guid: 5a66d921244e9fb42b60c4fac13bf495, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_23DD0EF: 0.95
     - Vector1_CA51BADB: 0.51
@@ -100,6 +124,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 4.7
+    - _Float1: -1.3
+    - _Float2: 2.77
+    - _Float4: 2.15
+    - _Float5: 2.15
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
@@ -107,6 +136,7 @@ Material:
     - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineStrenght: 0.51
     - _Parallax: 0.02
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 1
@@ -116,7 +146,7 @@ Material:
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - __dirty: 1
+    - __dirty: 0
     m_Colors:
     - Color_35D6648C: {r: 0.61937976, g: 3.5752869, b: 7.393847, a: 0.88235295}
     - Color_A1FFFF29: {r: 0, g: 0.84580016, b: 1, a: 0}
@@ -125,6 +155,9 @@ Material:
     - Vector2_A8117EA0: {r: 0, g: 1, b: 0, a: 0}
     - Vector2_C15D83AB: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 0.75, g: 0.9281913, b: 1, a: 0.39215687}
+    - _Color0: {r: 0, g: 0.45309585, b: 1, a: 0}
+    - _Color1: {r: 0.8400435, g: 0.7056337, b: 0.95283014, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.39215687, g: 0.63930416, b: 0.9529412, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

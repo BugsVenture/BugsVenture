@@ -233,9 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21a93114c1121b4389c21755055570b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
+  bulletSpeed: 8
   Damage: 1
   HitEffect: {fileID: 1919832288057830, guid: e546dc375aaedb5438a782ba6f22c444, type: 2}
+  MuzzleEffect: {fileID: 1085430398283108, guid: a8b5e88c9100e6f4f8a74ad16dcdfab9,
+    type: 2}
   effectType: 0
 --- !u!135 &135425143161440364
 SphereCollider:
