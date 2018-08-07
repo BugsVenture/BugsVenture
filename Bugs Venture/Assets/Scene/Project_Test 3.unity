@@ -3253,11 +3253,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4795390396248730, guid: fed767f081fe8e2429d2c48ce77168df,
     type: 2}
   m_PrefabInternal: {fileID: 838181752}
---- !u!1 &279046353 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1207146853236406, guid: 30e0137748044ba43938ffa50475f308,
-    type: 2}
-  m_PrefabInternal: {fileID: 373706709}
 --- !u!1001 &280268374
 Prefab:
   m_ObjectHideFlags: 0
@@ -4026,11 +4021,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 331705319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01866f4bc69ab8e4abdc2a56fed3d4c1, type: 3}
+  m_Script: {fileID: 11500000, guid: b0aa93b407914244da15687c336a88f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level2: Project_Test 1
-  InteractUI: {fileID: 279046353}
+  level2: 
+  InteractUI: {fileID: 0}
 --- !u!65 &331705321
 BoxCollider:
   m_ObjectHideFlags: 0
