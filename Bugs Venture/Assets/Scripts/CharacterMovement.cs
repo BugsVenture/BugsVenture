@@ -62,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number <= 49|| 
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number <= 49)
         {
-            Teleport();
+            Shield();
         }
         else if(Input.GetKeyDown(GameManager.GM.teleportKey) && isAttacking && number >= 50||
             Input.GetKeyDown(KeyCode.Joystick1Button4) && isAttacking && number >= 50)
@@ -113,7 +113,7 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         RigidBody.velocity = moveVelocity;
-
+        GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
     }
 
 

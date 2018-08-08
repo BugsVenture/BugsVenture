@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Project_Test 5.unity
     guid: 7659671a79a91fb45bc90920ed107838
+  - enabled: 1
+    path: Assets/Scene/Project_Test 6.unity
+    guid: 90e729e210511be4db6331d43ef44210
+  - enabled: 1
+    path: Assets/Scene/Project_Test 7.unity
+    guid: 5ece29b047c4a8b48b3723427265d5bf
   m_configObjects: {}
