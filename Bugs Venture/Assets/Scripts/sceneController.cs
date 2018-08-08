@@ -20,9 +20,13 @@ public class sceneController : MonoBehaviour
     public GameObject Controlls;
     public GameObject Settings;
     public GameObject Credits;
+    public GameObject lagerTrigger;
+    public GameObject lastroomTrigger;
 
     void Start()
     {
+        lagerTrigger.SetActive(false);
+        lastroomTrigger.SetActive(false);
         sv = GetComponent<SaveGame>();
 
         if(Application.loadedLevelName == "Menu")
@@ -47,6 +51,14 @@ public class sceneController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             RestartLevel();
+        }
+        if(lastLevel =="Project_Test 3")
+        {
+            lagerTrigger.SetActive(true);
+        }
+        if(lastLevel == "Project_Test 4")
+        {
+            lastroomTrigger.SetActive(true);
         }
     }
 
