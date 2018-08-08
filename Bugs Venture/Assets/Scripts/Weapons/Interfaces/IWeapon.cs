@@ -12,5 +12,11 @@ public interface IWeapon
 
     void Attack();
 
+    void StopAttack();
+
+    IEnumerator AttackRoutine();
+
+    void Shoot();
+
     void Knockback();
 }

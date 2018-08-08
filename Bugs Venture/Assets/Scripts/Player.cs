@@ -15,7 +15,6 @@ public class Player : MonoBehaviour {
 
     private float maxSpeed;
 
-    public AudioClip InitLaserSound;
     public List<AudioClip> randomLaserSounds = new List<AudioClip>();
 
     public static Player GetInstance()
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour {
 
     private void Awake()
     {
-        
         if(playerInstance == null)
             playerInstance = this;
 
@@ -97,6 +95,7 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        Debug.Log(GetComponent<CharacterMovement>().moveSpeed);
         //Fire
         if(Input.GetButtonDown("Fire1"))
         {

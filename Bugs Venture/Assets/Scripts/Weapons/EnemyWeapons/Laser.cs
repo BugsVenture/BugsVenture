@@ -67,7 +67,7 @@ public class Laser : MonoBehaviour, IWeapon {
     {
         StartCoroutine(AttackRoutine());
     }
-    IEnumerator AttackRoutine()
+    public IEnumerator AttackRoutine()
     {
         isLoaded = false;
         while (fire)
@@ -87,7 +87,7 @@ public class Laser : MonoBehaviour, IWeapon {
         StartCoroutine(LoadDelay());        
     }
 
-    void Shoot()
+    public void Shoot()
     {
         RaycastHit hit;
         Physics.Raycast(Muzzleoffset.position, transform.right, out hit, Mathf.Infinity);
@@ -105,6 +105,11 @@ public class Laser : MonoBehaviour, IWeapon {
                 Debug.Log("hit");
             }
         }
+    }
+
+    public void StopAttack()
+    {
+
     }
 
     void SetLineRenderer(Vector3 origin, Vector3 hitpoint)

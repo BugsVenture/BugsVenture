@@ -30,6 +30,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     private Quadrants quadrant = Quadrants.LeftTop;
 
+    protected AudioSource aSource;
+
     int IBaseEnemy.Health
     {
         get
@@ -109,11 +111,19 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     // Use this for initialization
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
         RaycastHit hit;
         Physics.Raycast(this.transform.position, -transform.up, out hit, 10);
         startRoom = hit.collider.GetComponent<Room>();
         agent = GetComponent<NavMeshAgent>();
-        currRoom = startRoom;
+        if (startRoom != null)
+        {
+            currRoom = startRoom;
+        }
+        else
+        {
+            currRoom = null;
+        }
         quadrant = (Quadrants)Random.Range(0, 3);
     }
 
@@ -122,6 +132,10 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         if (this.health <= 0)
             DestroyEnemy();
+        if(Player.GetInstance() == null)
+        {
+            return;
+        }
         if (Vector3.Distance(transform.position, Player.GetInstance().transform.position) < maxHearing && !isNearPlayer)
         {
             NearPlayer();
@@ -129,6 +143,10 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
         else if(Vector3.Distance(transform.position, Player.GetInstance().transform.position) > maxHearing && isNearPlayer)
         {
             AwayFromPlayer();
+        }
+        if(currRoom == null)
+        {
+            return;
         }
         if (!currRoom.PosInside(this.transform.position))
         {
@@ -139,7 +157,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public virtual void Attack()
     {
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
-        weapon.Fire = true;
         weapon.Attack();
     }
 
@@ -200,7 +217,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     public void StopAttack()
     {
         IWeapon weapon = this.GetComponentInChildren<IWeapon>();
-        weapon.Fire = false;
+        weapon.StopAttack();
     }
 
     public void LookAt(Vector3 pos)
@@ -230,6 +247,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         switch(effect.effectType)
         {
+            case Effects.None:
+                return;
             case Effects.SlowDown:
                 slowed = true;
                 effect.ActivateEffect(this);
@@ -239,6 +258,7 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
                 effect.ActivateEffect(this);
                 break;
         }
+        gotEffect = true; 
     }
 
     public void Rotate(float angle)
@@ -265,6 +285,8 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
     {
         switch(effect.effectType)
         {
+            case Effects.None:
+                return;
             case Effects.Craziness:
                 crazy = false;
                 break;
@@ -272,5 +294,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
                 slowed = false;
                 break;
         }
+        gotEffect = false; 
     }
 }

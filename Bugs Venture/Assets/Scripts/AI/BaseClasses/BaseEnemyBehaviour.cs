@@ -28,8 +28,11 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     protected Vector3 randomPos;
     private Patrol patroling;
     private int patrolSize;
-    private int currPatrolPath =0;
+    private int currPatrolPath = 0;
     protected Vector3 soundSource;
+    private bool disappearedPlayer = false;
+    private bool isChecking = false;
+    private bool foundPlayer = false; 
 
     float IBehavior.SightAngle
     {
@@ -83,11 +86,42 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     {
         Debug.Log(State);
         StateSwitch();
+        if(!disappearedPlayer)
+        {
+            if(!Sight() && !isChecking)
+            {
+                StartCoroutine(CheckTimer());
+            }
+            if(isChecking)
+            {
+                if(Sight())
+                {
+                    foundPlayer = true;
+                }
+                else
+                {
+                    foundPlayer = false; 
+                }
+            }
+        }
+    }
+
+    private IEnumerator CheckTimer()
+    {
+        isChecking = true;
+        yield return new WaitForSeconds(2);
+        if(!foundPlayer)
+        {
+            disappearedPlayer = true;
+        }
+        isChecking = false;
     }
     virtual protected void StateSwitch()
     {
         if (enemy.EffectActive())
+        {
             State = EnemyStates.GotEffect;
+        }
         switch (State)
         {
             case EnemyStates.Idle:
@@ -126,6 +160,7 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
             {
                 if (Sight() || Vector3.Distance(this.transform.position, Player.GetInstance().transform.position) < 2)
                 {
+                    disappearedPlayer = false; 
                     State = EnemyStates.OnWayToPlayer;
                 }
                 else if (patrol)
@@ -151,9 +186,8 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     virtual protected void IsAttacking()
     {
-        if (!Sight())
+        if (disappearedPlayer)
         {
-            enemy.StopAttack();
             State = EnemyStates.IsSearching;
             return;
         }
@@ -219,6 +253,10 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     }
     protected bool Sight()
     {
+        if(Player.GetInstance() == null)
+        {
+            return false; 
+        }
         RaycastHit rayHit;
         Vector3 targetDir = Player.GetInstance().transform.position - transform.position;
         Physics.Raycast(transform.position, targetDir, out rayHit, sightDistance, layerMask);

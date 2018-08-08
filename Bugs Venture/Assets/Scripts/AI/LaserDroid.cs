@@ -13,24 +13,26 @@ public class LaserDroid : BaseEnemy {
 
     private float currAngle;
     private float currRotation = 0.0f;
+    private Vector3 atkStartPos = Vector3.zero; 
 
 
     public new void Attack()
     {
         IWeapon[] weapons = GetComponentsInChildren<IWeapon>();
         StopMovement();
+        atkStartPos = this.transform.position;
         currAngle = this.transform.eulerAngles.y;
         foreach (IWeapon weapon in weapons)
         {
             weapon.Fire = true;
             weapon.Attack();
         }
-
     }
 
     
     public bool RotateAround()
     {
+        this.transform.position = atkStartPos; 
         if(RotateRight)
         {
             if (currRotation < maxRotation)

@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Bullet : MonoBehaviour,IBullet
+public class Bullet : MonoBehaviour, IBullet
 {
     //Public
     public float bulletSpeed = 10f;
     public int Damage;
     public GameObject HitEffect;
-    public GameObject MuzzleEffect;
     public Effects effectType;
+    public List<AudioClip> audios = new List<AudioClip>();
     private IEffect effect;
-
+    private AudioSource aSource; 
     //Private
     private Rigidbody RigidBody;
 
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
+        aSource.clip = audios[Random.Range(0, audios.Count)];
         RigidBody = GetComponent<Rigidbody>();
+        aSource.Play();
         if(effectType != Effects.None)
         {
             effect = GetComponent<IEffect>();
         }
-        GameObject muzzleeffect = Instantiate(MuzzleEffect, this.transform.position, this.transform.rotation);
-        Destroy(muzzleeffect, 1.5f);
     }
 
     void Update()
@@ -37,9 +38,9 @@ public class Bullet : MonoBehaviour,IBullet
         if(col.gameObject.tag == "Enemy")
         {
             IBaseEnemy enemy = (IBaseEnemy)col.gameObject.GetComponent<IBaseEnemy>();
+            enemy.GetDamage(Damage);
             if (effectType != Effects.None)
                 enemy.GetEffect(effect);
-            enemy.GetDamage(Damage);
         }
         InstantiateHitEffect();
     }
@@ -54,10 +55,5 @@ public class Bullet : MonoBehaviour,IBullet
         GameObject hitEffect = Instantiate(HitEffect, this.transform.position,this.transform.rotation);
         DestroyBullet();
         Destroy(hitEffect, effect.Duration);
-    }
-
-    public void Shoot()
-    {
-        throw new System.NotImplementedException();
     }
 }

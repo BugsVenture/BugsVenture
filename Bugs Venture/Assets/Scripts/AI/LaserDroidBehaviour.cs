@@ -28,6 +28,10 @@ public class LaserDroidBehaviour : BaseEnemyBehaviour
     }
     private new void StateSwitch()
     {
+        if (enemy.EffectActive())
+        {
+            State = EnemyStates.GotEffect;
+        }
         switch (State)
         {
             case EnemyStates.Idle:
@@ -45,6 +49,10 @@ public class LaserDroidBehaviour : BaseEnemyBehaviour
                 break;
             case EnemyStates.IsSearching:
                 IsSearching();
+                break;
+            case EnemyStates.GotEffect:
+                if (!enemy.EffectActive())
+                    State = EnemyStates.Idle;
                 break;
         }
     }

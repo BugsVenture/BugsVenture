@@ -25,12 +25,6 @@ public class DarkArea : MonoBehaviour {
     {
         bCollider = GetComponent<BoxCollider>();
         CalculateEntries();
-        foreach(Entry entry in entries)
-        {
-            Debug.Log(entry.LeftPos);
-            Debug.Log(entry.RightPos);
-        }
-        Debug.Log(entries.Count);
     }
 
     public List<Entry> GetEntries()

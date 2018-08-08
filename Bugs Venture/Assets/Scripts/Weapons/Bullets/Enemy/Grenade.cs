@@ -11,9 +11,17 @@ public class Grenade : MonoBehaviour, IBullet {
 
     public float destroyDelay = 1;
 
+    private AudioSource aSource;
+
+
+    private void Start()
+    {
+        aSource = GetComponent<AudioSource>();
+    }
 
     public void DestroyBullet()
     {
+        aSource.Stop();
         Destroy(this.gameObject); //TODO: VFX 
     }
 
@@ -27,7 +35,7 @@ public class Grenade : MonoBehaviour, IBullet {
         if(collision.gameObject != null && !hit)
         {
             hit = true;
-            Detonate();
+            StartCoroutine(DetonateDelay());
         }
     }
 
@@ -37,6 +45,12 @@ public class Grenade : MonoBehaviour, IBullet {
         Destroy(GetComponent<SphereCollider>());
         InstantiateHitEffect();
 
+    }
+
+    IEnumerator DetonateDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Detonate();
     }
 
     IEnumerator DestroyDelay()

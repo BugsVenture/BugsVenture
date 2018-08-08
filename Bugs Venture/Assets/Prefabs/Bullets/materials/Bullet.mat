@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Bullet
-  m_Shader: {fileID: 4800000, guid: 99282eb13b7729849835b937e541ad99, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -67,7 +67,6 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Float0: 50.49
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -82,12 +81,9 @@ Material:
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - __dirty: 0
     m_Colors:
     - Color_1A5F9335: {r: 0, g: 722.82355, b: 766.9961, a: 0}
     - Color_B15360C9: {r: 0, g: 0.8663821, b: 1, a: 0}
-    - _Color: {r: 0, g: 0.97092485, b: 1, a: 1}
-    - _Color0: {r: 0.20392156, g: 0.5572183, b: 1, a: 0}
-    - _Color1: {r: 0, g: 0.9406588, b: 1, a: 0}
-    - _EmissionColor: {r: 0, g: 0.5132823, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.6679427, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

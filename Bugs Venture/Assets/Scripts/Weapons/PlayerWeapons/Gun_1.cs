@@ -30,5 +30,8 @@ public class Gun_1 : BaseWeapon
         }
     }
 
+    public override void Shoot()
+    {
+    }
 }
 

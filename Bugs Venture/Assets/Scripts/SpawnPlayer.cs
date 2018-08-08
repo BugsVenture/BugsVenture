@@ -21,7 +21,6 @@ public class SpawnPlayer : MonoBehaviour
     public void Spawn(GameObject playerObj)
     {
         GameObject playerObject = (GameObject)Instantiate(playerObj, transform.position, transform.rotation);        
-        Player player = playerObject.AddComponent<Player>() as Player;
         CameraFollow camera = CameraFollow.GetInstance();
         camera = playerObject.AddComponent<CameraFollow>() as CameraFollow;
     }

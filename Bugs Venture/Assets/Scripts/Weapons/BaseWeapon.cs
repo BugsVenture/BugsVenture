@@ -15,6 +15,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
 
     protected bool fire;
 
+    private bool isAttacking = false; 
+
     private float maxFireRate; 
 
     void Awake()
@@ -82,7 +84,33 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon {
         }
     }
 
-    public abstract void Attack();
+    public virtual void Attack()
+    {
+        fire = true;
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackRoutine());
+        }
+    }
+
+    public IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+        while (fire)
+        {
+            Shoot();
+            yield return new WaitForSeconds(fireRate);
+        }
+    }
+
+    public void StopAttack()
+    {
+        fire = false;
+        StopCoroutine(AttackRoutine());
+        isAttacking = false;
+    }
+
+    public abstract void Shoot();
 
     public void Knockback()
     {
