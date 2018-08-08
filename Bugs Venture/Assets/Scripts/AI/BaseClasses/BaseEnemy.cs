@@ -188,7 +188,6 @@ public abstract class BaseEnemy : MonoBehaviour, IBaseEnemy
 
     public bool MoveTo(Vector3 pos, float threshold = 1.0f)
     {
-        
         StartMovement();
         agent.SetDestination(pos);
         if (Vector3.Distance(this.transform.position, pos) < threshold)

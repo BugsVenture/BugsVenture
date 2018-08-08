@@ -31,6 +31,7 @@ public class CharacterMovement : MonoBehaviour
     private float stamina = 1, maxStamina = 1;
     private BarScript bar;
     private int number;
+    private GameObject shieldInstance;
 
     // Use this for initialization
     void Start()
@@ -113,7 +114,10 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         RigidBody.velocity = moveVelocity;
-        GameObject.Find("Shield(Clone)").transform.position = this.transform.position;
+        if (shieldInstance != null)
+        {
+            shieldInstance.transform.position = this.transform.position;
+        }
     }
 
 
@@ -149,8 +153,8 @@ public class CharacterMovement : MonoBehaviour
     public void Shield()
     {
         bar.fillAmount = 0f;
-        GameObject inst = Instantiate(shield, this.transform.position, Quaternion.identity);
-        Destroy(inst,shieldDuration);
+        shieldInstance = Instantiate(shield, this.transform.position, Quaternion.identity);
+        Destroy(shieldInstance, shieldDuration);
         number = Random.Range(randomMin, randomMax);
     }
 

@@ -42,7 +42,12 @@ public class Bullet : MonoBehaviour, IBullet
             if (effectType != Effects.None)
                 enemy.GetEffect(effect);
         }
-        InstantiateHitEffect();
+        if(effectType != Effects.None)
+            InstantiateHitEffect();
+        else
+        {
+            DestroyBullet();
+        }
     }
 
     public void DestroyBullet()
@@ -53,7 +58,10 @@ public class Bullet : MonoBehaviour, IBullet
     public void InstantiateHitEffect()
     {
         GameObject hitEffect = Instantiate(HitEffect, this.transform.position,this.transform.rotation);
-        DestroyBullet();
-        Destroy(hitEffect, effect.Duration);
+        if (hitEffect != null)
+        {
+            DestroyBullet();
+            Destroy(hitEffect, effect.Duration);
+        }
     }
 }

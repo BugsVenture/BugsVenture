@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DarkArea : MonoBehaviour {
 
+    public List<Light> lights = new List<Light>();
+
+    private bool isActive = false; 
+
     public struct Entry
     {
         public Entry(Vector3 vec, Vector3 vec2)
@@ -27,6 +31,15 @@ public class DarkArea : MonoBehaviour {
         CalculateEntries();
     }
 
+    public void SetActive()
+    {
+        foreach (Light light in lights)
+        {
+            light.enabled = false;
+        }
+        isActive = true;
+    }
+
     public List<Entry> GetEntries()
     {
         return entries;
@@ -34,13 +47,16 @@ public class DarkArea : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Boss")
+        if (isActive)
         {
-            IsInArea = true;
-        }
-        else
-        {
-            AddObject(other.gameObject);
+            if (other.gameObject.tag == "Boss")
+            {
+                IsInArea = true;
+            }
+            else
+            {
+                AddObject(other.gameObject);
+            }
         }
     }
 
@@ -121,9 +137,12 @@ public class DarkArea : MonoBehaviour {
     
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Boss")
+        if (isActive)
         {
-            IsInArea = false; 
+            if (other.gameObject.tag == "Boss")
+            {
+                IsInArea = false;
+            }
         }
     }
 }

@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 2053dba07844b99478d3d70eb396e1ca
+guid: 55d2aaf88451cbb4aaf48b149eed887b
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cylinder001
-    100002: //RootNode
-    400000: Cylinder001
-    400002: //RootNode
-    2100000: Cylinder001Mat
-    2300000: Cylinder001
-    3300000: Cylinder001
-    4300000: Cylinder001
+    100000: //RootNode
+    400000: //RootNode
+    2100000: 08 - Default
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plane005
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -86,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

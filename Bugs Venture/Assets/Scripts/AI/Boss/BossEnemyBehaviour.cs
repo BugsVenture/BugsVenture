@@ -140,6 +140,12 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
 
     void Update()
     {
+        Debug.Log(State);
+        if(!bEnemy.IsActive())
+        {
+            State = EnemyStates.Idle; 
+            return;
+        }
         if (Sight())
         {
             bEnemy.LookAt(Player.GetInstance().transform.position);
@@ -148,7 +154,6 @@ public class BossEnemyBehaviour : BaseEnemyBehaviour
         {
             State = EnemyStates.Patrol;
         }
-        Debug.Log(State);
         StateSwitch();
     }
 

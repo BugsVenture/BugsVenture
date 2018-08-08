@@ -84,7 +84,6 @@ public abstract class BaseEnemyBehaviour : MonoBehaviour, IBehavior
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(State);
         StateSwitch();
         if(!disappearedPlayer)
         {

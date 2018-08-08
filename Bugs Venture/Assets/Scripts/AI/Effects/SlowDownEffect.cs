@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class SlowDownEffect : BaseEffect {
 
-    private float duration = 3;
+    //private float duration = 3;
 
     public float slowdownValue = .1f;
 
-    private bool isActive = false;
+    //private bool isActive = false;
 
     private IBaseEnemy enemy;
 
     private AudioSource aSource; 
 
-    public float Duration
-    {
-        get
-        {
-            return duration;
-        }
+    //public float Duration
+    //{
+    //    get
+    //    {
+    //        return duration;
+    //    }
 
-        set
-        {
-            duration = value;
-        }
-    }
+    //    set
+    //    {
+    //        duration = value;
+    //    }
+    //}
 
-    public bool IsActive {
-        get
-        {
-            return IsActive;
-        }
-        set
-        {
-            isActive = value;
-        }
-    }
+    //public bool IsActive {
+    //    get
+    //    {
+    //        return IsActive;
+    //    }
+    //    set
+    //    {
+    //        isActive = value;
+    //    }
+    //}
 
     public override Effects effectType
     {

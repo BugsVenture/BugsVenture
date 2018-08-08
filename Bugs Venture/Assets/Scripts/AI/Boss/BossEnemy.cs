@@ -19,10 +19,16 @@ public class BossEnemy : BaseEnemy
 
     private int health = 3;
 
+    public float damageDelay = 2;
+
     private bool soundPlaying = false; 
 
     [HideInInspector]
-    public bool isAttacking = false; 
+    public bool isAttacking = false;
+    [HideInInspector]
+    public GameObject IntroGenerator;
+    [HideInInspector]
+    public bool isInIntro = false; 
 
     public override void Attack()
     {
@@ -43,10 +49,18 @@ public class BossEnemy : BaseEnemy
     public void GetDamage()
     {
         health--;
+        StartCoroutine(DamageDelay());
         if(health == 0)
         {
             DestroyEnemy();
         }
+    }
+
+    IEnumerator DamageDelay()
+    {
+        isActive = false;
+        yield return new WaitForSeconds(this.damageDelay);
+        isActive = true;
     }
 
     public new void DestroyEnemy()
@@ -95,10 +109,17 @@ public class BossEnemy : BaseEnemy
         {
             this.transform.LookAt(dashPoint);
         }
-        if (currRoom.PosInside(Player.GetInstance().transform.position))
+        if(isInIntro)
         {
-            isActive = true;
+            PlayIntro();
         }
+        //if (currRoom.PosInside(Player.GetInstance().transform.position))
+        //{
+        //    if (isInIntro)
+        //    {
+        //        isActive = true;
+        //    }
+        //}
         if(currRoom == null)
         {
             currRoom = bossRoom.GetRoom();
@@ -116,6 +137,22 @@ public class BossEnemy : BaseEnemy
         }
 
     }
+    private void PlayIntro()
+    {
+        dashPoint = IntroGenerator.transform.position;
+        if(Dash())
+        {
+            StartCoroutine(PostIntroScene());
+        }
+    }
+
+    IEnumerator PostIntroScene()
+    {
+        yield return new WaitForSeconds(3);
+        isInIntro = false;
+        isActive = true;
+    }
+
     private bool Dash()
     {
         if(!soundPlaying)
@@ -126,7 +163,7 @@ public class BossEnemy : BaseEnemy
         soundPlaying = true;
         this.transform.position = Vector3.Lerp(this.transform.position, dashPoint, dashSpeed* Time.deltaTime);
 
-        if(Vector3.Distance(this.transform.position, dashPoint) < .5f)
+        if(Vector3.Distance(this.transform.position, dashPoint) < .3f)
         {
             soundPlaying = false; 
             return true;
