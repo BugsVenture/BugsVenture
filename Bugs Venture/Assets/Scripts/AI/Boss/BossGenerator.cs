@@ -24,6 +24,20 @@ public class BossGenerator : MonoBehaviour
             inDestruction = true;
         }
     }
+
+    public bool SetIntroCam()
+    {
+        CameraFollow cam = CameraFollow.GetInstance();
+        cam.HasOtherTarget(true);
+        if (cam.Move(CamPos.transform.position, CamPos.transform.rotation))
+        {
+            cam.HasOtherTarget(false);
+            inDestruction = false;
+            isDestroyed = true;
+            return true;
+        }
+        return false;
+    }
     void Update()
     {
         if (inDestruction)

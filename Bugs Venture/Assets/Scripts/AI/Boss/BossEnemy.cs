@@ -21,7 +21,9 @@ public class BossEnemy : BaseEnemy
 
     public float damageDelay = 2;
 
-    private bool soundPlaying = false; 
+    private bool soundPlaying = false;
+
+    public GameObject FirstGenerator; 
 
     [HideInInspector]
     public bool isAttacking = false;
@@ -112,6 +114,11 @@ public class BossEnemy : BaseEnemy
         if(isInIntro)
         {
             PlayIntro();
+            BossGenerator gen = FirstGenerator.GetComponent<BossGenerator>();
+            if(gen.SetIntroCam())
+            {
+
+            }
         }
         //if (currRoom.PosInside(Player.GetInstance().transform.position))
         //{
