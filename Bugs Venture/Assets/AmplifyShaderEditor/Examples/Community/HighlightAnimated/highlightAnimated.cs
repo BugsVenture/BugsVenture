@@ -13,16 +13,15 @@ namespace TFHC_Shader_Samples
         void Start()
         {
             mat = GetComponent<Renderer>().material;
+            switchhighlighted(true);
         }
 
-        void OnMouseEnter()
+        void OnTriggerStay(Collider other)
         {
-            switchhighlighted(true);
-		}
-
-        void OnMouseExit()
-        {
-            switchhighlighted(false);
+            if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                switchhighlighted(false);
+            }
         }
 
         void switchhighlighted(bool highlighted)
