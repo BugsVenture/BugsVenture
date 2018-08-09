@@ -7,24 +7,32 @@ public class LastRoomEvent : MonoBehaviour
 {
     //Public
     public GameObject Light;
-    public GameObject characterMovement;
-    public CharacterMovement cm;
+    public GameObject character;
     public FadeIn fadeInScript;
+    public Vector3 newPos;
+    public bool stay = false;
     public string menu;
 
     // Use this for initialization
     void Start ()
     {
-        characterMovement = GameObject.FindGameObjectWithTag("Player");
-        cm = characterMovement.GetComponentInChildren<CharacterMovement>();
+        character = GameObject.FindGameObjectWithTag("Player");
         fadeInScript.startFadingOut();
         Light.SetActive(false);
         fadeInScript = FindObjectOfType<FadeIn>();
     }
 
-     void OnTriggerEnter(Collider other)
+  void Update()
     {
-        cm.enabled = false;
+        if(stay)
+        {
+        this.character.transform.position = newPos;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        stay = true;
         StartCoroutine(LightDelay());
     }
 

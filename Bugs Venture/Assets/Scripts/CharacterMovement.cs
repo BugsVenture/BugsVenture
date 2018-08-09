@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour
 
     // Private
     private bool isAttacking = true;
-    public Rigidbody RigidBody;
+    private Rigidbody RigidBody;
     private Camera MainCamera;
     private Vector3 moveInput;
     private Vector3 moveVelocity;

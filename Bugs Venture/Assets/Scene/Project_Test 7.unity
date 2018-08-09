@@ -1179,6 +1179,7 @@ GameObject:
   - component: {fileID: 268669277}
   - component: {fileID: 268669275}
   - component: {fileID: 268669278}
+  - component: {fileID: 268669276}
   m_Layer: 0
   m_Name: Event
   m_TagString: Untagged
@@ -1198,6 +1199,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &268669276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268669274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc56855fe714334ca41dd2419d973e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Light: {fileID: 1603987236}
+  character: {fileID: 0}
+  fadeInScript: {fileID: 1392888292}
+  newPos: {x: 0, y: 0, z: 0}
+  stay: 0
+  menu: Menu
 --- !u!4 &268669277
 Transform:
   m_ObjectHideFlags: 0
@@ -5671,7 +5689,6 @@ GameObject:
   - component: {fileID: 1392888293}
   - component: {fileID: 1392888290}
   - component: {fileID: 1392888292}
-  - component: {fileID: 1392888299}
   m_Layer: 15
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5823,22 +5840,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1392888299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392888289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc56855fe714334ca41dd2419d973e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Light: {fileID: 1603987236}
-  characterMovement: {fileID: 0}
-  cm: {fileID: 0}
-  fadeInScript: {fileID: 1392888292}
-  menu: Menu
 --- !u!1001 &1402772007
 Prefab:
   m_ObjectHideFlags: 0
